@@ -28,13 +28,25 @@ class _HomeViewState extends State<HomeView> {
   /// Indicates the view that is currently displayed
   int _selectedIndex = 0;
 
-  final List<Widget> _views = <Widget>[
-    IntroView(),
-    DrawingView(),
-    GenerationView(),
-    ScoreView(),
-    AnalysisView(),
-  ];
+  void updateSelectedIndex(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  late List<Widget> _views;
+
+  @override
+  void initState() {
+    super.initState();
+    _views = [
+      DrawingView(onButtonPressed: () => updateSelectedIndex(1)),
+      GenerationView(onButtonPressed: () => updateSelectedIndex(2)),
+      ScoreView(onButtonPressed: () => updateSelectedIndex(3)),
+      AnalysisView(onButtonPressed: () => updateSelectedIndex(4)),
+      AnalysisView(onButtonPressed: () => updateSelectedIndex(4)),
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +56,7 @@ class _HomeViewState extends State<HomeView> {
       ),
       body: _views.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         currentIndex: _selectedIndex,
         items: const <BottomNavigationBarItem> [
           BottomNavigationBarItem(
@@ -69,12 +82,13 @@ class _HomeViewState extends State<HomeView> {
 }
 
 class IntroView extends StatelessWidget {
+
+  final VoidCallback onButtonPressed;
+  const IntroView({required this.onButtonPressed});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('SketchySounds'),
-      ),
       body: Center(
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           Padding(
@@ -85,10 +99,7 @@ class IntroView extends StatelessWidget {
             padding: EdgeInsets.all(10.0),
             child: ElevatedButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => DrawingView()),
-                );
+                onButtonPressed();
               },
               child: Text('Los geht\'s!'),
             ),
@@ -100,19 +111,17 @@ class IntroView extends StatelessWidget {
 }
 
 class DrawingView extends StatelessWidget {
+
+  final VoidCallback onButtonPressed;
+  const DrawingView({required this.onButtonPressed});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('SketchySounds'),
-      ),
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => GenerationView()),
-            );
+            onButtonPressed();
           },
           child: Text('fertig'),
         ),
@@ -122,19 +131,17 @@ class DrawingView extends StatelessWidget {
 }
 
 class GenerationView extends StatelessWidget {
+
+  final VoidCallback onButtonPressed;
+  const GenerationView({required this.onButtonPressed});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('SketchySounds'),
-      ),
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => ScoreView()),
-            );
+            onButtonPressed();
           },
           // TODO: Remove this as soon as mock api returns generated image
           child: Text('Bild ansehen'),
@@ -145,19 +152,17 @@ class GenerationView extends StatelessWidget {
 }
 
 class ScoreView extends StatelessWidget {
+
+  final VoidCallback onButtonPressed;
+  const ScoreView({required this.onButtonPressed});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('SketchySounds'),
-      ),
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => AnalysisView()),
-            );
+            onButtonPressed();
           },
           child: Text('analysieren'),
         )
@@ -167,12 +172,14 @@ class ScoreView extends StatelessWidget {
 }
 
 class AnalysisView extends StatelessWidget {
+
+
+  final VoidCallback onButtonPressed;
+  const AnalysisView({required this.onButtonPressed});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Sketchysounds'),
-      ),
       body: Center(
       child: Text('Analysis'),
       ),
