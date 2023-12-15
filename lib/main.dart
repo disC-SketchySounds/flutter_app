@@ -3,16 +3,15 @@ import 'package:flutter/material.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-
   const MyApp({Key? key}) : super(key: key);
 
   static const String _title = 'SketchySounds';
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: _title,
-      home: const HomeView(),
+      home: IntroView(),
     );
   }
 }
@@ -43,7 +42,6 @@ class _HomeViewState extends State<HomeView> {
       DrawingView(onButtonPressed: () => updateSelectedIndex(1)),
       GenerationView(onButtonPressed: () => updateSelectedIndex(2)),
       ScoreView(onButtonPressed: () => updateSelectedIndex(3)),
-      AnalysisView(onButtonPressed: () => updateSelectedIndex(4)),
       AnalysisView(onButtonPressed: () => updateSelectedIndex(4)),
     ];
   }
@@ -83,9 +81,6 @@ class _HomeViewState extends State<HomeView> {
 
 class IntroView extends StatelessWidget {
 
-  final VoidCallback onButtonPressed;
-  const IntroView({required this.onButtonPressed});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -99,8 +94,11 @@ class IntroView extends StatelessWidget {
             padding: EdgeInsets.all(10.0),
             child: ElevatedButton(
               onPressed: () {
-                onButtonPressed();
-              },
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomeView()),
+                );
+                },
               child: Text('Los geht\'s!'),
             ),
           ),
