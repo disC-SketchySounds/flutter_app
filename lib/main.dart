@@ -60,19 +60,19 @@ class _HomeViewState extends State<HomeView> {
         currentIndex: _selectedIndex,
         items: const <BottomNavigationBarItem> [
           BottomNavigationBarItem(
-            icon: Icon(Icons.draw),
+            icon: Icon(Icons.star_border, color: Colors.transparent,),
             label: 'zeichnen',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.computer),
+              icon: Icon(Icons.star_border, color: Colors.transparent,),
             label: 'generieren'
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.music_note),
+            icon: Icon(Icons.star_border, color: Colors.transparent,),
             label: 'fertige Partitur',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.numbers),
+              icon: Icon(Icons.star_border, color: Colors.transparent,),
             label: 'analysieren'
           ),
         ],
