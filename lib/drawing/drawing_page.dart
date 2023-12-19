@@ -74,7 +74,7 @@ class _DrawingPageState extends State<DrawingPage> {
   Widget buildAllPaths(BuildContext context) {
     return RepaintBoundary(
       key: _globalKey,
-      child: Container(
+      child: SizedBox(
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: StreamBuilder<List<DrawnLine>>(

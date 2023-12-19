@@ -26,7 +26,9 @@ class DrawingView extends StatelessWidget {
             SizedBox(
               width: screenSize.width * 0.4,
               height: screenSize.height * 0.7,
+              child: ClipRect(
               child: DrawingPage(),
+              ),
             ),
             Spacer(),
           ]),
