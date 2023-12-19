@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class ScoreView extends StatelessWidget {
 
   final VoidCallback onButtonPressed;
-  const ScoreView({required this.onButtonPressed});
+  const ScoreView({super.key, required this.onButtonPressed});
 
   @override
   Widget build(BuildContext context) {

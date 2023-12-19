@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class AnalysisView extends StatelessWidget {
 
   final VoidCallback onButtonPressed;
-  const AnalysisView({required this.onButtonPressed});
+  const AnalysisView({super.key, required this.onButtonPressed});
 
   @override
   Widget build(BuildContext context) {

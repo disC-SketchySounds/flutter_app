@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/intro_view.dart';
 import 'drawing_view.dart';
 import 'generation_view.dart';
 import 'score_view.dart';
@@ -13,6 +12,7 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
+
   /// Indicates the view that is currently displayed
   int _selectedIndex = 0;
 

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class GenerationView extends StatelessWidget {
 
   final VoidCallback onButtonPressed;
-  const GenerationView({required this.onButtonPressed});
+  const GenerationView({super.key, required this.onButtonPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class GenerationView extends StatelessWidget {
             onButtonPressed();
           },
           // TODO: Remove this as soon as mock api returns generated image
-          child: Text('Bild ansehen'),
+          child: const Text('Bild ansehen'),
         ),
       ),
     );
