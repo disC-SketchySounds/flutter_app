@@ -2,26 +2,28 @@ import 'package:flutter/material.dart';
 import 'home_view.dart';
 
 class IntroView extends StatelessWidget {
+  const IntroView({super.key});
+
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Padding(
+          const Padding(
             padding: EdgeInsets.all(10.0),
             child: Text('Generic Description'),
           ),
           Padding(
-            padding: EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(10.0),
             child: ElevatedButton(
               onPressed: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => HomeView()),
+                  MaterialPageRoute(builder: (context) => const HomeView()),
                 );
               },
-              child: Text('Los geht\'s!'),
+              child: const Text('Los geht\'s!'),
             ),
           ),
         ]),
