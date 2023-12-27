@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       title: _title,
       home: IntroView(),
+      themeMode: ThemeMode.system,
     );
   }
 }
