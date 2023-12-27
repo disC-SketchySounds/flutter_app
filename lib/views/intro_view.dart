@@ -12,7 +12,7 @@ class IntroView extends StatelessWidget {
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           const Padding(
             padding: EdgeInsets.all(10.0),
-            child: Text('Generic Description'),
+            child: Text('Verwandle mit Sketchy Sounds deine eigene Zeichung in eine grafische Partitur und tauche spielerisch in die Welt der Musik ein!'),
           ),
           Padding(
             padding: const EdgeInsets.all(10.0),

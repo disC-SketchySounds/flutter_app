@@ -22,15 +22,15 @@ class DrawingView extends StatelessWidget {
             ),
           ),
           Column(children: [
-            Spacer(),
+            const Spacer(),
             SizedBox(
               width: screenSize.width * 0.4,
               height: screenSize.height * 0.7,
-              child: ClipRect(
+              child: const ClipRect(
               child: DrawingPage(),
               ),
             ),
-            Spacer(),
+            const Spacer(),
           ]),
           SizedBox(
             width: screenSize.width * 0.3,
