@@ -6,13 +6,16 @@ import 'sketcher.dart';
 
 /// A page that can be drawn on with a pen.
 class DrawingPage extends StatefulWidget {
-  const DrawingPage({super.key});
+  final Color selectedColor;
+  final ValueChanged<Color> onColorChanged;
+
+  DrawingPage({Key? key, required this.selectedColor, required this.onColorChanged}) : super(key: key);
 
   @override
-  _DrawingPageState createState() => _DrawingPageState();
+  DrawingPageState createState() => DrawingPageState();
 }
 
-class _DrawingPageState extends State<DrawingPage> {
+class DrawingPageState extends State<DrawingPage> {
 
   // Properties
   List<DrawnLine> lines = <DrawnLine>[];
@@ -106,7 +109,7 @@ class _DrawingPageState extends State<DrawingPage> {
     // Use selected color and width for stroke.
     // Update the UI with setState(). Or don't?
     setState(() {
-      currentLine = DrawnLine([point], selectedColor, selectedWidth);
+      currentLine = DrawnLine([point], widget.selectedColor, selectedWidth);
       currentLineStreamController.add(currentLine ?? DrawnLine.empty());
     });
   }
@@ -120,7 +123,7 @@ class _DrawingPageState extends State<DrawingPage> {
           .empty()
           .path)
         ..add(point);
-      currentLine = DrawnLine(path, selectedColor, selectedWidth);
+      currentLine = DrawnLine(path, widget.selectedColor, selectedWidth);
 
       // TODO Create a path add new points ot the list.
 
