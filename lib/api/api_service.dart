@@ -101,7 +101,7 @@ class APIService {
       return responseData['error'];
     } else {
       var responseData = json.decode(response.body);
-      String errorMessage = responseData['message'] ?? 'Unknown error occurred';
+      String errorMessage = responseData['error'] ?? 'Unknown error occurred';
       throw Exception(errorMessage);
     }
   }
