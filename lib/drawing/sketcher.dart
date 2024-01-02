@@ -21,9 +21,9 @@ class Sketcher extends CustomPainter {
 
   void drawLine(Canvas canvas, DrawnLine line) {
     var paint = Paint()
-      ..color = Colors.redAccent
+      ..color = line.color
       ..strokeCap = StrokeCap.round
-      ..strokeWidth = 5.0;
+      ..strokeWidth = line.width;
     canvas.drawPoints(PointMode.polygon, line.path, paint);
   }
 

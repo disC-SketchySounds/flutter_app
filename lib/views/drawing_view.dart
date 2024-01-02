@@ -21,7 +21,9 @@ class _DrawingViewState extends State<DrawingView> {
 
   void turnRed() {
     print('Changed color');
-    selectedColor = Colors.red;
+    setState(() {
+      selectedColor = Colors.red;
+    });
   }
 
   // For exporting image to a file.
