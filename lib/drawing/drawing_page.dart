@@ -63,6 +63,7 @@ class _DrawingPageState extends State<DrawingPage> {
                 return CustomPaint(
                   painter: Sketcher(
                     lines: lines,
+                    currentLine: currentLine,
                   ),
                 );
               }
@@ -113,42 +114,26 @@ class _DrawingPageState extends State<DrawingPage> {
 
   /// When the user is dragging their finger without lifting it off the screen.
   void onPanUpdate(DragUpdateDetails details) {
-    if (currentLine?.path.isNotEmpty ?? false) {
+    if (currentLine != null) {
       final box = context.findRenderObject() as RenderBox;
       final point = box.globalToLocal(details.globalPosition);
-      final List<Offset> path = (currentLine?.path ?? DrawnLine
-          .empty()
-          .path)
-        ..add(point);
-      currentLine = DrawnLine(path, selectedColor, selectedWidth);
 
-      // TODO Create a path add new points ot the list.
-
-      // Update UI with new line
       setState(() {
-        if (lines.isEmpty) {
-          lines.add(currentLine ?? DrawnLine.empty());
-          currentLineStreamController.add(currentLine ?? DrawnLine.empty());
-        } else {
-          lines[lines.length - 1] = currentLine ?? DrawnLine.empty();
-        }
+        currentLine?.path.add(point);
+        currentLineStreamController.add(currentLine!);
       });
-    } else {
-      print("This should not happen? I think?");
     }
   }
 
   /// When the users lifts their finger off the screen.
   void onPanEnd(DragEndDetails details) {
-    final List<Offset?> path = (currentLine?.path ?? [])
-      ..add(null);
-    setState(() {
-      lines.add(currentLine ?? DrawnLine.empty());
-      linesStreamController.add(lines);
-      // Create a new line instance here
-      currentLine = DrawnLine.empty();
-      print("User stopped drawing");
-    });
+    if (currentLine != null && currentLine!.path.isNotEmpty) {
+      setState(() {
+        lines.add(currentLine!);
+        linesStreamController.add(lines);
+        currentLine = DrawnLine([], selectedColor, selectedWidth);
+      });
+    }
   }
 
   @override

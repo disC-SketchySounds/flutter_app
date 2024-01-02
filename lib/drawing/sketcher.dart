@@ -1,25 +1,30 @@
+import 'dart:ui';
+
 import 'drawn_line.dart';
 import 'package:flutter/material.dart';
 
 class Sketcher extends CustomPainter {
   final List<DrawnLine> lines;
+  final DrawnLine? currentLine;
 
-  Sketcher({required this.lines});
+  Sketcher({required this.lines, this.currentLine});
 
   @override
   void paint(Canvas canvas, Size size) {
-    Paint paint = Paint()
+    for (var line in lines) {
+      drawLine(canvas, line);
+    }
+    if (currentLine != null) {
+      drawLine(canvas, currentLine!);
+    }
+  }
+
+  void drawLine(Canvas canvas, DrawnLine line) {
+    var paint = Paint()
       ..color = Colors.redAccent
       ..strokeCap = StrokeCap.round
       ..strokeWidth = 5.0;
-
-    for (int i = 0; i < lines.length; ++i) {
-      for (int j = 0; j < lines[i].path.length - 1; ++j) {
-        paint.color = lines[i].color;
-        paint.strokeWidth = lines[i].width;
-        canvas.drawLine(lines[i].path[j], lines[i].path[j + 1], paint);
-      }
-    }
+    canvas.drawPoints(PointMode.polygon, line.path, paint);
   }
 
   @override
