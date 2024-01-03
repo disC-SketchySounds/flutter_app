@@ -7,6 +7,7 @@ import 'package:flutter_app/drawing/drawing_page.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter_app/resources/app_colors.dart';
 
+
 import '../resources/color_button.dart';
 
 class DrawingView extends StatefulWidget {
@@ -89,9 +90,11 @@ class _DrawingViewState extends State<DrawingView> {
                 const Padding(
                   padding: EdgeInsets.only(left: 16, top: 16, right: 16, bottom: 16),
                   child: Text(
-                    'Zeichne etwas',
+                    'Zeichne\netwas!',
                     style: TextStyle(
-                      fontSize: 40, // Replace with your desired font size
+                      fontFamily: 'Compagnon',
+                      fontStyle: FontStyle.italic,
+                      fontSize: 40,
                     ),
                   ),
                 ),

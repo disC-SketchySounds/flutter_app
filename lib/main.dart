@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
       home: IntroView(),
       themeMode: ThemeMode.dark,
       theme: ThemeData(
+        fontFamily: 'Compagnon',
         colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue).copyWith(background: AppColors.black),
         textTheme: const TextTheme(
           bodyLarge: TextStyle(
