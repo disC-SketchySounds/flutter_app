@@ -35,7 +35,7 @@ class ImageView extends StatelessWidget {
     if (files.isNotEmpty) {
       print("Files is not empty!");
       // Load the first image found in the documents directory
-      return File(files.first.path);
+      return File(files.last.path);
     }
 
     return null;
