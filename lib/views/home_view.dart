@@ -56,6 +56,10 @@ class _HomeViewState extends State<HomeView> {
       ),
       body: _views.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: AppColors.white,
+        selectedFontSize: 24,
+        unselectedItemColor: AppColors.grey,
+        unselectedFontSize: 24,
         type: BottomNavigationBarType.fixed,
         currentIndex: _selectedIndex,
         items: const <BottomNavigationBarItem> [
