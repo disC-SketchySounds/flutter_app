@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/resources/blue_button.dart';
 
 class AnalysisView extends StatelessWidget {
 
@@ -9,11 +10,11 @@ class AnalysisView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-          child: ElevatedButton(
+          child: BlueButton(
             onPressed: () {
               onButtonPressed();
             },
-            child: const Text('zurück'),
+            text: 'zurück'
           )
       ),
     );

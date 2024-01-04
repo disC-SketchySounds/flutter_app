@@ -4,6 +4,7 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_app/drawing/drawing_page.dart';
+import 'package:flutter_app/resources/blue_button.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter_app/resources/app_colors.dart';
 
@@ -20,7 +21,7 @@ class DrawingView extends StatefulWidget {
 }
 
 class _DrawingViewState extends State<DrawingView> {
-  Color selectedColor = AppColors.black;
+  Color selectedColor = AppColors.blue;
 
   void turnBlue() {
     setState(() {
@@ -152,16 +153,17 @@ class _DrawingViewState extends State<DrawingView> {
               children: [
                 const Text('180s'),
                 const Spacer(),
-                ElevatedButton(
+                BlueButton(
                   onPressed: () {
                     widget.onButtonPressed();
                   },
-                  child: const Text('analysieren'),
+                  text: 'fertig',
                 ),
-                ElevatedButton(
+                BlueButton(
                     onPressed: _createImage,
-                    child: const Text('Testbild generieren')),
-                const Spacer(),
+                    text: 'Testbild generieren',
+                    color: AppColors.gray,
+                ),
               ],
             ),
           ),
