@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/api/api_service.dart';
+import 'package:flutter_app/resources/blue_button.dart';
 
 class GenerationView extends StatelessWidget {
 
@@ -15,17 +16,18 @@ class GenerationView extends StatelessWidget {
     return Scaffold(
       body: Column(
         children:[
-          ElevatedButton(
+          BlueButton(
             onPressed: () {
               onButtonPressed();
             },
-            // TODO: Remove this as soon as mock api returns generated image
-            child: const Text('Bild ansehen'),
+            text: 'Bild ansehen',
+
           ),
-          ElevatedButton(
+          BlueButton(
             onPressed: () {
               testAPI();
-            }, child: const Text('API testen'),
+            },
+            text: 'API testen',
           )
         ]
       ),
