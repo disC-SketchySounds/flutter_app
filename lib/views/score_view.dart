@@ -51,7 +51,7 @@ class ScoreView extends StatelessWidget {
             child: Column(
               children: [
                 const Spacer(),
-                BlueButton(onPressed: onButtonPressed, text: 'Bild ansehen')
+                BlueButton(onPressed: onButtonPressed, text: 'analysieren')
               ],
             ),
           ),

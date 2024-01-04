@@ -4,6 +4,7 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_app/drawing/drawing_page.dart';
+import 'package:flutter_app/views/timer_view.dart';
 import 'package:flutter_app/resources/blue_button.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter_app/resources/app_colors.dart';
@@ -22,6 +23,7 @@ class DrawingView extends StatefulWidget {
 
 class _DrawingViewState extends State<DrawingView> {
   Color selectedColor = AppColors.blue;
+  int countdown = 180;
 
   void turnBlue() {
     setState(() {
@@ -151,7 +153,7 @@ class _DrawingViewState extends State<DrawingView> {
             width: screenSize.width * 0.3,
             child: Column(
               children: [
-                const Text('180s'),
+                TimerView(countdown: countdown,),
                 const Spacer(),
                 BlueButton(
                   onPressed: () {
