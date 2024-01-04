@@ -5,6 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_app/drawing/drawing_page.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:flutter_app/resources/app_colors.dart';
+
+
+import '../resources/color_button.dart';
 
 class DrawingView extends StatefulWidget {
   final VoidCallback onButtonPressed;
@@ -16,13 +20,23 @@ class DrawingView extends StatefulWidget {
 }
 
 class _DrawingViewState extends State<DrawingView> {
+  Color selectedColor = AppColors.black;
 
-  Color selectedColor = Colors.black;
-
-  void turnRed() {
-    print('Changed color');
+  void turnBlue() {
     setState(() {
-      selectedColor = Colors.red;
+      selectedColor = AppColors.blue;
+    });
+  }
+
+  void turnPink() {
+    setState(() {
+      selectedColor = AppColors.pink;
+    });
+  }
+
+  void turnYellow() {
+    setState(() {
+      selectedColor = AppColors.yellow;
     });
   }
 
@@ -35,7 +49,8 @@ class _DrawingViewState extends State<DrawingView> {
     final RenderRepaintBoundary boundary =
     _globalKey.currentContext!.findRenderObject()! as RenderRepaintBoundary;
     final ui.Image image = await boundary.toImage();
-    final ByteData? byteData = await image.toByteData(format: ui.ImageByteFormat.png);
+    final ByteData? byteData =
+    await image.toByteData(format: ui.ImageByteFormat.png);
     final Uint8List? pngBytes = byteData?.buffer.asUint8List();
     return pngBytes;
   }
@@ -43,7 +58,10 @@ class _DrawingViewState extends State<DrawingView> {
   /// Save image as png file in Document directory.
   Future<void> _saveImageToFile(Uint8List imageBytes) async {
     final documentsDir = await getApplicationDocumentsDirectory();
-    final String filePath = '${documentsDir.path}/image_${DateTime.now().millisecondsSinceEpoch}.png';
+    final String filePath =
+        '${documentsDir.path}/image_${DateTime
+        .now()
+        .millisecondsSinceEpoch}.png';
 
     await File(filePath).writeAsBytes(imageBytes);
     print('Image saved to: $filePath');
@@ -58,7 +76,9 @@ class _DrawingViewState extends State<DrawingView> {
 
   @override
   Widget build(BuildContext context) {
-    final Size screenSize = MediaQuery.of(context).size;
+    final Size screenSize = MediaQuery
+        .of(context)
+        .size;
 
     return Scaffold(
       body: Row(
@@ -67,10 +87,40 @@ class _DrawingViewState extends State<DrawingView> {
             width: screenSize.width * 0.3,
             child: Column(
               children: [
-                Text('Zeichne etwas'),
-                ElevatedButton(
-                    onPressed: turnRed,
-                    child: Text('Red'),
+                const Padding(
+                  padding: EdgeInsets.only(left: 16, top: 16, right: 16, bottom: 16),
+                  child: Text(
+                    'Zeichne\netwas!',
+                    style: TextStyle(
+                      fontFamily: 'Compagnon',
+                      fontStyle: FontStyle.italic,
+                      fontSize: 40,
+                    ),
+                  ),
+                ),
+                Spacer(),
+                Row(
+                  children: [
+                    Spacer(),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                          left: 100, top: 18, right: 18, bottom: 18),
+                      child: Column(children: [
+                        ColorButton(
+                          onPressed: turnBlue,
+                          buttonColor: AppColors.blue,
+                        ),
+                        ColorButton(
+                          onPressed: turnPink,
+                          buttonColor: AppColors.pink,
+                        ),
+                        ColorButton(
+                          onPressed: turnYellow,
+                          buttonColor: AppColors.yellow,
+                        ),
+                      ]),
+                    )
+                  ],
                 )
               ],
             ),
@@ -85,13 +135,12 @@ class _DrawingViewState extends State<DrawingView> {
                 height: screenSize.height * 0.7,
                 child: ClipRect(
                   child: DrawingPage(
-                    selectedColor: selectedColor,
-                    onColorChanged: (Color newColor) {
-                      setState(() {
-                        selectedColor = newColor;
-                      });
-                    }
-                  ),
+                      selectedColor: selectedColor,
+                      onColorChanged: (Color newColor) {
+                        setState(() {
+                          selectedColor = newColor;
+                        });
+                      }),
                 ),
               ),
             ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../resources/app_colors.dart';
 import 'drawing_view.dart';
 import 'generation_view.dart';
 import 'score_view.dart';
@@ -43,7 +44,15 @@ class _HomeViewState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('SketchySounds'),
+        backgroundColor: AppColors.blue,
+        title: const Text('SketchySounds'), toolbarTextStyle: Theme.of(context).textTheme.apply(
+          bodyColor: Colors.white,
+          displayColor: Colors.white,
+        ).bodyMedium, titleTextStyle: Theme.of(context).textTheme.apply(
+          bodyColor: Colors.white,
+          displayColor: Colors.white,
+        ).titleLarge,
+        toolbarHeight: 112 * 0.67,
       ),
       body: _views.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(

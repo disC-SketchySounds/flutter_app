@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'drawn_line.dart';
 import 'sketcher.dart';
+import 'package:flutter_app/resources/app_colors.dart';
 
 /// A page that can be drawn on with a pen.
 class DrawingPage extends StatefulWidget {
@@ -20,7 +21,7 @@ class DrawingPageState extends State<DrawingPage> {
   // Properties
   List<DrawnLine> lines = <DrawnLine>[];
   DrawnLine? currentLine;
-  Color selectedColor = Colors.black;
+  Color selectedColor = AppColors.blue;
   double selectedWidth = 5.0;
   final GlobalKey _globalKey = GlobalKey(); // What does this do?
 
