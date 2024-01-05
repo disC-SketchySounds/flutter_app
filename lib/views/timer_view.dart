@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class TimerView extends StatefulWidget {
   final int countdown;
+  final bool pageDisabled;
 
-  TimerView({required this.countdown});
+  TimerView({required this.countdown, required this.pageDisabled,});
 
   @override
   _TimerViewState createState() => _TimerViewState();
@@ -11,11 +12,13 @@ class TimerView extends StatefulWidget {
 
 class _TimerViewState extends State<TimerView> {
   late int countdown;
+  late bool pageDisabled;
 
   @override
   void initState() {
     super.initState();
     countdown = widget.countdown;
+    pageDisabled = widget.pageDisabled;
     startTimer();
   }
 
@@ -46,10 +49,14 @@ class _TimerViewState extends State<TimerView> {
 
   Future<void> startTimer() async {
     while (countdown > 0) {
-      await Future.delayed(Duration(seconds: 1));
+      await Future.delayed(const Duration(seconds: 1));
       setState(() {
         countdown--;
       });
     }
+    setState(() {
+      print("Disabled!");
+      pageDisabled = true;
+    });
   }
 }

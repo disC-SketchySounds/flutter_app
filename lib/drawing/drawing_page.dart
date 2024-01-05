@@ -9,8 +9,9 @@ import 'package:flutter_app/resources/app_colors.dart';
 class DrawingPage extends StatefulWidget {
   final Color selectedColor;
   final ValueChanged<Color> onColorChanged;
+  final bool disabled;
 
-  DrawingPage({Key? key, required this.selectedColor, required this.onColorChanged}) : super(key: key);
+  DrawingPage({Key? key, required this.selectedColor, required this.onColorChanged, required this.disabled}) : super(key: key);
 
   @override
   DrawingPageState createState() => DrawingPageState();
@@ -23,7 +24,13 @@ class DrawingPageState extends State<DrawingPage> {
   DrawnLine? currentLine;
   Color selectedColor = AppColors.blue;
   double selectedWidth = 5.0;
+  late bool disabled;
   final GlobalKey _globalKey = GlobalKey(); // What does this do?
+
+  @override void initState() {
+    super.initState();
+    disabled = widget.disabled;
+  }
 
   //  Stream controllers
   StreamController<DrawnLine> currentLineStreamController
@@ -142,19 +149,24 @@ class DrawingPageState extends State<DrawingPage> {
 
   @override
   Widget build(BuildContext context) {
-    final Size screenSize = MediaQuery
-        .of(context)
-        .size;
-
+    final Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
         backgroundColor: Colors.white,
         body: Stack(
           children: [
             buildAllPaths(context),
             buildCurrentPath(context),
+            if (disabled)
+              Positioned.fill(
+                child: Opacity(
+                  opacity: 0.5,
+                  child: Container(
+                    color: Colors.black,
+                  ),
+                ),
+              ),
           ],
-        )
-    );
+        ));
   }
 
   @override

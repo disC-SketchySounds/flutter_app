@@ -23,7 +23,8 @@ class DrawingView extends StatefulWidget {
 
 class _DrawingViewState extends State<DrawingView> {
   Color selectedColor = AppColors.blue;
-  int countdown = 180;
+  int countdown = 10;
+  bool disabled = false;
 
   void turnBlue() {
     setState(() {
@@ -143,7 +144,8 @@ class _DrawingViewState extends State<DrawingView> {
                         setState(() {
                           selectedColor = newColor;
                         });
-                      }),
+                      }, disabled: disabled,
+                      ),
                 ),
               ),
             ),
@@ -153,7 +155,10 @@ class _DrawingViewState extends State<DrawingView> {
             width: screenSize.width * 0.3,
             child: Column(
               children: [
-                TimerView(countdown: countdown,),
+                TimerView(
+                  countdown: countdown,
+                  pageDisabled: disabled,
+                ),
                 const Spacer(),
                 BlueButton(
                   onPressed: () {
