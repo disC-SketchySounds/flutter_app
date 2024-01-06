@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/resources/app_colors.dart';
+import 'package:flutter_app/views/end_view.dart';
+import 'package:flutter_app/views/home_view.dart';
 import 'views/intro_view.dart';
 
 void main() => runApp(const MyApp());
@@ -12,6 +14,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      routes: {
+        '/intro': (context) => IntroView(),
+        '/home': (context) => HomeView(),
+        '/end': (context) => EndView(),
+      },
       title: _title,
       home: IntroView(),
       themeMode: ThemeMode.dark,

@@ -3,6 +3,7 @@ import 'package:flutter_app/resources/blue_button.dart';
 import 'package:flutter_app/views/analysis_tags_view.dart';
 
 import '../display_image/image_viewer.dart';
+import 'end_view.dart';
 
 class AnalysisView extends StatelessWidget {
   final VoidCallback onButtonPressed;
@@ -82,9 +83,17 @@ class AnalysisView extends StatelessWidget {
                 BlueButton(onPressed: compare, text: 'vergleichen'),
                 const Spacer(),
                 BlueButton(
-                  onPressed: goToFinalView,
+                  onPressed: () {
+                    /*
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => EndView()),
+                    );
+                    */
+                    Navigator.pushNamed(context, '/end');
+                  },
                   text: 'abschließen',
-                  color: Colors.black,
+                  backgroundColor: Colors.black,
                 )
               ],
             ))

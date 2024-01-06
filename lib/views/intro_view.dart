@@ -19,9 +19,9 @@ class IntroView extends StatelessWidget {
             padding: const EdgeInsets.all(10.0),
             child: BlueButton(
               onPressed: () {
-                Navigator.pushReplacement(
+                Navigator.pushNamed(
                   context,
-                  MaterialPageRoute(builder: (context) => const HomeView()),
+                  '/home'
                 );
               },
               text: 'Los geht\'s!',
