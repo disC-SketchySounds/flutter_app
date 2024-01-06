@@ -80,7 +80,9 @@ class AnalysisView extends StatelessWidget {
                     ),
                   ),
                 ),
-                BlueButton(onPressed: compare, text: 'vergleichen'),
+                BlueButton(onPressed: ((){
+                  Navigator.pushNamed(context, '/compare');
+                }), text: 'vergleichen'),
                 const Spacer(),
                 BlueButton(
                   onPressed: () {
