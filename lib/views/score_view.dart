@@ -20,9 +20,9 @@ class ScoreView extends StatelessWidget {
         children: [
           SizedBox(
             width: screenSize.width * 0.3,
-            child: Column(
+            child: const Column(
               children: [
-                const Padding(
+                Padding(
                   padding: EdgeInsets.only(left: 16, top: 16, right: 16, bottom: 16),
                   child: Text(
                     'Deine\nPartitur',

@@ -162,7 +162,7 @@ class _DrawingViewState extends State<DrawingView> {
                 BlueButton(
                     onPressed: _createImage,
                     text: 'Testbild generieren',
-                    color: AppColors.gray,
+                    backgroundColor: AppColors.gray,
                 ),
               ],
             ),

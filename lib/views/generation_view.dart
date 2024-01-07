@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/api/api_service.dart';
+import 'package:flutter_app/resources/app_colors.dart';
 import 'package:flutter_app/resources/blue_button.dart';
 
 class GenerationView extends StatelessWidget {
@@ -28,6 +29,7 @@ class GenerationView extends StatelessWidget {
               testAPI();
             },
             text: 'API testen',
+            backgroundColor: AppColors.gray,
           )
         ]
       ),

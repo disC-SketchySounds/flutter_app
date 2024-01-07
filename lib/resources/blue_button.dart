@@ -6,14 +6,16 @@ class BlueButton extends StatelessWidget {
   final VoidCallback onPressed;
   final double height;
   final String text;
-  final Color color;
+  final Color backgroundColor;
+  final Color foregroundColor;
 
   const BlueButton({
     super.key,
     required this.onPressed,
-    this.height = 45,
+    this.height = 69,
     required this.text,
-    this.color = AppColors.blue
+    this.backgroundColor = AppColors.blue,
+    this.foregroundColor = Colors.white,
   });
 
   @override
@@ -23,15 +25,15 @@ class BlueButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          foregroundColor: AppColors.white, backgroundColor: color, // Text color
+          foregroundColor: foregroundColor, backgroundColor: backgroundColor, // Text color
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(0.0),
-            side: const BorderSide(color: AppColors.white),
+            side: BorderSide(color: foregroundColor),
           ),
         ),
             child: Text(
               text,
-              style: const TextStyle(fontSize: 16),
+              style: const TextStyle(fontSize: 32),
             ),
           ),
     );
