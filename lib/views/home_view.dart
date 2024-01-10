@@ -6,7 +6,7 @@ import 'score_view.dart';
 import 'analysis_view.dart';
 
 class HomeView extends StatefulWidget {
-  const HomeView({Key? key}) : super(key: key);
+  const HomeView({super.key});
 
   @override
   State<HomeView> createState() => _HomeViewState();
@@ -34,7 +34,7 @@ class _HomeViewState extends State<HomeView> {
     super.initState();
     _views = [
       DrawingView(onButtonPressed: () => updateSelectedIndex(1)),
-      GenerationView(onButtonPressed: () => updateSelectedIndex(2)),
+      GenerationView(onFinished: () => updateSelectedIndex(2)),
       ScoreView(onButtonPressed: () => updateSelectedIndex(3)),
       AnalysisView(onButtonPressed: () => updateSelectedIndex(0)),
     ];

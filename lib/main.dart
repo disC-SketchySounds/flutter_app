@@ -8,7 +8,7 @@ import 'views/intro_view.dart';
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   static const String _title = 'SketchySounds';
 
@@ -16,13 +16,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       routes: {
-        '/intro': (context) => IntroView(),
-        '/home': (context) => HomeView(),
-        '/end': (context) => EndView(),
-        '/compare': (context) => CompareView(),
+        '/intro': (context) => const IntroView(),
+        '/home': (context) => const HomeView(),
+        '/end': (context) => const EndView(),
+        '/compare': (context) => const CompareView(),
       },
       title: _title,
-      home: IntroView(),
+      home: const IntroView(),
       themeMode: ThemeMode.dark,
       theme: ThemeData(
         fontFamily: 'Compagnon',

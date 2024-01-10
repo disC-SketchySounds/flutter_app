@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/resources/app_colors.dart';
-import 'package:flutter_app/resources/blue_button.dart';
 
 import '../display_image/image_viewer.dart';
 
@@ -19,7 +18,7 @@ class CompareView extends StatelessWidget {
       backgroundColor: AppColors.black,
       body: Stack(
         children: [
-          BackButton(),
+          const BackButton(),
           Center(
             child: Row(
               children: [
@@ -27,7 +26,7 @@ class CompareView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     const Spacer(),
-                    Text(
+                    const Text(
                       'Skizze',
                       style: TextStyle(
                         fontSize: 40,
@@ -36,7 +35,7 @@ class CompareView extends StatelessWidget {
                     SizedBox(
                         width: screenSize.width * 0.4,
                         height: screenSize.height * 0.7,
-                        child: ImageView()
+                        child: const ImageView()
                     ),
                     const Spacer(),
                   ],
@@ -46,7 +45,7 @@ class CompareView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     const Spacer(),
-                    Text(
+                    const Text(
                       'Partitur',
                       style: TextStyle(
                         fontSize: 40,
@@ -55,7 +54,7 @@ class CompareView extends StatelessWidget {
                     SizedBox(
                         width: screenSize.width * 0.4,
                         height: screenSize.height * 0.7,
-                        child: ImageView()
+                        child: const ImageView()
                     ),
                     const Spacer(),
                   ],

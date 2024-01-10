@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 
 class ImageView extends StatelessWidget {
+  const ImageView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,7 +21,7 @@ class ImageView extends StatelessWidget {
                 );
               } else {
                 // You can show a loading indicator or an error message here
-                return CircularProgressIndicator();
+                return const CircularProgressIndicator();
               }
             },
           ),
