@@ -52,7 +52,6 @@ class _GenerationViewState extends State<GenerationView> {
     try {
       response = await APIService.instance.uploadSketch(imagePath!);
     } on SocketException catch (e) {
-      print('SocketException: $e');
       IOSAlert.instance.showCustomAlert(
           context: context,
           title: 'Can\'t connect to SketchySounds',
@@ -62,7 +61,14 @@ class _GenerationViewState extends State<GenerationView> {
             return;
           });
     } catch (e) {
-      print('Unexpected error: $e');
+      IOSAlert.instance.showCustomAlert(
+          context: context,
+          title: 'Unexpected error.',
+          message: e.toString(),
+          onOkPressed: () {
+            widget.onFinished();
+            return;
+          });
       widget.onFinished();
       return;
     }
