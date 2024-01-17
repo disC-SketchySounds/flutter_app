@@ -29,6 +29,13 @@ class _DrawingViewState extends State<DrawingView> {
   }
 
   Color selectedColor = AppColors.blue;
+  double selectedWidth = 5.0;
+
+  void changeWidth() {
+    setState(() {
+      selectedWidth = 30;
+    });
+  }
 
   void turnBlue() {
     setState(() {
@@ -45,6 +52,13 @@ class _DrawingViewState extends State<DrawingView> {
   void turnYellow() {
     setState(() {
       selectedColor = AppColors.yellow;
+    });
+  }
+
+  void makeEraser() {
+    setState(() {
+      selectedWidth = 25.0;
+      selectedColor = AppColors.white;
     });
   }
 
@@ -133,6 +147,10 @@ class _DrawingViewState extends State<DrawingView> {
                           onPressed: turnYellow,
                           buttonColor: AppColors.yellow,
                         ),
+                        ColorButton(
+                          onPressed: changeWidth,
+                          buttonColor: AppColors.white,
+                        )
                       ]),
                     )
                   ],
@@ -151,11 +169,19 @@ class _DrawingViewState extends State<DrawingView> {
                 child: ClipRect(
                   child: DrawingPage(
                       selectedColor: selectedColor,
+                      selectedWidth: selectedWidth,
                       onColorChanged: (Color newColor) {
                         setState(() {
                           selectedColor = newColor;
-                        });
-                      }),
+                        }
+                        );
+                      },
+                      onWidthChanged: (double newWidth) {
+                        setState(() {
+                          selectedWidth = newWidth;
+                        }
+                        );
+                }),
                 ),
               ),
             ),

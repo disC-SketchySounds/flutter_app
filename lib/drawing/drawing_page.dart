@@ -8,9 +8,11 @@ import 'package:flutter_app/resources/app_colors.dart';
 /// A page that can be drawn on with a pen.
 class DrawingPage extends StatefulWidget {
   final Color selectedColor;
+  final double selectedWidth;
   final ValueChanged<Color> onColorChanged;
+  final ValueChanged<double> onWidthChanged;
 
-  const DrawingPage({super.key, required this.selectedColor, required this.onColorChanged});
+  const DrawingPage({super.key, required this.selectedColor, required this.selectedWidth, required this.onColorChanged, required this.onWidthChanged});
 
   @override
   DrawingPageState createState() => DrawingPageState();
