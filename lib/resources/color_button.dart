@@ -19,7 +19,8 @@ class ColorButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          shape: const CircleBorder(), backgroundColor: buttonColor,
+          shape: const CircleBorder(),
+          backgroundColor: buttonColor,
           padding: EdgeInsets.all(size * 0.2),
         ),
         child: SizedBox(

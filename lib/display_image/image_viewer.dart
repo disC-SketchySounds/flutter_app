@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 
 class ImageView extends StatelessWidget {
-
   final String imageType;
 
-  const ImageView({Key? key, required this.imageType}) : super(key: key);
+  const ImageView({super.key, required this.imageType});
 
   @override
   Widget build(BuildContext context) {
@@ -35,16 +34,18 @@ class ImageView extends StatelessWidget {
 
   Future<File?> _loadImageFromDocumentsDirectory(String imageType) async {
     final documentsDir = await getApplicationDocumentsDirectory();
-    final List<FileSystemEntity> files = Directory(documentsDir.path).listSync();
+    final List<FileSystemEntity> files =
+        Directory(documentsDir.path).listSync();
 
     List<FileSystemEntity> scoreList = files
         .where((entity) =>
-    entity is File && entity.uri.pathSegments.last.startsWith("${imageType}_"))
+            entity is File &&
+            entity.uri.pathSegments.last.startsWith("${imageType}_"))
         .toList();
 
     /// Get the most recent element with matching imageType
     if (scoreList.isNotEmpty) {
-      scoreList.sort((a,b) => b.path.compareTo(a.path));
+      scoreList.sort((a, b) => b.path.compareTo(a.path));
       print("Loaded image ${scoreList.last.path}");
       return File(scoreList.first.path);
     }

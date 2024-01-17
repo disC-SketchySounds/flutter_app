@@ -5,7 +5,6 @@ import 'package:flutter_app/resources/blue_button.dart';
 class EndView extends StatelessWidget {
   const EndView({super.key});
 
-
   void regenerate() {}
 
   @override
@@ -17,8 +16,8 @@ class EndView extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(24),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Spacer(),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -33,23 +32,21 @@ class EndView extends StatelessWidget {
                       children: [
                         BlueButton(
                           onPressed: () {
-                            Navigator.popUntil(context, (route) => route.isFirst);
+                            Navigator.popUntil(
+                                context, (route) => route.isFirst);
                           },
                           text: 'neues Projekt',
                           backgroundColor: AppColors.white,
                           foregroundColor: AppColors.blue,
                         ),
                         BlueButton(
-                          onPressed: ((){
-
-                          }),
+                          onPressed: (() {}),
                           text: 'neu generieren',
                         ),
                       ],
                     ),
                   ],
                 ),
-                const Spacer(),
               ],
             ),
           ),

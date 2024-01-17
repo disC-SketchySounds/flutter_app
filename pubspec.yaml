@@ -93,22 +93,19 @@ flutter:
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
-
-fonts:
-  - family: Compagnon
-    fonts:
-      - asset: fonts/Compagnon-Medium.otf
-      - asset: fonts/Compagnon-Light.otf
-        style: light
-      - asset: fonts/Compagnon-Bold.otf
-        style: bold
-      - asset: fonts/Compagnon-LightItalic.otf
-        style: italic
-      - asset: fonts/Compagnon-Roman.otf
-        style: roman
-
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  fonts:
+    - family: Compagnon
+      fonts:
+        - asset: fonts/Compagnon-LightItalic.otf
+    - family: Director
+      fonts:
+        - asset: fonts/Director-Regular.otf
+    - family: TWKLausanne
+      fonts:
+        - asset: fonts/TWKLausanne-400.otf
+
 
 flutter_icons:
   android: true

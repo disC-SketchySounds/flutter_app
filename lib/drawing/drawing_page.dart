@@ -10,14 +10,14 @@ class DrawingPage extends StatefulWidget {
   final Color selectedColor;
   final ValueChanged<Color> onColorChanged;
 
-  const DrawingPage({super.key, required this.selectedColor, required this.onColorChanged});
+  const DrawingPage(
+      {super.key, required this.selectedColor, required this.onColorChanged});
 
   @override
   DrawingPageState createState() => DrawingPageState();
 }
 
 class DrawingPageState extends State<DrawingPage> {
-
   // Properties
   List<DrawnLine> lines = <DrawnLine>[];
   DrawnLine? currentLine;
@@ -26,12 +26,11 @@ class DrawingPageState extends State<DrawingPage> {
   final GlobalKey _globalKey = GlobalKey(); // What does this do?
 
   //  Stream controllers
-  StreamController<DrawnLine> currentLineStreamController
-  = StreamController<DrawnLine>.broadcast();
+  StreamController<DrawnLine> currentLineStreamController =
+      StreamController<DrawnLine>.broadcast();
 
-  StreamController<List<DrawnLine>> linesStreamController
-  = StreamController<List<DrawnLine>>.broadcast();
-
+  StreamController<List<DrawnLine>> linesStreamController =
+      StreamController<List<DrawnLine>>.broadcast();
 
   Future<void> save() async {
     // TODO
@@ -47,20 +46,13 @@ class DrawingPageState extends State<DrawingPage> {
       onPanUpdate: onPanUpdate,
       onPanEnd: onPanEnd,
       child: Container(
-        // Sets the background of the Container. The drawing should have no
-        // visible background.
+          // Sets the background of the Container. The drawing should have no
+          // visible background.
           color: Colors.transparent,
 
           // Get size of surrounding context.
-          width: MediaQuery
-              .of(context)
-              .size
-              .width,
-          height: MediaQuery
-              .of(context)
-              .size
-              .height,
-
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
           child: StreamBuilder<DrawnLine>(
               stream: currentLineStreamController.stream,
               builder: (context, snapshot) {
@@ -70,9 +62,7 @@ class DrawingPageState extends State<DrawingPage> {
                     currentLine: currentLine,
                   ),
                 );
-              }
-          )
-      ),
+              })),
     );
   }
 
@@ -95,7 +85,6 @@ class DrawingPageState extends State<DrawingPage> {
       ),
     );
   }
-
 
   // Event handlers for drawing.
   // Are called by `buildCurrentPath`.
@@ -142,9 +131,7 @@ class DrawingPageState extends State<DrawingPage> {
 
   @override
   Widget build(BuildContext context) {
-    final Size screenSize = MediaQuery
-        .of(context)
-        .size;
+    final Size screenSize = MediaQuery.of(context).size;
 
     return Scaffold(
         backgroundColor: Colors.white,
@@ -153,8 +140,7 @@ class DrawingPageState extends State<DrawingPage> {
             buildAllPaths(context),
             buildCurrentPath(context),
           ],
-        )
-    );
+        ));
   }
 
   @override

@@ -1,4 +1,1 @@
-enum ImageType {
-  sketch,
-  score
-}
+enum ImageType { sketch, score }

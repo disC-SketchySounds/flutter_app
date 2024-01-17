@@ -17,7 +17,8 @@ class AnalysisTagsView extends StatelessWidget {
                 Text(
                   'Generierte Schlagwörter',
                   style: TextStyle(
-                    fontSize: 21,
+                    fontFamily: 'TWKLausanne',
+                    fontSize: 24,
                   ),
                 ),
               ],
@@ -27,17 +28,18 @@ class AnalysisTagsView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 20),
+                    padding: const EdgeInsets.only(left: 10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         for (int i = 0; i < tags.length; i += 2)
                           Padding(
-                            padding: const EdgeInsets.only(right: 16, top: 8),
+                            padding: const EdgeInsets.only(right: 0, top: 15),
                             child: Text(
                               tags[i],
                               style: const TextStyle(
-                                fontSize: 16,
+                                fontFamily: 'TWKLausanne',
+                                fontSize: 18,
                               ),
                             ),
                           ),
@@ -51,11 +53,12 @@ class AnalysisTagsView extends StatelessWidget {
                       children: [
                         for (int i = 1; i < tags.length; i += 2)
                           Padding(
-                            padding: const EdgeInsets.only(right: 16, top: 8),
+                            padding: const EdgeInsets.only(right: 0, top: 15),
                             child: Text(
                               tags[i],
                               style: const TextStyle(
-                                fontSize: 16,
+                                fontFamily: 'TWKLausanne',
+                                fontSize: 18,
                               ),
                             ),
                           ),

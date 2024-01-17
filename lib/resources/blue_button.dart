@@ -25,17 +25,22 @@ class BlueButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          foregroundColor: foregroundColor, backgroundColor: backgroundColor, // Text color
+          foregroundColor: foregroundColor,
+          backgroundColor: backgroundColor,
+          // Text color
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(0.0),
             side: BorderSide(color: foregroundColor),
           ),
         ),
-            child: Text(
-              text,
-              style: const TextStyle(fontSize: 32),
-            ),
+        child: Text(
+          text,
+          style: const TextStyle(
+            fontSize: 32,
+            fontFamily: 'Compagnon',
           ),
+        ),
+      ),
     );
   }
 }

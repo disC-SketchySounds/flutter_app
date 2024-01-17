@@ -24,7 +24,8 @@ class APIService {
 
   /// Upload sketch to the api and return transaction id.
   Future<String?> uploadSketch(String filePath) async {
-    var request = http.MultipartRequest('POST', Uri.parse('$apiEndpoint/upload-dall-e'));
+    var request =
+        http.MultipartRequest('POST', Uri.parse('$apiEndpoint/upload-dall-e'));
 
     request.files.add(
       await http.MultipartFile.fromPath(
@@ -53,9 +54,8 @@ class APIService {
 
     if (response.statusCode == 200) {
       var dir = await getApplicationDocumentsDirectory();
-      String filePath = '${dir.path}/score_${DateTime
-          .now()
-          .millisecondsSinceEpoch}.png';
+      String filePath =
+          '${dir.path}/score_${DateTime.now().millisecondsSinceEpoch}.png';
       File file = File(filePath);
       await file.writeAsBytes(response.bodyBytes);
       return filePath;
@@ -81,8 +81,7 @@ class APIService {
 
       if (responseData['analysis'] is List) {
         List<String> stringList = List<String>.from(
-            responseData['analysis'].map((item) => item.toString())
-        );
+            responseData['analysis'].map((item) => item.toString()));
 
         return stringList;
       } else {
@@ -128,7 +127,4 @@ class APIService {
       throw Exception(errorMessage);
     }
   }
-
-
-
 }

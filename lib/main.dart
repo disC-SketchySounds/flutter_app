@@ -25,8 +25,9 @@ class MyApp extends StatelessWidget {
       home: const IntroView(),
       themeMode: ThemeMode.dark,
       theme: ThemeData(
-        fontFamily: 'Compagnon',
-        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue).copyWith(background: AppColors.black),
+        fontFamily: 'Director',
+        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue)
+            .copyWith(background: AppColors.black),
         textTheme: const TextTheme(
           bodyLarge: TextStyle(
             color: Colors.white,
@@ -39,4 +40,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-

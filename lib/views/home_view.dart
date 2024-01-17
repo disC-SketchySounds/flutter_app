@@ -13,7 +13,6 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-
   /// Indicates the view that is currently displayed
   int _selectedIndex = 0;
 
@@ -36,7 +35,9 @@ class _HomeViewState extends State<HomeView> {
     super.initState();
     _views = [
       DrawingView(onButtonPressed: () => updateSelectedIndex(1)),
-      GenerationView(onFinished: () => updateSelectedIndex(2), onError: () => updateSelectedIndex(0)),
+      GenerationView(
+          onFinished: () => updateSelectedIndex(2),
+          onError: () => updateSelectedIndex(0)),
       ScoreView(onButtonPressed: () => updateSelectedIndex(3)),
       AnalysisView(onButtonPressed: () => updateSelectedIndex(0)),
     ];
@@ -47,47 +48,72 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColors.blue,
-        title: const Text('SketchySounds'), toolbarTextStyle: Theme.of(context).textTheme.apply(
-          bodyColor: Colors.white,
-          displayColor: Colors.white,
-        ).bodyMedium, titleTextStyle: Theme.of(context).textTheme.apply(
-          bodyColor: Colors.white,
-          displayColor: Colors.white,
-        ).titleLarge,
+        title: const Align(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            'Sketchy Sounds',
+            style: TextStyle(
+              fontFamily: 'Compagnon',
+              fontSize: 32,
+            ),
+          ),
+        ),
+        toolbarTextStyle: Theme.of(context)
+            .textTheme
+            .apply(
+              bodyColor: Colors.white,
+              displayColor: Colors.white,
+            )
+            .bodyMedium,
+        titleTextStyle: Theme.of(context)
+            .textTheme
+            .apply(
+              bodyColor: Colors.white,
+              displayColor: Colors.white,
+            )
+            .titleLarge,
         toolbarHeight: 112 * 0.67,
       ),
       body: _views.elementAt(_selectedIndex),
-      bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: AppColors.white,
-        selectedFontSize: 24,
-        unselectedItemColor: AppColors.gray,
-        unselectedFontSize: 24,
-        type: BottomNavigationBarType.fixed,
-        currentIndex: _selectedIndex,
-        items: const <BottomNavigationBarItem> [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.star_border, color: Colors.transparent,),
-            label: 'zeichnen',
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.star_border, color: Colors.transparent,),
-              label: 'generieren'
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.star_border, color: Colors.transparent,),
-            label: 'fertige Partitur',
-          ),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.star_border, color: Colors.transparent,),
-              label: 'analysieren'
-          ),
-        ],
-      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.only(top: 16),
+        child: BottomNavigationBar(
+          selectedItemColor: AppColors.white,
+          selectedFontSize: 24,
+          unselectedItemColor: AppColors.gray,
+          unselectedFontSize: 24,
+          type: BottomNavigationBarType.fixed,
+          currentIndex: _selectedIndex,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.star_border,
+                color: Colors.transparent,
+              ),
+              label: 'zeichnen',
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.star_border,
+                  color: Colors.transparent,
+                ),
+                label: 'generieren'),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.star_border,
+                color: Colors.transparent,
+              ),
+              label: 'fertige Partitur',
+            ),
+            BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.star_border,
+                  color: Colors.transparent,
+                ),
+                label: 'analysieren'),
+          ],
+        ),
+      )
     );
   }
 }
-
-
-
-
-

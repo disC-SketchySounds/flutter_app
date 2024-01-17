@@ -8,10 +8,7 @@ class CompareView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    final Size screenSize = MediaQuery
-        .of(context)
-        .size;
+    final Size screenSize = MediaQuery.of(context).size;
 
     return Scaffold(
       appBar: null,
@@ -23,9 +20,9 @@ class CompareView extends StatelessWidget {
             child: Row(
               children: [
                 Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    const Spacer(),
                     const Text(
                       'Skizze',
                       style: TextStyle(
@@ -35,16 +32,14 @@ class CompareView extends StatelessWidget {
                     SizedBox(
                         width: screenSize.width * 0.4,
                         height: screenSize.height * 0.7,
-                        child: const ImageView(imageType: "sketch")
-                    ),
-                    const Spacer(),
+                        child: const ImageView(imageType: "sketch")),
                   ],
                 ),
                 const Spacer(),
                 Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Spacer(),
                     const Text(
                       'Partitur',
                       style: TextStyle(
@@ -54,9 +49,7 @@ class CompareView extends StatelessWidget {
                     SizedBox(
                         width: screenSize.width * 0.4,
                         height: screenSize.height * 0.7,
-                        child: const ImageView(imageType: "score")
-                    ),
-                    const Spacer(),
+                        child: const ImageView(imageType: "score")),
                   ],
                 ),
               ],

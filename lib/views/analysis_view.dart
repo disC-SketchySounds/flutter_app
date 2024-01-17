@@ -31,33 +31,31 @@ class AnalysisView extends StatelessWidget {
               children: [
                 const Padding(
                     padding: EdgeInsets.all(16),
-                    child: Text('Analyse',
+                    child: Text('Deine Partitur',
                         style: TextStyle(
-                          fontStyle: FontStyle.italic,
-                          fontSize: 40,
+                          fontFamily: 'TWKLausanne',
+                          fontSize: 45,
                         ))),
                 Expanded(
                   child: AnalysisTagsView(
                     tags: AppData.current.analysis,
                   ),
                 ),
-                const Spacer(),
               ],
             )),
         Column(
+          mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            const Spacer(),
-            SizedBox(
-              width: screenSize.width * 0.4,
-              height: screenSize.height * 0.7,
+            SizedBox.square(
+              dimension: screenSize.width * 0.4,
               child: const ImageView(imageType: "score"),
             ),
-            const Spacer(),
           ],
         ),
         SizedBox(
             width: screenSize.width * 0.3,
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 const Padding(
                   padding: EdgeInsets.only(
@@ -70,10 +68,11 @@ class AnalysisView extends StatelessWidget {
                     ),
                   ),
                 ),
-                BlueButton(onPressed: ((){
-                  Navigator.pushNamed(context, '/compare');
-                }), text: 'vergleichen'),
-                const Spacer(),
+                BlueButton(
+                    onPressed: (() {
+                      Navigator.pushNamed(context, '/compare');
+                    }),
+                    text: 'vergleichen'),
                 BlueButton(
                   onPressed: () {
                     /*
