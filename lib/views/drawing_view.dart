@@ -9,7 +9,6 @@ import 'package:path_provider/path_provider.dart';
 import 'package:flutter_app/resources/app_colors.dart';
 import 'package:flutter_app/resources/image_type.dart';
 
-
 import '../api/app_data.dart';
 import '../resources/color_button.dart';
 
@@ -23,8 +22,8 @@ class DrawingView extends StatefulWidget {
 }
 
 class _DrawingViewState extends State<DrawingView> {
-
-  @override void initState() {
+  @override
+  void initState() {
     super.initState();
   }
 
@@ -69,22 +68,20 @@ class _DrawingViewState extends State<DrawingView> {
   /// Generate array of bytes containing image data
   Future<Uint8List?> _generateImageBytes() async {
     final RenderRepaintBoundary boundary =
-    _globalKey.currentContext!.findRenderObject()! as RenderRepaintBoundary;
+        _globalKey.currentContext!.findRenderObject()! as RenderRepaintBoundary;
     final ui.Image image = await boundary.toImage();
     final ByteData? byteData =
-    await image.toByteData(format: ui.ImageByteFormat.png);
+        await image.toByteData(format: ui.ImageByteFormat.png);
     final Uint8List? pngBytes = byteData?.buffer.asUint8List();
     return pngBytes;
   }
 
   /// Save image as png file in Document directory.
-  Future<void> _saveImageToFile(Uint8List imageBytes, ImageType imageType) async {
-
+  Future<void> _saveImageToFile(
+      Uint8List imageBytes, ImageType imageType) async {
     final documentsDir = await getApplicationDocumentsDirectory();
     AppData.current.sketchPath =
-        '${documentsDir.path}/${imageType.name}_${DateTime
-        .now()
-        .millisecondsSinceEpoch}.png';
+        '${documentsDir.path}/${imageType.name}_${DateTime.now().millisecondsSinceEpoch}.png';
 
     await File(AppData.current.sketchPath).writeAsBytes(imageBytes);
     print('Image saved to: ${AppData.current.sketchPath}');
@@ -105,9 +102,7 @@ class _DrawingViewState extends State<DrawingView> {
 
   @override
   Widget build(BuildContext context) {
-    final Size screenSize = MediaQuery
-        .of(context)
-        .size;
+    final Size screenSize = MediaQuery.of(context).size;
 
     return Scaffold(
       body: Row(
@@ -117,7 +112,8 @@ class _DrawingViewState extends State<DrawingView> {
             child: Column(
               children: [
                 const Padding(
-                  padding: EdgeInsets.only(left: 16, top: 16, right: 16, bottom: 16),
+                  padding:
+                      EdgeInsets.only(left: 16, top: 16, right: 16, bottom: 16),
                   child: Text(
                     'Zeichne\netwas!',
                     style: TextStyle(
@@ -169,19 +165,8 @@ class _DrawingViewState extends State<DrawingView> {
                 child: ClipRect(
                   child: DrawingPage(
                       selectedColor: selectedColor,
-                      selectedWidth: selectedWidth,
-                      onColorChanged: (Color newColor) {
-                        setState(() {
-                          selectedColor = newColor;
-                        }
-                        );
-                      },
-                      onWidthChanged: (double newWidth) {
-                        setState(() {
-                          selectedWidth = newWidth;
-                        }
-                        );
-                }),
+                      selectedWidth: selectedWidth
+                  ),
                 ),
               ),
             ),

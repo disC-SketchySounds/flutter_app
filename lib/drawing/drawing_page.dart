@@ -9,10 +9,8 @@ import 'package:flutter_app/resources/app_colors.dart';
 class DrawingPage extends StatefulWidget {
   final Color selectedColor;
   final double selectedWidth;
-  final ValueChanged<Color> onColorChanged;
-  final ValueChanged<double> onWidthChanged;
 
-  const DrawingPage({super.key, required this.selectedColor, required this.selectedWidth, required this.onColorChanged, required this.onWidthChanged});
+  const DrawingPage({super.key, required this.selectedColor, required this.selectedWidth});
 
   @override
   DrawingPageState createState() => DrawingPageState();
@@ -23,8 +21,6 @@ class DrawingPageState extends State<DrawingPage> {
   // Properties
   List<DrawnLine> lines = <DrawnLine>[];
   DrawnLine? currentLine;
-  Color selectedColor = AppColors.blue;
-  double selectedWidth = 5.0;
   final GlobalKey _globalKey = GlobalKey(); // What does this do?
 
   //  Stream controllers
@@ -113,7 +109,7 @@ class DrawingPageState extends State<DrawingPage> {
     // Use selected color and width for stroke.
     // Update the UI with setState(). Or don't?
     setState(() {
-      currentLine = DrawnLine([point], widget.selectedColor, selectedWidth);
+      currentLine = DrawnLine([point], widget.selectedColor, widget.selectedWidth);
       currentLineStreamController.add(currentLine ?? DrawnLine.empty());
     });
   }
@@ -137,7 +133,7 @@ class DrawingPageState extends State<DrawingPage> {
       setState(() {
         lines.add(currentLine!);
         linesStreamController.add(lines);
-        currentLine = DrawnLine([], selectedColor, selectedWidth);
+        currentLine = DrawnLine([], widget.selectedColor, widget.selectedWidth);
       });
     }
   }
