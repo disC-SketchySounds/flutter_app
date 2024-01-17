@@ -36,7 +36,7 @@ class _HomeViewState extends State<HomeView> {
     super.initState();
     _views = [
       DrawingView(onButtonPressed: () => updateSelectedIndex(1)),
-      GenerationView(onFinished: () => updateSelectedIndex(2)),
+      GenerationView(onFinished: () => updateSelectedIndex(2), onError: () => updateSelectedIndex(0)),
       ScoreView(onButtonPressed: () => updateSelectedIndex(3)),
       AnalysisView(onButtonPressed: () => updateSelectedIndex(0)),
     ];

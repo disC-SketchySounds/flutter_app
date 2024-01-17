@@ -5,14 +5,6 @@ class CustomUploadSketchException implements Exception {
 
   @override
   String toString() {
-    return "CustomException: $errorMessage";
-  }
-}
-
-void main() {
-  try {
-
-  } on CustomUploadSketchException catch (e) {
-
+    return "Es ist ein Fehler beim Hochladen des Bilds aufgetreten: $errorMessage";
   }
 }

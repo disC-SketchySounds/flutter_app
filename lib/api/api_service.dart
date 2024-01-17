@@ -1,6 +1,8 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter_app/exceptions/custom_get_analysis_exception.dart';
+import 'package:flutter_app/exceptions/custom_get_score_exception.dart';
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
 import 'package:path_provider/path_provider.dart';
@@ -39,11 +41,9 @@ class APIService {
       return data['transaction_id'];
     } else {
       var responseData = json.decode(response.body);
-      String errorMessage = responseData['message'] ?? 'Unknown error occurred';
+      String errorMessage = responseData['message'] ?? 'Unbekannter Fehler';
       throw CustomUploadSketchException(errorMessage);
     }
-
-    return null;
   }
 
   /// Save sketch to files, return path
@@ -61,15 +61,18 @@ class APIService {
       return filePath;
     } else if (response.statusCode == 204) {
       return null;
+    } else if (response.statusCode == 409) {
+      String errorText = await getError(transactionID);
+      throw CustomGetScoreException(errorText);
     } else {
       var responseData = json.decode(response.body);
-      String errorMessage = responseData['message'] ?? 'Unknown error occurred';
-      throw Exception(errorMessage);
+      String errorMessage = responseData['message'] ?? 'Unbekannter Fehler';
+      throw CustomGetScoreException(errorMessage);
     }
   }
 
   /// Get analysis, return full text as string
-  Future<List<String>> getAnalysis(String transactionID) async {
+  Future<List<String>?> getAnalysis(String transactionID) async {
     final uri = Uri.parse('$apiEndpoint/analysis/$transactionID');
     final response = await http.get(uri);
 
@@ -86,11 +89,14 @@ class APIService {
         throw Exception("No list returned");
       }
     } else if (response.statusCode == 204) {
-      throw Exception("No data yet");
+      return null;
+    } else if (response.statusCode == 409) {
+      String errorText = await getError(transactionID);
+      throw CustomGetAnalysisException(errorText);
     } else {
       var responseData = json.decode(response.body);
-      String errorMessage = responseData['message'] ?? 'Unknown error occurred';
-      throw Exception(errorMessage);
+      String errorMessage = responseData['message'] ?? 'Unbekannter Fehler';
+      throw CustomGetAnalysisException(errorMessage);
     }
   }
 
@@ -104,7 +110,7 @@ class APIService {
       return responseData['status'];
     } else {
       var responseData = json.decode(response.body);
-      String errorMessage = responseData['message'] ?? 'Unknown error occurred';
+      String errorMessage = responseData['message'] ?? 'Unbekannter Fehler';
       throw Exception(errorMessage);
     }
   }
@@ -118,7 +124,7 @@ class APIService {
       return responseData['error'];
     } else {
       var responseData = json.decode(response.body);
-      String errorMessage = responseData['error'] ?? 'Unknown error occurred';
+      String errorMessage = responseData['message'] ?? 'Unbekannter Fehler';
       throw Exception(errorMessage);
     }
   }
