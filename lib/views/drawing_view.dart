@@ -10,6 +10,7 @@ import 'package:flutter_app/resources/app_colors.dart';
 import 'package:flutter_app/resources/image_type.dart';
 
 
+import '../api/app_data.dart';
 import '../resources/color_button.dart';
 
 class DrawingView extends StatefulWidget {
@@ -22,6 +23,11 @@ class DrawingView extends StatefulWidget {
 }
 
 class _DrawingViewState extends State<DrawingView> {
+
+  @override void initState() {
+    super.initState();
+  }
+
   Color selectedColor = AppColors.blue;
 
   void turnBlue() {
@@ -61,13 +67,13 @@ class _DrawingViewState extends State<DrawingView> {
   Future<void> _saveImageToFile(Uint8List imageBytes, ImageType imageType) async {
 
     final documentsDir = await getApplicationDocumentsDirectory();
-    final String filePath =
+    AppData.current.sketchPath =
         '${documentsDir.path}/${imageType.name}_${DateTime
         .now()
         .millisecondsSinceEpoch}.png';
 
-    await File(filePath).writeAsBytes(imageBytes);
-    print('Image saved to: $filePath');
+    await File(AppData.current.sketchPath).writeAsBytes(imageBytes);
+    print('Image saved to: ${AppData.current.sketchPath}');
   }
 
   void _createImage() async {

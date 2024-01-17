@@ -35,7 +35,7 @@ class CompareView extends StatelessWidget {
                     SizedBox(
                         width: screenSize.width * 0.4,
                         height: screenSize.height * 0.7,
-                        child: const ImageView()
+                        child: const ImageView(imageType: "sketch")
                     ),
                     const Spacer(),
                   ],
@@ -54,7 +54,7 @@ class CompareView extends StatelessWidget {
                     SizedBox(
                         width: screenSize.width * 0.4,
                         height: screenSize.height * 0.7,
-                        child: const ImageView()
+                        child: const ImageView(imageType: "score")
                     ),
                     const Spacer(),
                   ],

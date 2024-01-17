@@ -17,6 +17,8 @@ class _HomeViewState extends State<HomeView> {
   /// Indicates the view that is currently displayed
   int _selectedIndex = 0;
 
+  String currentSketchPath = "";
+
   void updateSelectedIndex(int index) {
     setState(() {
       _selectedIndex = index;
