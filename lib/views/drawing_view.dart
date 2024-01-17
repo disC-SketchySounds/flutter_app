@@ -76,11 +76,17 @@ class _DrawingViewState extends State<DrawingView> {
     print('Image saved to: ${AppData.current.sketchPath}');
   }
 
-  void _createImage() async {
+  Future<void> _createImage() async {
+    print("creating image");
     var bytes = await _generateImageBytes();
     if (bytes != null) {
       await _saveImageToFile(bytes, ImageType.sketch);
     }
+  }
+
+  void _processImage() async {
+    await _createImage();
+    widget.onButtonPressed();
   }
 
   @override
@@ -163,14 +169,9 @@ class _DrawingViewState extends State<DrawingView> {
                 const Spacer(),
                 BlueButton(
                   onPressed: () {
-                    widget.onButtonPressed();
+                    _processImage();
                   },
                   text: 'fertig',
-                ),
-                BlueButton(
-                    onPressed: _createImage,
-                    text: 'Testbild generieren',
-                    backgroundColor: AppColors.gray,
                 ),
               ],
             ),

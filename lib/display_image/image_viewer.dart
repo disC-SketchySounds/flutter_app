@@ -42,10 +42,10 @@ class ImageView extends StatelessWidget {
     entity is File && entity.uri.pathSegments.last.startsWith("${imageType}_"))
         .toList();
 
+    /// Get the most recent element with matching imageType
     if (scoreList.isNotEmpty) {
       scoreList.sort((a,b) => b.path.compareTo(a.path));
       print("Loaded image ${scoreList.last.path}");
-      // Load the first image found in the documents directory
       return File(scoreList.first.path);
     }
 
