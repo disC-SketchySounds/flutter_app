@@ -30,27 +30,33 @@ class _DrawingViewState extends State<DrawingView> {
   Color selectedColor = AppColors.blue;
   double selectedWidth = 5.0;
 
+  // Helper to distinguish between pen and eraser.
+  double penWidth = 5.0;
+
   void changeWidth() {
     setState(() {
-      selectedWidth = 30;
+      selectedWidth = 50;
     });
   }
 
   void turnBlue() {
     setState(() {
       selectedColor = AppColors.blue;
+      selectedWidth = penWidth;
     });
   }
 
   void turnPink() {
     setState(() {
       selectedColor = AppColors.pink;
+      selectedWidth = penWidth;
     });
   }
 
   void turnYellow() {
     setState(() {
       selectedColor = AppColors.yellow;
+      selectedWidth = penWidth;
     });
   }
 
@@ -144,7 +150,7 @@ class _DrawingViewState extends State<DrawingView> {
                           buttonColor: AppColors.yellow,
                         ),
                         ColorButton(
-                          onPressed: changeWidth,
+                          onPressed: makeEraser,
                           buttonColor: AppColors.white,
                         )
                       ]),
