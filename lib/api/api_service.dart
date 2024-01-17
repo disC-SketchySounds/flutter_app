@@ -5,6 +5,8 @@ import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
 import 'package:path_provider/path_provider.dart';
 
+import '../exceptions/custom_upload_sketch_exception.dart';
+
 /// Service for accessing the SketchySounds API as a Singleton class
 class APIService {
   static final APIService instance = APIService._();
@@ -31,10 +33,14 @@ class APIService {
     );
 
     var streamedResponse = await request.send();
+    var response = await http.Response.fromStream(streamedResponse);
     if (streamedResponse.statusCode == 200) {
-      var response = await http.Response.fromStream(streamedResponse);
       var data = json.decode(response.body);
       return data['transaction_id'];
+    } else {
+      var responseData = json.decode(response.body);
+      String errorMessage = responseData['message'] ?? 'Unknown error occurred';
+      throw CustomUploadSketchException(errorMessage);
     }
 
     return null;
@@ -70,14 +76,15 @@ class APIService {
     if (response.statusCode == 200) {
       var responseData = json.decode(response.body);
 
-      // Create string list from string data
-      String listString = responseData['analysis'];
-      var stringList = listString.split(',');
-      for (String word in stringList) {
-        word = word.trim();
-      }
-      return stringList;
+      if (responseData['analysis'] is List) {
+        List<String> stringList = List<String>.from(
+            responseData['analysis'].map((item) => item.toString())
+        );
 
+        return stringList;
+      } else {
+        throw Exception("No list returned");
+      }
     } else if (response.statusCode == 204) {
       throw Exception("No data yet");
     } else {

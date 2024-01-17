@@ -38,7 +38,7 @@ class AnalysisView extends StatelessWidget {
                         ))),
                 Expanded(
                   child: AnalysisTagsView(
-                    tags: tags ?? [''],
+                    tags: AppData.current.analysis,
                   ),
                 ),
                 const Spacer(),
