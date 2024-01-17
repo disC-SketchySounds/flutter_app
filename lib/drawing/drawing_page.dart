@@ -8,10 +8,10 @@ import 'package:flutter_app/resources/app_colors.dart';
 /// A page that can be drawn on with a pen.
 class DrawingPage extends StatefulWidget {
   final Color selectedColor;
-  final ValueChanged<Color> onColorChanged;
+  final double selectedWidth;
 
   const DrawingPage(
-      {super.key, required this.selectedColor, required this.onColorChanged});
+      {super.key, required this.selectedColor, required this.selectedWidth});
 
   @override
   DrawingPageState createState() => DrawingPageState();
@@ -21,8 +21,6 @@ class DrawingPageState extends State<DrawingPage> {
   // Properties
   List<DrawnLine> lines = <DrawnLine>[];
   DrawnLine? currentLine;
-  Color selectedColor = AppColors.blue;
-  double selectedWidth = 5.0;
   final GlobalKey _globalKey = GlobalKey(); // What does this do?
 
   //  Stream controllers
@@ -100,7 +98,7 @@ class DrawingPageState extends State<DrawingPage> {
     // Use selected color and width for stroke.
     // Update the UI with setState(). Or don't?
     setState(() {
-      currentLine = DrawnLine([point], widget.selectedColor, selectedWidth);
+      currentLine = DrawnLine([point], widget.selectedColor, widget.selectedWidth);
       currentLineStreamController.add(currentLine ?? DrawnLine.empty());
     });
   }
@@ -124,7 +122,7 @@ class DrawingPageState extends State<DrawingPage> {
       setState(() {
         lines.add(currentLine!);
         linesStreamController.add(lines);
-        currentLine = DrawnLine([], selectedColor, selectedWidth);
+        currentLine = DrawnLine([], widget.selectedColor, widget.selectedWidth);
       });
     }
   }

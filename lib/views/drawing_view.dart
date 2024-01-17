@@ -28,22 +28,42 @@ class _DrawingViewState extends State<DrawingView> {
   }
 
   Color selectedColor = AppColors.blue;
+  double selectedWidth = 5.0;
+
+  // Helper to distinguish between pen and eraser.
+  double penWidth = 5.0;
+
+  void changeWidth() {
+    setState(() {
+      selectedWidth = 50;
+    });
+  }
 
   void turnBlue() {
     setState(() {
       selectedColor = AppColors.blue;
+      selectedWidth = penWidth;
     });
   }
 
   void turnPink() {
     setState(() {
       selectedColor = AppColors.pink;
+      selectedWidth = penWidth;
     });
   }
 
   void turnYellow() {
     setState(() {
       selectedColor = AppColors.yellow;
+      selectedWidth = penWidth;
+    });
+  }
+
+  void makeEraser() {
+    setState(() {
+      selectedWidth = 25.0;
+      selectedColor = AppColors.white;
     });
   }
 
@@ -127,6 +147,10 @@ class _DrawingViewState extends State<DrawingView> {
                           onPressed: turnYellow,
                           buttonColor: AppColors.yellow,
                         ),
+                        ColorButton(
+                          onPressed: makeEraser,
+                          buttonColor: AppColors.white,
+                        )
                       ]),
                     )
                   ],
@@ -142,11 +166,8 @@ class _DrawingViewState extends State<DrawingView> {
                 child: ClipRect(
                   child: DrawingPage(
                       selectedColor: selectedColor,
-                      onColorChanged: (Color newColor) {
-                        setState(() {
-                          selectedColor = newColor;
-                        });
-                      }),
+                      selectedWidth: selectedWidth
+                  ),
                 ),
               ),
             ),
