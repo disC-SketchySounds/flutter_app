@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/api/app_data.dart';
 import 'package:flutter_app/resources/blue_button.dart';
 import 'package:flutter_app/views/analysis_tags_view.dart';
 
@@ -8,19 +9,7 @@ class AnalysisView extends StatelessWidget {
   final VoidCallback onButtonPressed;
 
   // TODO: Replace with actual tags list.
-  final tags = [
-    'happy',
-    'order',
-    'wall',
-    'stars',
-    'brick',
-    'floating',
-    'bubbles',
-    'light',
-    'happy',
-    'geometric',
-    'uplifting',
-  ];
+  List<String>? tags;
 
   AnalysisView({super.key, required this.onButtonPressed});
 
@@ -31,6 +20,8 @@ class AnalysisView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size screenSize = MediaQuery.of(context).size;
+
+    tags = AppData.current.analysis;
 
     return Scaffold(
       body: Row(children: [
@@ -47,7 +38,7 @@ class AnalysisView extends StatelessWidget {
                         ))),
                 Expanded(
                   child: AnalysisTagsView(
-                    tags: tags,
+                    tags: tags ?? [''],
                   ),
                 ),
                 const Spacer(),

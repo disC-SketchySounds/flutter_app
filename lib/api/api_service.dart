@@ -62,14 +62,22 @@ class APIService {
     }
   }
 
-  /// Get analysis, return full text as string
-  Future<String> getAnalysis(String transactionID) async {
+  /// Get analysis, return full text as string list
+  Future<List<String>> getAnalysis(String transactionID) async {
     final uri = Uri.parse('$apiEndpoint/analysis/$transactionID');
     final response = await http.get(uri);
 
     if (response.statusCode == 200) {
       var responseData = json.decode(response.body);
-      return responseData['analysis'];
+
+      // Create string list from string data
+      String listString = responseData['analysis'];
+      var stringList = listString.split(',');
+      for (String word in stringList) {
+        word = word.trim();
+      }
+      return stringList;
+
     } else if (response.statusCode == 204) {
       throw Exception("No data yet");
     } else {
