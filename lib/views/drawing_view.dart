@@ -18,7 +18,7 @@ class DrawingView extends StatefulWidget {
   const DrawingView({super.key, required this.onButtonPressed});
 
   @override
-  _DrawingViewState createState() => _DrawingViewState();
+  State<DrawingView> createState() => _DrawingViewState();
 }
 
 class _DrawingViewState extends State<DrawingView> {
@@ -90,11 +90,9 @@ class _DrawingViewState extends State<DrawingView> {
         '${documentsDir.path}/${imageType.name}_${DateTime.now().millisecondsSinceEpoch}.png';
 
     await File(AppData.current.sketchPath).writeAsBytes(imageBytes);
-    print('Image saved to: ${AppData.current.sketchPath}');
   }
 
   Future<void> _createImage() async {
-    print("creating image");
     var bytes = await _generateImageBytes();
     if (bytes != null) {
       await _saveImageToFile(bytes, ImageType.sketch);
@@ -133,64 +131,106 @@ class _DrawingViewState extends State<DrawingView> {
                     const Spacer(),
                     Padding(
                       padding: const EdgeInsets.only(
-                          left: 100, top: 18, right: 18, bottom: 18),
-                      child: Column(children: [
-                        ColorButton(
-                          onPressed: turnBlue,
-                          buttonColor: AppColors.blue,
-                        ),
-                        ColorButton(
-                          onPressed: turnPink,
-                          buttonColor: AppColors.pink,
-                        ),
-                        ColorButton(
-                          onPressed: turnYellow,
-                          buttonColor: AppColors.yellow,
-                        ),
-                        ColorButton(
-                          onPressed: makeEraser,
-                          buttonColor: AppColors.white,
-                        )
-                      ]),
+                          left: 100, top: 0, right: 18, bottom: 0),
+                      child: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 40),
+                            child: Column(
+                              children: [
+                                const Text(
+                                  'Farben',
+                                  style: TextStyle(
+                                    fontFamily: 'TWKLausanne',
+                                    fontSize: 25,
+                                  ),
+                                ),
+                                ColorButton(
+                                  onPressed: turnBlue,
+                                  buttonColor: AppColors.blue,
+                                ),
+                                ColorButton(
+                                  onPressed: turnPink,
+                                  buttonColor: AppColors.pink,
+                                ),
+                                ColorButton(
+                                  onPressed: turnYellow,
+                                  buttonColor: AppColors.yellow,
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 0),
+                            child: Column(
+                              children: [
+                                const Text(
+                                  'Radierer',
+                                  style: TextStyle(
+                                    fontFamily: 'TWKLausanne',
+                                    fontSize: 25,
+                                  ),
+                                ),
+                                ColorButton(
+                                  onPressed: makeEraser,
+                                  buttonColor: AppColors.white,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     )
                   ],
                 )
               ],
             ),
           ),
-          Column(mainAxisAlignment: MainAxisAlignment.end, children: [
-            RepaintBoundary(
-              key: _globalKey,
-              child: SizedBox.square(
-                dimension: screenSize.width * 0.4,
-                child: ClipRect(
-                  child: DrawingPage(
-                      selectedColor: selectedColor,
-                      selectedWidth: selectedWidth
+          Column(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              RepaintBoundary(
+                key: _globalKey,
+                child: SizedBox.square(
+                  dimension: screenSize.width * 0.4,
+                  child: ClipRect(
+                    child: DrawingPage(
+                        selectedColor: selectedColor,
+                        selectedWidth: selectedWidth),
                   ),
                 ),
               ),
-            ),
-          ]),
+            ],
+          ),
           SizedBox(
             width: screenSize.width * 0.3,
-            child: Column(
-              children: [
-                const Text(
-                  '180s',
-                  style: TextStyle(
-                    fontFamily: 'TWKLausanne',
-                    fontSize: 30,
+            child: Padding(
+              padding: const EdgeInsets.only(top: 35),
+              child: Column(
+                children: [
+                  const Text(
+                    'Verbleibende Zeit',
+                    style: TextStyle(
+                      fontFamily: 'TWKLausanne',
+                      fontSize: 20,
+                    ),
                   ),
-                ),
-                const Spacer(),
-                BlueButton(
-                  onPressed: () {
-                    _processImage();
-                  },
-                  text: 'fertig',
-                ),
-              ],
+                  const Text(
+                    '180s',
+                    style: TextStyle(
+                      fontFamily: 'TWKLausanne',
+                      fontSize: 30,
+                    ),
+                  ),
+                  const Spacer(),
+                  BlueButton(
+                    onPressed: () {
+                      _processImage();
+                    },
+                    text: 'fertig',
+                  ),
+                ],
+              ),
             ),
           ),
         ],

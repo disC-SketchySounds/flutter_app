@@ -20,7 +20,7 @@ class IOSAlert {
           content: Text(message),
           actions: <Widget>[
             CupertinoDialogAction(
-              child: Text("OK"),
+              child: const Text("OK"),
               onPressed: () {
                 // Execute the callback action if provided
                 onOkPressed?.call();

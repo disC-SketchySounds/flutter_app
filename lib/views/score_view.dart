@@ -24,7 +24,7 @@ class ScoreView extends StatelessWidget {
                   'Deine Partitur',
                   style: TextStyle(
                     fontFamily: 'TWKLausanne',
-                    fontSize: 45,
+                    fontSize: 40,
                   ),
                 ),
               ),

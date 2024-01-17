@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/resources/app_colors.dart';
 
 class AnalysisTagsView extends StatelessWidget {
   final List<String> tags;
 
-  const AnalysisTagsView({super.key, required this.tags});
+  final GlobalKey<TooltipState> toolTipKey = GlobalKey<TooltipState>();
+
+  AnalysisTagsView({super.key, required this.tags});
 
   @override
   Widget build(BuildContext context) {
@@ -12,13 +15,34 @@ class AnalysisTagsView extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
-            const Row(
+            Row(
               children: [
-                Text(
-                  'Generierte Schlagwörter',
-                  style: TextStyle(
+                Tooltip(
+                  key: toolTipKey,
+                  triggerMode: TooltipTriggerMode.manual,
+                  showDuration: const Duration(seconds: 1),
+                  message:
+                      'Diese Stichwörter hat die KI in deiner Skizze entdeckt.',
+                  textStyle: const TextStyle(
                     fontFamily: 'TWKLausanne',
-                    fontSize: 24,
+                    fontSize: 18,
+                    color: AppColors.white,
+                  ),
+                  child: const Text(
+                    'Generierte Schlagwörter',
+                    style: TextStyle(
+                      fontFamily: 'TWKLausanne',
+                      fontSize: 24,
+                    ),
+                  ),
+                ),
+                IconButton(
+                  onPressed: () {
+                    toolTipKey.currentState?.ensureTooltipVisible();
+                  },
+                  icon: const Icon(
+                    Icons.info_outline_rounded,
+                    color: Colors.grey,
                   ),
                 ),
               ],

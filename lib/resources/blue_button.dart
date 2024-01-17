@@ -27,6 +27,7 @@ class BlueButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           foregroundColor: foregroundColor,
           backgroundColor: backgroundColor,
+          minimumSize: Size(64, height),
           // Text color
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(0.0),

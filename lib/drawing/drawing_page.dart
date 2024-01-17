@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'drawn_line.dart';
 import 'sketcher.dart';
-import 'package:flutter_app/resources/app_colors.dart';
 
 /// A page that can be drawn on with a pen.
 class DrawingPage extends StatefulWidget {
@@ -44,23 +43,25 @@ class DrawingPageState extends State<DrawingPage> {
       onPanUpdate: onPanUpdate,
       onPanEnd: onPanEnd,
       child: Container(
-          // Sets the background of the Container. The drawing should have no
-          // visible background.
-          color: Colors.transparent,
+        // Sets the background of the Container. The drawing should have no
+        // visible background.
+        color: Colors.transparent,
 
-          // Get size of surrounding context.
-          width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          child: StreamBuilder<DrawnLine>(
-              stream: currentLineStreamController.stream,
-              builder: (context, snapshot) {
-                return CustomPaint(
-                  painter: Sketcher(
-                    lines: lines,
-                    currentLine: currentLine,
-                  ),
-                );
-              })),
+        // Get size of surrounding context.
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        child: StreamBuilder<DrawnLine>(
+          stream: currentLineStreamController.stream,
+          builder: (context, snapshot) {
+            return CustomPaint(
+              painter: Sketcher(
+                lines: lines,
+                currentLine: currentLine,
+              ),
+            );
+          },
+        ),
+      ),
     );
   }
 
@@ -92,15 +93,17 @@ class DrawingPageState extends State<DrawingPage> {
   void onPanStart(DragStartDetails details) {
     final box = context.findRenderObject() as RenderBox;
     final point = box.globalToLocal(details.globalPosition);
-    print("User started drawing at point: $point");
 
     // Create a new line and use the only point you have to create DrawnLine.
     // Use selected color and width for stroke.
     // Update the UI with setState(). Or don't?
-    setState(() {
-      currentLine = DrawnLine([point], widget.selectedColor, widget.selectedWidth);
-      currentLineStreamController.add(currentLine ?? DrawnLine.empty());
-    });
+    setState(
+      () {
+        currentLine =
+            DrawnLine([point], widget.selectedColor, widget.selectedWidth);
+        currentLineStreamController.add(currentLine ?? DrawnLine.empty());
+      },
+    );
   }
 
   /// When the user is dragging their finger without lifting it off the screen.
@@ -119,26 +122,28 @@ class DrawingPageState extends State<DrawingPage> {
   /// When the users lifts their finger off the screen.
   void onPanEnd(DragEndDetails details) {
     if (currentLine != null && currentLine!.path.isNotEmpty) {
-      setState(() {
-        lines.add(currentLine!);
-        linesStreamController.add(lines);
-        currentLine = DrawnLine([], widget.selectedColor, widget.selectedWidth);
-      });
+      setState(
+        () {
+          lines.add(currentLine!);
+          linesStreamController.add(lines);
+          currentLine =
+              DrawnLine([], widget.selectedColor, widget.selectedWidth);
+        },
+      );
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final Size screenSize = MediaQuery.of(context).size;
-
     return Scaffold(
-        backgroundColor: Colors.white,
-        body: Stack(
-          children: [
-            buildAllPaths(context),
-            buildCurrentPath(context),
-          ],
-        ));
+      backgroundColor: Colors.white,
+      body: Stack(
+        children: [
+          buildAllPaths(context),
+          buildCurrentPath(context),
+        ],
+      ),
+    );
   }
 
   @override

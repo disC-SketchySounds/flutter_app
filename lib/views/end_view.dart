@@ -25,7 +25,7 @@ class EndView extends StatelessWidget {
                       padding: EdgeInsets.only(left: 16),
                       child: Text(
                         'Danke, dass du Sketchy Sounds benutzt!\nWas möchtest du nun machen?',
-                        style: TextStyle(fontSize: 24),
+                        style: TextStyle(fontSize: 30),
                       ),
                     ),
                     Row(
@@ -38,10 +38,6 @@ class EndView extends StatelessWidget {
                           text: 'neues Projekt',
                           backgroundColor: AppColors.white,
                           foregroundColor: AppColors.blue,
-                        ),
-                        BlueButton(
-                          onPressed: (() {}),
-                          text: 'neu generieren',
                         ),
                       ],
                     ),

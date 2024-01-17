@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app/resources/app_colors.dart';
 
 import '../display_image/image_viewer.dart';
 
@@ -11,8 +10,6 @@ class CompareView extends StatelessWidget {
     final Size screenSize = MediaQuery.of(context).size;
 
     return Scaffold(
-      appBar: null,
-      backgroundColor: AppColors.black,
       body: Stack(
         children: [
           const BackButton(),
@@ -26,12 +23,12 @@ class CompareView extends StatelessWidget {
                     const Text(
                       'Skizze',
                       style: TextStyle(
-                        fontSize: 40,
+                        fontFamily: 'TWKLausanne',
+                        fontSize: 50,
                       ),
                     ),
-                    SizedBox(
-                        width: screenSize.width * 0.4,
-                        height: screenSize.height * 0.7,
+                    SizedBox.square(
+                        dimension: screenSize.width * 0.4,
                         child: const ImageView(imageType: "sketch")),
                   ],
                 ),
@@ -43,12 +40,12 @@ class CompareView extends StatelessWidget {
                     const Text(
                       'Partitur',
                       style: TextStyle(
-                        fontSize: 40,
+                        fontFamily: 'TWKLausanne',
+                        fontSize: 50,
                       ),
                     ),
-                    SizedBox(
-                        width: screenSize.width * 0.4,
-                        height: screenSize.height * 0.7,
+                    SizedBox.square(
+                        dimension: screenSize.width * 0.4,
                         child: const ImageView(imageType: "score")),
                   ],
                 ),

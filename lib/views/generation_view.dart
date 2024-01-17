@@ -46,13 +46,14 @@ class _GenerationViewState extends State<GenerationView>
     await apiProcedure();
     if (errorString != null) {
       IOSAlert.instance.showCustomAlert(
-          context: context,
-          title: 'FEHLER',
-          message: errorString!,
-          onOkPressed: () {
-            widget.onError();
-            return null;
-          });
+        context: context,
+        title: 'FEHLER',
+        message: errorString!,
+        onOkPressed: () {
+          widget.onError();
+          return;
+        },
+      );
     }
   }
 

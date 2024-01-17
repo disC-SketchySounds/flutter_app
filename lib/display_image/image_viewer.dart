@@ -46,7 +46,6 @@ class ImageView extends StatelessWidget {
     /// Get the most recent element with matching imageType
     if (scoreList.isNotEmpty) {
       scoreList.sort((a, b) => b.path.compareTo(a.path));
-      print("Loaded image ${scoreList.last.path}");
       return File(scoreList.first.path);
     }
 
