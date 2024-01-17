@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class AnalysisTagsView extends StatelessWidget {
   final List<String> tags;
 
-  AnalysisTagsView({required this.tags});
+  const AnalysisTagsView({super.key, required this.tags});
 
   @override
   Widget build(BuildContext context) {

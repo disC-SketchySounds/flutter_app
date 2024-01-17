@@ -7,20 +7,27 @@ import 'package:flutter_app/drawing/drawing_page.dart';
 import 'package:flutter_app/resources/blue_button.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter_app/resources/app_colors.dart';
+import 'package:flutter_app/resources/image_type.dart';
 
 
+import '../api/app_data.dart';
 import '../resources/color_button.dart';
 
 class DrawingView extends StatefulWidget {
   final VoidCallback onButtonPressed;
 
-  DrawingView({Key? key, required this.onButtonPressed}) : super(key: key);
+  const DrawingView({super.key, required this.onButtonPressed});
 
   @override
   _DrawingViewState createState() => _DrawingViewState();
 }
 
 class _DrawingViewState extends State<DrawingView> {
+
+  @override void initState() {
+    super.initState();
+  }
+
   Color selectedColor = AppColors.blue;
 
   void turnBlue() {
@@ -57,22 +64,29 @@ class _DrawingViewState extends State<DrawingView> {
   }
 
   /// Save image as png file in Document directory.
-  Future<void> _saveImageToFile(Uint8List imageBytes) async {
+  Future<void> _saveImageToFile(Uint8List imageBytes, ImageType imageType) async {
+
     final documentsDir = await getApplicationDocumentsDirectory();
-    final String filePath =
-        '${documentsDir.path}/image_${DateTime
+    AppData.current.sketchPath =
+        '${documentsDir.path}/${imageType.name}_${DateTime
         .now()
         .millisecondsSinceEpoch}.png';
 
-    await File(filePath).writeAsBytes(imageBytes);
-    print('Image saved to: $filePath');
+    await File(AppData.current.sketchPath).writeAsBytes(imageBytes);
+    print('Image saved to: ${AppData.current.sketchPath}');
   }
 
-  void _createImage() async {
+  Future<void> _createImage() async {
+    print("creating image");
     var bytes = await _generateImageBytes();
     if (bytes != null) {
-      await _saveImageToFile(bytes);
+      await _saveImageToFile(bytes, ImageType.sketch);
     }
+  }
+
+  void _processImage() async {
+    await _createImage();
+    widget.onButtonPressed();
   }
 
   @override
@@ -99,10 +113,10 @@ class _DrawingViewState extends State<DrawingView> {
                     ),
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 Row(
                   children: [
-                    Spacer(),
+                    const Spacer(),
                     Padding(
                       padding: const EdgeInsets.only(
                           left: 100, top: 18, right: 18, bottom: 18),
@@ -155,14 +169,9 @@ class _DrawingViewState extends State<DrawingView> {
                 const Spacer(),
                 BlueButton(
                   onPressed: () {
-                    widget.onButtonPressed();
+                    _processImage();
                   },
                   text: 'fertig',
-                ),
-                BlueButton(
-                    onPressed: _createImage,
-                    text: 'Testbild generieren',
-                    backgroundColor: AppColors.gray,
                 ),
               ],
             ),

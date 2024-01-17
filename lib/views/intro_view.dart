@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/resources/blue_button.dart';
-import 'home_view.dart';
 
 class IntroView extends StatelessWidget {
   const IntroView({super.key});

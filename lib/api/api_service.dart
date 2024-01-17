@@ -9,9 +9,9 @@ import 'package:path_provider/path_provider.dart';
 class APIService {
   static final APIService instance = APIService._();
 
-  static const apiUrl = 'http://192.168.178.23:4242';
+  static String apiUrl = 'http://localhost:4242';
   static const apiVersion = 'v1';
-  static const apiEndpoint = '$apiUrl/api/$apiVersion';
+  static String apiEndpoint = '$apiUrl/api/$apiVersion';
 
   /// private constructor
   APIService._();
@@ -20,7 +20,7 @@ class APIService {
 
   /// Upload sketch to the api and return transaction id.
   Future<String?> uploadSketch(String filePath) async {
-    var request = http.MultipartRequest('POST', Uri.parse('$apiEndpoint/upload'));
+    var request = http.MultipartRequest('POST', Uri.parse('$apiEndpoint/upload-dall-e'));
 
     request.files.add(
       await http.MultipartFile.fromPath(
@@ -41,18 +41,20 @@ class APIService {
   }
 
   /// Save sketch to files, return path
-  Future<String> getSketch(String transactionID) async {
+  Future<String?> getScore(String transactionID) async {
     final uri = Uri.parse('$apiEndpoint/score/$transactionID');
     final response = await http.get(uri);
 
     if (response.statusCode == 200) {
       var dir = await getApplicationDocumentsDirectory();
-      String filePath = '${dir.path}/$transactionID.jpeg';
+      String filePath = '${dir.path}/score_${DateTime
+          .now()
+          .millisecondsSinceEpoch}.png';
       File file = File(filePath);
       await file.writeAsBytes(response.bodyBytes);
       return filePath;
     } else if (response.statusCode == 204) {
-      throw Exception("No data yet");
+      return null;
     } else {
       var responseData = json.decode(response.body);
       String errorMessage = responseData['message'] ?? 'Unknown error occurred';

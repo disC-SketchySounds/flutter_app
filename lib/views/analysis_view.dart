@@ -3,7 +3,6 @@ import 'package:flutter_app/resources/blue_button.dart';
 import 'package:flutter_app/views/analysis_tags_view.dart';
 
 import '../display_image/image_viewer.dart';
-import 'end_view.dart';
 
 class AnalysisView extends StatelessWidget {
   final VoidCallback onButtonPressed;
@@ -39,7 +38,7 @@ class AnalysisView extends StatelessWidget {
             width: screenSize.width * 0.3,
             child: Column(
               children: [
-                Padding(
+                const Padding(
                     padding: EdgeInsets.all(16),
                     child: Text('Analyse',
                         style: TextStyle(
@@ -51,7 +50,7 @@ class AnalysisView extends StatelessWidget {
                     tags: tags,
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
               ],
             )),
         Column(
@@ -60,7 +59,7 @@ class AnalysisView extends StatelessWidget {
             SizedBox(
               width: screenSize.width * 0.4,
               height: screenSize.height * 0.7,
-              child: ImageView(),
+              child: const ImageView(imageType: "score"),
             ),
             const Spacer(),
           ],
@@ -69,7 +68,7 @@ class AnalysisView extends StatelessWidget {
             width: screenSize.width * 0.3,
             child: Column(
               children: [
-                Padding(
+                const Padding(
                   padding: EdgeInsets.only(
                     top: 16,
                   ),

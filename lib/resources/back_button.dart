@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/resources/app_colors.dart';
 
 class BackButton extends StatelessWidget {
+  const BackButton({super.key});
+
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +17,7 @@ class BackButton extends StatelessWidget {
           foregroundColor: AppColors.black, backgroundColor: AppColors.white, // Text color
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(0.0),
-            side: BorderSide(color: AppColors.white),
+            side: const BorderSide(color: AppColors.white),
           ),
         ),
         child: const Text(

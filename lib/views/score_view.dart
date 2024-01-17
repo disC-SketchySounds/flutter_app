@@ -41,8 +41,8 @@ class ScoreView extends StatelessWidget {
             const Spacer(),
             SizedBox(
               width: screenSize.width * 0.4,
-              height: screenSize.height * 0.7,
-              child: ImageView()
+              height: screenSize.height * 0.4,
+              child: const ImageView(imageType: "score")
             ),
             const Spacer(),
           ]),

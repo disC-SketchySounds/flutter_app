@@ -10,7 +10,7 @@ class DrawingPage extends StatefulWidget {
   final Color selectedColor;
   final ValueChanged<Color> onColorChanged;
 
-  DrawingPage({Key? key, required this.selectedColor, required this.onColorChanged}) : super(key: key);
+  const DrawingPage({super.key, required this.selectedColor, required this.onColorChanged});
 
   @override
   DrawingPageState createState() => DrawingPageState();

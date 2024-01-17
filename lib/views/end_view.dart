@@ -3,6 +3,8 @@ import 'package:flutter_app/resources/app_colors.dart';
 import 'package:flutter_app/resources/blue_button.dart';
 
 class EndView extends StatelessWidget {
+  const EndView({super.key});
+
 
   void regenerate() {}
 
@@ -13,14 +15,14 @@ class EndView extends StatelessWidget {
       body: Stack(
         children: [
           Padding(
-            padding: EdgeInsets.all(24),
+            padding: const EdgeInsets.all(24),
             child: Column(
               children: [
-                Spacer(),
+                const Spacer(),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Padding(
+                    const Padding(
                       padding: EdgeInsets.only(left: 16),
                       child: Text(
                         'Danke, dass du Sketchy Sounds benutzt!\nWas möchtest du nun machen?',
@@ -47,7 +49,7 @@ class EndView extends StatelessWidget {
                     ),
                   ],
                 ),
-                Spacer(),
+                const Spacer(),
               ],
             ),
           ),
