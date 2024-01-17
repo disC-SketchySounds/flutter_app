@@ -71,7 +71,7 @@ class APIService {
     }
   }
 
-  /// Get analysis, return full text as string
+  /// Get analysis, return full text as string list
   Future<List<String>?> getAnalysis(String transactionID) async {
     final uri = Uri.parse('$apiEndpoint/analysis/$transactionID');
     final response = await http.get(uri);
