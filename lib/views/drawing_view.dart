@@ -219,10 +219,32 @@ class _DrawingViewState extends State<DrawingView> {
                   ),
                   const Spacer(),
                   Row(children: [
-                    ThicknessSlider(
-                      currentWidth: selectedWidth,
-                      penWidth: penWidth,
-                    ),
+                    SizedBox(
+                        height: 512,
+                        child: RotatedBox(
+                            quarterTurns: 1,
+                            child: SliderTheme(
+                              data: SliderThemeData(
+                                thumbColor: AppColors.white,
+                                activeTrackColor: AppColors.blue,
+                                inactiveTrackColor: AppColors.blue,
+                                overlayColor: AppColors.white.withOpacity(0.3),
+                                valueIndicatorColor: Colors.blue,
+                              ),
+                              child: Slider(
+                                value: selectedWidth,
+
+                                onChanged: (newValue) {
+                                  setState(() {
+                                    selectedWidth = newValue;
+                                    penWidth = newValue;
+                                  });
+                                },
+                                min: 2.5,
+                                max: 25.0,
+                                divisions: 10,
+                              ),
+                            ))),
                     BlueButton(
                       onPressed: () {
                         _processImage();
