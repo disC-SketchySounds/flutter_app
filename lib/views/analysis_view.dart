@@ -4,11 +4,14 @@ import 'package:flutter_app/resources/blue_button.dart';
 import 'package:flutter_app/views/analysis_tags_view.dart';
 
 import '../display_image/image_viewer.dart';
+import '../resources/app_colors.dart';
 
 class AnalysisView extends StatelessWidget {
-  final VoidCallback onButtonPressed;
+  final VoidCallback goToCompare;
+  final VoidCallback regenerate;
 
-  const AnalysisView({super.key, required this.onButtonPressed});
+  const AnalysisView(
+      {super.key, required this.goToCompare, required this.regenerate});
 
   void compare() {}
 
@@ -53,7 +56,8 @@ class AnalysisView extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(left: 16),
                   child: BlueButton(
-                    onPressed: onButtonPressed,
+                    width: 320,
+                    onPressed: goToCompare,
                     text: 'vergleichen',
                     backgroundColor: Colors.black,
                   ),
@@ -64,10 +68,24 @@ class AnalysisView extends StatelessWidget {
           Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
+              Spacer(flex: 3),
               SizedBox.square(
-                dimension: screenSize.width * 0.4,
-                child: const ImageView(imageType: "score"),
-              ),
+                  dimension: screenSize.width * 0.4,
+                  child: Stack(children: [
+                    const ImageView(imageType: "score"),
+                    Positioned(
+                      bottom: 8,
+                      left: 8,
+                      child: IconButton(
+                        icon: const Icon(Icons.open_in_full_outlined,
+                            color: AppColors.white, size: 45),
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/fullscreen');
+                        },
+                      ),
+                    ),
+                  ])),
+              Spacer(flex: 1),
             ],
           ),
           SizedBox(
@@ -76,11 +94,13 @@ class AnalysisView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 BlueButton(
-                  onPressed: (() {}),
+                  width: 320,
+                  onPressed: regenerate,
                   text: 'neu generieren',
                   backgroundColor: Colors.black,
                 ),
                 BlueButton(
+                  width: 320,
                   onPressed: () {
                     Navigator.pushNamed(context, '/end');
                   },

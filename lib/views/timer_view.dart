@@ -28,17 +28,19 @@ class _TimerViewState extends State<TimerView> {
     return SizedBox(
         child: Padding(
             padding: const EdgeInsets.all(16),
-            child: Column(children: [
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
               const Text(
                 'verbleibende Zeit',
                 style: TextStyle(
-                  fontFamily: 'Director',
-                  fontSize: 14,
+                  fontFamily: 'TWKLausanne',
+                  fontSize: 16,
                 ),
               ),
               Text('${countdown}s',
                   style: const TextStyle(
-                    fontFamily: 'Directory',
+                    fontFamily: 'TWKLausanne',
                     fontSize: 24,
                   )),
             ])));

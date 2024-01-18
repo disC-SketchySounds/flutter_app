@@ -201,54 +201,57 @@ class _DrawingViewState extends State<DrawingView> {
           SizedBox(
             width: screenSize.width * 0.3,
             child: Padding(
-              padding: const EdgeInsets.only(top: 35),
+              padding: const EdgeInsets.only(top: 35, right: 42),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   TimerView(countdown: countdown, action: _processImage),
                   const Spacer(),
                   SizedBox(
-                    width: screenSize.width * 0.3,
-                  height: screenSize.width * 0.4,
-                  child: Row(children: [
-                    SizedBox(
-                        height: screenSize.width * 0.4,
-                        child: Padding(
-                            padding: EdgeInsets.all(20),
-                            child: RotatedBox(
-                                quarterTurns: 3,
-                                child: SliderTheme(
-                                  data: SliderThemeData(
-                                    thumbColor: AppColors.white,
-                                    activeTrackColor: AppColors.blue,
-                                    inactiveTrackColor: AppColors.blue,
-                                    overlayColor:
-                                        AppColors.white.withOpacity(0.3),
-                                    valueIndicatorColor: Colors.blue,
-                                  ),
-                                  child: Slider(
-                                    value: selectedWidth,
-                                    onChanged: (newValue) {
-                                      setState(() {
-                                        selectedWidth = newValue;
-                                        penWidth = newValue;
-                                      });
-                                    },
-                                    min: 2.5,
-                                    max: 25.0,
-                                    divisions: 10,
-                                  ),
-                                )))),
-                    Spacer(),
-                    Column(children: [
-                      Spacer(),
-                      BlueButton(
-                        onPressed: () {
-                          _processImage();
-                        },
-                        text: 'fertig',
-                      ),
-                    ]),
-                  ])),
+                      width: screenSize.width * 0.3,
+                      height: screenSize.width * 0.4,
+                      child: Row(children: [
+                        SizedBox(
+                            height: screenSize.width * 0.4,
+                            child: Padding(
+                                padding: EdgeInsets.all(20),
+                                child: RotatedBox(
+                                    quarterTurns: 3,
+                                    child: SliderTheme(
+                                      data: SliderThemeData(
+                                        trackHeight: 10.0,
+                                        thumbColor: AppColors.white,
+                                        activeTrackColor: AppColors.blue,
+                                        inactiveTrackColor: AppColors.blue,
+                                        overlayColor:
+                                            AppColors.white.withOpacity(0.3),
+                                        valueIndicatorColor: Colors.blue,
+                                      ),
+                                      child: Slider(
+                                        value: selectedWidth,
+                                        onChanged: (newValue) {
+                                          setState(() {
+                                            selectedWidth = newValue;
+                                            penWidth = newValue;
+                                          });
+                                        },
+                                        min: 2.5,
+                                        max: 25.0,
+                                        divisions: null,
+                                      ),
+                                    )))),
+                        Spacer(),
+                        Column(children: [
+                          Spacer(),
+                          BlueButton(
+                            width: 186,
+                            onPressed: () {
+                              _processImage();
+                            },
+                            text: 'fertig',
+                          ),
+                        ]),
+                      ])),
                 ],
               ),
             ),

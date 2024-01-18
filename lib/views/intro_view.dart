@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/resources/blue_button.dart';
 
+import '../resources/app_colors.dart';
+
 class IntroView extends StatelessWidget {
   const IntroView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.blue,
       body: Stack(
         children: [
           Padding(

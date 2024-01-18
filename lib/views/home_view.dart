@@ -39,21 +39,22 @@ class _HomeViewState extends State<HomeView> {
       GenerationView(
           onFinished: () => updateSelectedIndex(2),
           onError: () => updateSelectedIndex(0)),
-      AnalysisView(onButtonPressed: () => updateSelectedIndex(3)),
-      CompareView(),
+      AnalysisView(goToCompare: () => updateSelectedIndex(3), regenerate: () => updateSelectedIndex(1),),
+      CompareView(goBackAction: () => updateSelectedIndex(2)),
     ];
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: _selectedIndex == 1 ? AppColors.blue : AppColors.black,
         appBar: AppBar(
           backgroundColor: AppColors.blue,
-          title: Align(
+          title: const Align(
             alignment: Alignment.centerLeft,
             child: Text(
-              _selectedIndex == 3 ? 'Zurück' : 'Sketchy Sounds',
-              style: const TextStyle(
+              'Sketchy Sounds',
+              style: TextStyle(
                 fontFamily: 'Compagnon',
                 fontSize: 32,
               ),
@@ -74,30 +75,29 @@ class _HomeViewState extends State<HomeView> {
               )
               .titleLarge,
           toolbarHeight: 112 * 0.67,
-          // Back button that only exists when on CompareView. Otherwise going
-          // back is not allowed.
+          // There's probably a better way to remove the back button TODO: Fix if spare time
           leading: IconButton(
-            icon: Icon(Icons.arrow_back_ios_new,
-                color: _selectedIndex == 3 ? Colors.white : Colors.transparent),
-            onPressed: () {
-              if (_selectedIndex == 3) {
-                setState(() {
-                  _selectedIndex = _selectedIndex - 1;
-                });
-              }
-            },
+            icon: const Icon(Icons.arrow_back_ios_new,
+                color: Colors.transparent),
+            onPressed: () {},
           ),
         ),
-        body: _views.elementAt(_selectedIndex),
+        body: Stack (
+          children: [
+            _views.elementAt(_selectedIndex),
+          ],
+        ),
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.only(top: 16),
           child: BottomNavigationBar(
+            backgroundColor: _selectedIndex == 1 ? AppColors.blue : AppColors.black,
             selectedItemColor: AppColors.white,
             selectedFontSize: 24,
-            unselectedItemColor: AppColors.gray,
+            unselectedItemColor: AppColors.transparentWhite,
             unselectedFontSize: 24,
             type: BottomNavigationBarType.fixed,
             currentIndex: _selectedIndex,
+            elevation: 0.0,
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 icon: Icon(
