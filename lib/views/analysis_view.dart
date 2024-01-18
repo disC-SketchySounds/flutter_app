@@ -53,9 +53,7 @@ class AnalysisView extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(left: 16),
                   child: BlueButton(
-                    onPressed: (() {
-                      Navigator.pushNamed(context, '/compare');
-                    }),
+                    onPressed: onButtonPressed,
                     text: 'vergleichen',
                     backgroundColor: Colors.black,
                   ),
