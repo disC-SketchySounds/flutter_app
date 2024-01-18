@@ -33,12 +33,6 @@ class _DrawingViewState extends State<DrawingView> {
   // Helper to distinguish between pen and eraser.
   double penWidth = 5.0;
 
-  void changeWidth() {
-    setState(() {
-      selectedWidth = 50;
-    });
-  }
-
   void turnBlue() {
     setState(() {
       selectedColor = AppColors.blue;
@@ -223,12 +217,49 @@ class _DrawingViewState extends State<DrawingView> {
                     ),
                   ),
                   const Spacer(),
-                  BlueButton(
-                    onPressed: () {
-                      _processImage();
-                    },
-                    text: 'fertig',
-                  ),
+                  SizedBox(
+                    width: screenSize.width * 0.3,
+                  height: screenSize.width * 0.4,
+                  child: Row(children: [
+                    SizedBox(
+                        height: screenSize.width * 0.4,
+                        child: Padding(
+                            padding: EdgeInsets.all(20),
+                            child: RotatedBox(
+                                quarterTurns: 3,
+                                child: SliderTheme(
+                                  data: SliderThemeData(
+                                    thumbColor: AppColors.white,
+                                    activeTrackColor: AppColors.blue,
+                                    inactiveTrackColor: AppColors.blue,
+                                    overlayColor:
+                                        AppColors.white.withOpacity(0.3),
+                                    valueIndicatorColor: Colors.blue,
+                                  ),
+                                  child: Slider(
+                                    value: selectedWidth,
+                                    onChanged: (newValue) {
+                                      setState(() {
+                                        selectedWidth = newValue;
+                                        penWidth = newValue;
+                                      });
+                                    },
+                                    min: 2.5,
+                                    max: 25.0,
+                                    divisions: 10,
+                                  ),
+                                )))),
+                    Spacer(),
+                    Column(children: [
+                      Spacer(),
+                      BlueButton(
+                        onPressed: () {
+                          _processImage();
+                        },
+                        text: 'fertig',
+                      ),
+                    ]),
+                  ])),
                 ],
               ),
             ),
