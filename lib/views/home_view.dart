@@ -39,7 +39,10 @@ class _HomeViewState extends State<HomeView> {
       GenerationView(
           onFinished: () => updateSelectedIndex(2),
           onError: () => updateSelectedIndex(0)),
-      AnalysisView(goToCompare: () => updateSelectedIndex(3), regenerate: () => updateSelectedIndex(1),),
+      AnalysisView(
+        goToCompare: () => updateSelectedIndex(3),
+        regenerate: () => updateSelectedIndex(1),
+      ),
       CompareView(goBackAction: () => updateSelectedIndex(2)),
     ];
   }
@@ -47,7 +50,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: _selectedIndex == 1 ? AppColors.blue : AppColors.black,
+        backgroundColor: _selectedIndex == 1 ? AppColors.blue : AppColors.black,
         appBar: AppBar(
           backgroundColor: AppColors.blue,
           title: const Align(
@@ -77,12 +80,23 @@ class _HomeViewState extends State<HomeView> {
           toolbarHeight: 112 * 0.67,
           // There's probably a better way to remove the back button TODO: Fix if spare time
           leading: IconButton(
-            icon: const Icon(Icons.arrow_back_ios_new,
-                color: Colors.transparent),
+            icon:
+                const Icon(Icons.arrow_back_ios_new, color: Colors.transparent),
             onPressed: () {},
           ),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/api_menu');
+                },
+                icon: const Icon(
+                  Icons.settings,
+                  size: 40,
+                  color: AppColors.white,
+                ))
+          ],
         ),
-        body: Stack (
+        body: Stack(
           children: [
             _views.elementAt(_selectedIndex),
           ],
@@ -90,7 +104,8 @@ class _HomeViewState extends State<HomeView> {
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.only(top: 16),
           child: BottomNavigationBar(
-            backgroundColor: _selectedIndex == 1 ? AppColors.blue : AppColors.black,
+            backgroundColor:
+                _selectedIndex == 1 ? AppColors.blue : AppColors.black,
             selectedItemColor: AppColors.white,
             selectedFontSize: 24,
             unselectedItemColor: AppColors.transparentWhite,

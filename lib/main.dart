@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/resources/app_colors.dart';
+import 'package:flutter_app/views/api_menu.dart';
 import 'package:flutter_app/views/compare_view.dart';
 import 'package:flutter_app/views/end_view.dart';
 import 'package:flutter_app/views/explainer_view.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
         '/home': (context) => const HomeView(),
         '/end': (context) => const EndView(),
         '/fullscreen': (context) => const FullScreenView(),
+        '/api_menu': (context) => const ApiMenu(),
       },
       title: _title,
       home: const ExplainerView(),
