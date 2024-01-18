@@ -10,7 +10,8 @@ class AnalysisView extends StatelessWidget {
   final VoidCallback goToCompare;
   final VoidCallback regenerate;
 
-  const AnalysisView({super.key, required this.goToCompare, required this.regenerate});
+  const AnalysisView(
+      {super.key, required this.goToCompare, required this.regenerate});
 
   void compare() {}
 
@@ -69,24 +70,21 @@ class AnalysisView extends StatelessWidget {
             children: [
               Spacer(flex: 3),
               SizedBox.square(
-                dimension: screenSize.width * 0.4,
-                child: Stack(
-                  children: [
+                  dimension: screenSize.width * 0.4,
+                  child: Stack(children: [
                     const ImageView(imageType: "score"),
                     Positioned(
                       bottom: 8,
                       left: 8,
                       child: IconButton(
-                        icon: Icon(Icons.open_in_full_outlined),
-                        color: AppColors.white,
+                        icon: const Icon(Icons.open_in_full_outlined,
+                            color: AppColors.white, size: 45),
                         onPressed: () {
                           Navigator.pushNamed(context, '/fullscreen');
                         },
                       ),
                     ),
-                  ]
-                )
-              ),
+                  ])),
               Spacer(flex: 1),
             ],
           ),

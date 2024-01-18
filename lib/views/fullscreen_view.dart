@@ -13,19 +13,24 @@ class FullScreenView extends StatelessWidget {
     return Scaffold(
         backgroundColor: Colors.black,
         body: Center(
-          child: SizedBox(
-            width: screenSize.height,
-            height: screenSize.height,
-              child: Stack(children: [
-                ImageView(imageType: 'score'),
-                IconButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  icon: Icon(Icons.close_fullscreen_outlined, color: AppColors.white,),
-                )
-              ])
-          )
-            ));
+            child: SizedBox(
+                width: screenSize.height,
+                height: screenSize.height,
+                child: Stack(children: [
+                  const ImageView(imageType: 'score'),
+                  Align(
+                    alignment: Alignment.bottomLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.all(14),
+                      child: IconButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        icon: const Icon(Icons.close_fullscreen_outlined,
+                            color: AppColors.white, size: 45),
+                      ),
+                    ),
+                  )
+                ]))));
   }
 }
