@@ -19,18 +19,17 @@ class FullScreenView extends StatelessWidget {
                 child: Stack(children: [
                   const ImageView(imageType: 'score'),
                   Align(
-                    alignment: Alignment.bottomLeft,
-                    child: Padding(
-                      padding: const EdgeInsets.all(14),
-                      child: IconButton(
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                        icon: const Icon(Icons.close_fullscreen_outlined,
-                            color: AppColors.white, size: 45),
-                      ),
-                    ),
-                  )
+                      alignment: Alignment.bottomLeft,
+                      child: Padding(
+                        padding: const EdgeInsets.all(14),
+                        child: IconButton(
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                          icon: const Icon(Icons.close_fullscreen_outlined,
+                              color: AppColors.white, size: 45),
+                        ),
+                      ))
                 ]))));
   }
 }

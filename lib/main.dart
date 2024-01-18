@@ -22,7 +22,6 @@ class MyApp extends StatelessWidget {
         '/intro': (context) => const IntroView(),
         '/home': (context) => const HomeView(),
         '/end': (context) => const EndView(),
-        '/compare': (context) => const CompareView(),
         '/fullscreen': (context) => const FullScreenView(),
       },
       title: _title,
