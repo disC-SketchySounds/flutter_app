@@ -201,8 +201,9 @@ class _DrawingViewState extends State<DrawingView> {
           SizedBox(
             width: screenSize.width * 0.3,
             child: Padding(
-              padding: const EdgeInsets.only(top: 35),
+              padding: const EdgeInsets.only(top: 35, right: 42),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   TimerView(countdown: countdown, action: _processImage),
                   const Spacer(),
@@ -218,6 +219,7 @@ class _DrawingViewState extends State<DrawingView> {
                                 quarterTurns: 3,
                                 child: SliderTheme(
                                   data: SliderThemeData(
+                                    trackHeight: 10.0,
                                     thumbColor: AppColors.white,
                                     activeTrackColor: AppColors.blue,
                                     inactiveTrackColor: AppColors.blue,
