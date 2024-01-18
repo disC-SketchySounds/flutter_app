@@ -4,6 +4,7 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_app/drawing/drawing_page.dart';
+import 'package:flutter_app/views/timer_view.dart';
 import 'package:flutter_app/resources/blue_button.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter_app/resources/app_colors.dart';
@@ -28,6 +29,7 @@ class _DrawingViewState extends State<DrawingView> {
   }
 
   Color selectedColor = AppColors.blue;
+  int countdown = 180;
   double selectedWidth = 5.0;
 
   // Helper to distinguish between pen and eraser.
@@ -202,20 +204,7 @@ class _DrawingViewState extends State<DrawingView> {
               padding: const EdgeInsets.only(top: 35),
               child: Column(
                 children: [
-                  const Text(
-                    'Verbleibende Zeit',
-                    style: TextStyle(
-                      fontFamily: 'TWKLausanne',
-                      fontSize: 20,
-                    ),
-                  ),
-                  const Text(
-                    '180s',
-                    style: TextStyle(
-                      fontFamily: 'TWKLausanne',
-                      fontSize: 30,
-                    ),
-                  ),
+                  TimerView(countdown: countdown, action: _processImage),
                   const Spacer(),
                   SizedBox(
                     width: screenSize.width * 0.3,

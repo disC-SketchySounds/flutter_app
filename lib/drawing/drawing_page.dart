@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import '../resources/app_colors.dart';
 import 'drawn_line.dart';
 import 'sketcher.dart';
 
@@ -20,7 +21,14 @@ class DrawingPageState extends State<DrawingPage> {
   // Properties
   List<DrawnLine> lines = <DrawnLine>[];
   DrawnLine? currentLine;
+  Color selectedColor = AppColors.blue;
+  double selectedWidth = 5.0;
+  late bool disabled;
   final GlobalKey _globalKey = GlobalKey(); // What does this do?
+
+  @override void initState() {
+    super.initState();
+  }
 
   //  Stream controllers
   StreamController<DrawnLine> currentLineStreamController =
