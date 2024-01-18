@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_app/drawing/drawing_page.dart';
 import 'package:flutter_app/resources/blue_button.dart';
-import 'package:flutter_app/resources/thickness_slider.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter_app/resources/app_colors.dart';
 import 'package:flutter_app/resources/image_type.dart';
@@ -218,40 +217,49 @@ class _DrawingViewState extends State<DrawingView> {
                     ),
                   ),
                   const Spacer(),
-                  Row(children: [
+                  SizedBox(
+                    width: screenSize.width * 0.3,
+                  height: screenSize.width * 0.4,
+                  child: Row(children: [
                     SizedBox(
-                        height: 512,
-                        child: RotatedBox(
-                            quarterTurns: 1,
-                            child: SliderTheme(
-                              data: SliderThemeData(
-                                thumbColor: AppColors.white,
-                                activeTrackColor: AppColors.blue,
-                                inactiveTrackColor: AppColors.blue,
-                                overlayColor: AppColors.white.withOpacity(0.3),
-                                valueIndicatorColor: Colors.blue,
-                              ),
-                              child: Slider(
-                                value: selectedWidth,
-
-                                onChanged: (newValue) {
-                                  setState(() {
-                                    selectedWidth = newValue;
-                                    penWidth = newValue;
-                                  });
-                                },
-                                min: 2.5,
-                                max: 25.0,
-                                divisions: 10,
-                              ),
-                            ))),
-                    BlueButton(
-                      onPressed: () {
-                        _processImage();
-                      },
-                      text: 'fertig',
-                    ),
-                  ]),
+                        height: screenSize.width * 0.4,
+                        child: Padding(
+                            padding: EdgeInsets.all(20),
+                            child: RotatedBox(
+                                quarterTurns: 3,
+                                child: SliderTheme(
+                                  data: SliderThemeData(
+                                    thumbColor: AppColors.white,
+                                    activeTrackColor: AppColors.blue,
+                                    inactiveTrackColor: AppColors.blue,
+                                    overlayColor:
+                                        AppColors.white.withOpacity(0.3),
+                                    valueIndicatorColor: Colors.blue,
+                                  ),
+                                  child: Slider(
+                                    value: selectedWidth,
+                                    onChanged: (newValue) {
+                                      setState(() {
+                                        selectedWidth = newValue;
+                                        penWidth = newValue;
+                                      });
+                                    },
+                                    min: 2.5,
+                                    max: 25.0,
+                                    divisions: 10,
+                                  ),
+                                )))),
+                    Spacer(),
+                    Column(children: [
+                      Spacer(),
+                      BlueButton(
+                        onPressed: () {
+                          _processImage();
+                        },
+                        text: 'fertig',
+                      ),
+                    ]),
+                  ])),
                 ],
               ),
             ),
