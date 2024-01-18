@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_app/drawing/drawing_page.dart';
 import 'package:flutter_app/resources/blue_button.dart';
+import 'package:flutter_app/resources/thickness_slider.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter_app/resources/app_colors.dart';
 import 'package:flutter_app/resources/image_type.dart';
@@ -32,12 +33,6 @@ class _DrawingViewState extends State<DrawingView> {
 
   // Helper to distinguish between pen and eraser.
   double penWidth = 5.0;
-
-  void changeWidth() {
-    setState(() {
-      selectedWidth = 50;
-    });
-  }
 
   void turnBlue() {
     setState(() {
@@ -223,12 +218,18 @@ class _DrawingViewState extends State<DrawingView> {
                     ),
                   ),
                   const Spacer(),
-                  BlueButton(
-                    onPressed: () {
-                      _processImage();
-                    },
-                    text: 'fertig',
-                  ),
+                  Row(children: [
+                    ThicknessSlider(
+                      currentWidth: selectedWidth,
+                      penWidth: penWidth,
+                    ),
+                    BlueButton(
+                      onPressed: () {
+                        _processImage();
+                      },
+                      text: 'fertig',
+                    ),
+                  ]),
                 ],
               ),
             ),
