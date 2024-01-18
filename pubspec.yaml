@@ -52,6 +52,8 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^3.0.1
 
+  flutter_launcher_icons: ^0.9.2
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
@@ -91,19 +93,21 @@ flutter:
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
-
-fonts:
-  - family: Compagnon
-    fonts:
-      - asset: fonts/Compagnon-Medium.otf
-      - asset: fonts/Compagnon-Light.otf
-        style: light
-      - asset: fonts/Compagnon-Bold.otf
-        style: bold
-      - asset: fonts/Compagnon-LightItalic.otf
-        style: italic
-      - asset: fonts/Compagnon-Roman.otf
-        style: roman
-
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+  fonts:
+    - family: Compagnon
+      fonts:
+        - asset: fonts/Compagnon-LightItalic.otf
+    - family: Director
+      fonts:
+        - asset: fonts/Director-Regular.otf
+    - family: TWKLausanne
+      fonts:
+        - asset: fonts/TWKLausanne-400.otf
+
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon.png"

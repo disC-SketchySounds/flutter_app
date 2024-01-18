@@ -3,13 +3,17 @@ import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 
 class ImageView extends StatelessWidget {
+  final String imageType;
+
+  const ImageView({super.key, required this.imageType});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         body: Center(
           child: FutureBuilder(
-            future: _loadImageFromDocumentsDirectory(),
+            future: _loadImageFromDocumentsDirectory(imageType),
             builder: (BuildContext context, AsyncSnapshot<File?> snapshot) {
               if (snapshot.connectionState == ConnectionState.done &&
                   snapshot.hasData) {
@@ -19,7 +23,7 @@ class ImageView extends StatelessWidget {
                 );
               } else {
                 // You can show a loading indicator or an error message here
-                return CircularProgressIndicator();
+                return const CircularProgressIndicator();
               }
             },
           ),
@@ -28,14 +32,21 @@ class ImageView extends StatelessWidget {
     );
   }
 
-  Future<File?> _loadImageFromDocumentsDirectory() async {
+  Future<File?> _loadImageFromDocumentsDirectory(String imageType) async {
     final documentsDir = await getApplicationDocumentsDirectory();
-    final List<FileSystemEntity> files = Directory(documentsDir.path).listSync();
+    final List<FileSystemEntity> files =
+        Directory(documentsDir.path).listSync();
 
-    if (files.isNotEmpty) {
-      print("Files is not empty!");
-      // Load the first image found in the documents directory
-      return File(files.last.path);
+    List<FileSystemEntity> scoreList = files
+        .where((entity) =>
+            entity is File &&
+            entity.uri.pathSegments.last.startsWith("${imageType}_"))
+        .toList();
+
+    /// Get the most recent element with matching imageType
+    if (scoreList.isNotEmpty) {
+      scoreList.sort((a, b) => b.path.compareTo(a.path));
+      return File(scoreList.first.path);
     }
 
     return null;

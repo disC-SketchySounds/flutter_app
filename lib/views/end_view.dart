@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/resources/app_colors.dart';
 import 'package:flutter_app/resources/blue_button.dart';
 
-class IntroView extends StatelessWidget {
-  const IntroView({super.key});
+class EndView extends StatelessWidget {
+  const EndView({super.key});
+
+  void regenerate() {}
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.blue,
       body: Stack(
         children: [
           Padding(
@@ -20,17 +24,21 @@ class IntroView extends StatelessWidget {
                     const Padding(
                       padding: EdgeInsets.only(left: 16),
                       child: Text(
-                        'Verwandle mit Sketchy Sounds deine eigene Zeichung in eine grafische Partitur und tauche spielerisch in die Welt der Musik ein!',
+                        'Danke, dass du Sketchy Sounds benutzt!\nWas möchtest du nun machen?',
                         style: TextStyle(fontSize: 30),
                       ),
                     ),
                     Row(
                       children: [
                         BlueButton(
-                            onPressed: () {
-                              Navigator.pushNamed(context, '/home');
-                            },
-                            text: 'Los geht\'s!'),
+                          onPressed: () {
+                            Navigator.popUntil(
+                                context, (route) => route.isFirst);
+                          },
+                          text: 'neues Projekt',
+                          backgroundColor: AppColors.white,
+                          foregroundColor: AppColors.blue,
+                        ),
                       ],
                     ),
                   ],
