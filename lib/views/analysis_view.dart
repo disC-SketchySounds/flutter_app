@@ -4,6 +4,7 @@ import 'package:flutter_app/resources/blue_button.dart';
 import 'package:flutter_app/views/analysis_tags_view.dart';
 
 import '../display_image/image_viewer.dart';
+import '../resources/app_colors.dart';
 
 class AnalysisView extends StatelessWidget {
   final VoidCallback goToCompare;
@@ -69,7 +70,22 @@ class AnalysisView extends StatelessWidget {
               Spacer(flex: 3),
               SizedBox.square(
                 dimension: screenSize.width * 0.4,
-                child: const ImageView(imageType: "score"),
+                child: Stack(
+                  children: [
+                    const ImageView(imageType: "score"),
+                    Positioned(
+                      bottom: 8,
+                      left: 8,
+                      child: IconButton(
+                        icon: Icon(Icons.open_in_full_outlined),
+                        color: AppColors.white,
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/fullscreen');
+                        },
+                      ),
+                    ),
+                  ]
+                )
               ),
               Spacer(flex: 1),
             ],
