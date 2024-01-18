@@ -53,6 +53,7 @@ class AnalysisView extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(left: 16),
                   child: BlueButton(
+                    width: 320,
                     onPressed: onButtonPressed,
                     text: 'vergleichen',
                     backgroundColor: Colors.black,
@@ -64,10 +65,12 @@ class AnalysisView extends StatelessWidget {
           Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
+              Spacer(flex: 3),
               SizedBox.square(
                 dimension: screenSize.width * 0.4,
                 child: const ImageView(imageType: "score"),
               ),
+              Spacer(flex: 1),
             ],
           ),
           SizedBox(
@@ -76,11 +79,13 @@ class AnalysisView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 BlueButton(
+                  width: 320,
                   onPressed: (() {}),
                   text: 'neu generieren',
                   backgroundColor: Colors.black,
                 ),
                 BlueButton(
+                  width: 320,
                   onPressed: () {
                     Navigator.pushNamed(context, '/end');
                   },

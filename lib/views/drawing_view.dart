@@ -242,6 +242,7 @@ class _DrawingViewState extends State<DrawingView> {
                     Column(children: [
                       Spacer(),
                       BlueButton(
+                        width: 186,
                         onPressed: () {
                           _processImage();
                         },

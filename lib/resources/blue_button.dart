@@ -4,6 +4,7 @@ import 'app_colors.dart';
 
 class BlueButton extends StatelessWidget {
   final VoidCallback onPressed;
+  final double width;
   final double height;
   final String text;
   final Color backgroundColor;
@@ -12,6 +13,7 @@ class BlueButton extends StatelessWidget {
   const BlueButton({
     super.key,
     required this.onPressed,
+    this.width = 292,
     this.height = 69,
     required this.text,
     this.backgroundColor = AppColors.blue,
@@ -27,7 +29,7 @@ class BlueButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           foregroundColor: foregroundColor,
           backgroundColor: backgroundColor,
-          minimumSize: Size(64, height),
+          minimumSize: Size(width, height),
           // Text color
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(0.0),
