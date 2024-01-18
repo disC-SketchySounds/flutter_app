@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/api/api_service.dart';
 import 'package:flutter_app/api/app_data.dart';
 
+import '../resources/app_colors.dart';
 import '../resources/ios_alert.dart';
 
 class GenerationView extends StatefulWidget {
@@ -98,6 +99,7 @@ class _GenerationViewState extends State<GenerationView>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.blue,
       body: AnimatedBuilder(
         animation: _animationController,
         builder: (context, child) {
@@ -105,13 +107,16 @@ class _GenerationViewState extends State<GenerationView>
           return Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Text(
-                'generiere$dots',
-                style: const TextStyle(
-                  fontFamily: 'Compagnon',
-                  fontSize: 80,
+              Padding(
+                padding: EdgeInsets.all(55),
+                child: Text(
+                  'generiere$dots',
+                  style: const TextStyle(
+                    fontFamily: 'Compagnon',
+                    fontSize: 80,
+                  ),
                 ),
-              ),
+              )
             ],
           );
         },

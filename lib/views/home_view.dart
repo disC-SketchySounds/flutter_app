@@ -47,6 +47,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: _selectedIndex == 1 ? AppColors.blue : AppColors.black,
         appBar: AppBar(
           backgroundColor: AppColors.blue,
           title: Align(
@@ -92,12 +93,14 @@ class _HomeViewState extends State<HomeView> {
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.only(top: 16),
           child: BottomNavigationBar(
+            backgroundColor: _selectedIndex == 1 ? AppColors.blue : AppColors.black,
             selectedItemColor: AppColors.white,
             selectedFontSize: 24,
-            unselectedItemColor: AppColors.gray,
+            unselectedItemColor: AppColors.transparentWhite,
             unselectedFontSize: 24,
             type: BottomNavigationBarType.fixed,
             currentIndex: _selectedIndex,
+            elevation: 0.0,
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 icon: Icon(

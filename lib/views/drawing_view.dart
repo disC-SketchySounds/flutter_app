@@ -237,7 +237,7 @@ class _DrawingViewState extends State<DrawingView> {
                                     },
                                     min: 2.5,
                                     max: 25.0,
-                                    divisions: 10,
+                                    divisions: null,
                                   ),
                                 )))),
                     Spacer(),
