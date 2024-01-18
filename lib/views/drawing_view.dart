@@ -29,7 +29,7 @@ class _DrawingViewState extends State<DrawingView> {
   }
 
   Color selectedColor = AppColors.blue;
-  int countdown = 10;
+  int countdown = 180;
   double selectedWidth = 5.0;
 
   // Helper to distinguish between pen and eraser.
