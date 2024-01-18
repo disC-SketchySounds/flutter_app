@@ -6,9 +6,10 @@ import 'package:flutter_app/views/analysis_tags_view.dart';
 import '../display_image/image_viewer.dart';
 
 class AnalysisView extends StatelessWidget {
-  final VoidCallback onButtonPressed;
+  final VoidCallback goToCompare;
+  final VoidCallback regenerate;
 
-  const AnalysisView({super.key, required this.onButtonPressed});
+  const AnalysisView({super.key, required this.goToCompare, required this.regenerate});
 
   void compare() {}
 
@@ -54,7 +55,7 @@ class AnalysisView extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 16),
                   child: BlueButton(
                     width: 320,
-                    onPressed: onButtonPressed,
+                    onPressed: goToCompare,
                     text: 'vergleichen',
                     backgroundColor: Colors.black,
                   ),
@@ -80,7 +81,7 @@ class AnalysisView extends StatelessWidget {
               children: [
                 BlueButton(
                   width: 320,
-                  onPressed: (() {}),
+                  onPressed: regenerate,
                   text: 'neu generieren',
                   backgroundColor: Colors.black,
                 ),

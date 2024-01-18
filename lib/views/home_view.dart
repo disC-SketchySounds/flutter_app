@@ -39,7 +39,7 @@ class _HomeViewState extends State<HomeView> {
       GenerationView(
           onFinished: () => updateSelectedIndex(2),
           onError: () => updateSelectedIndex(0)),
-      AnalysisView(onButtonPressed: () => updateSelectedIndex(3)),
+      AnalysisView(goToCompare: () => updateSelectedIndex(3), regenerate: () => updateSelectedIndex(1),),
       CompareView(),
     ];
   }
