@@ -204,20 +204,7 @@ class _DrawingViewState extends State<DrawingView> {
               padding: const EdgeInsets.only(top: 35),
               child: Column(
                 children: [
-                  const Text(
-                    'Verbleibende Zeit',
-                    style: TextStyle(
-                      fontFamily: 'TWKLausanne',
-                      fontSize: 20,
-                    ),
-                  ),
-                  const Text(
-                    '180s',
-                    style: TextStyle(
-                      fontFamily: 'TWKLausanne',
-                      fontSize: 30,
-                    ),
-                  ),
+                  TimerView(countdown: countdown, action: _processImage),
                   const Spacer(),
                   SizedBox(
                     width: screenSize.width * 0.3,

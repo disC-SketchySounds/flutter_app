@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class TimerView extends StatefulWidget {
   final int countdown;
+  final VoidCallback action;
 
-  TimerView({required this.countdown});
+  TimerView({required this.countdown, required this.action});
 
   @override
   _TimerViewState createState() => _TimerViewState();
@@ -11,12 +12,14 @@ class TimerView extends StatefulWidget {
 
 class _TimerViewState extends State<TimerView> {
   late int countdown;
+  late VoidCallback action;
   late bool pageDisabled;
 
   @override
   void initState() {
     super.initState();
     countdown = widget.countdown;
+    action = widget.action;
     startTimer();
   }
 
@@ -29,14 +32,13 @@ class _TimerViewState extends State<TimerView> {
               const Text(
                 'verbleibende Zeit',
                 style: TextStyle(
-                  fontFamily: 'Compagnon',
+                  fontFamily: 'Director',
                   fontSize: 14,
                 ),
               ),
               Text('${countdown}s',
                   style: const TextStyle(
-                    fontFamily: 'Compagnon',
-                    fontStyle: FontStyle.italic,
+                    fontFamily: 'Directory',
                     fontSize: 24,
                   )),
             ])));
@@ -49,8 +51,6 @@ class _TimerViewState extends State<TimerView> {
         countdown--;
       });
     }
-    setState(() {
-      // TODO: Press 'fertig' button
-    });
+    action();
   }
 }
