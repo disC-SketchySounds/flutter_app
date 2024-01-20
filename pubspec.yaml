@@ -40,6 +40,7 @@ dependencies:
   # To save images to a path
   path_provider: 
   http_parser: ^4.0.2
+  audioplayers: ^0.18.3
 
 dev_dependencies:
   flutter_test:
