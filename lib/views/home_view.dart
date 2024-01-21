@@ -89,10 +89,10 @@ class _HomeViewState extends State<HomeView> {
                 onPressed: () {
                   Navigator.pushNamed(context, '/api_menu');
                 },
-                icon: const Icon(
+                icon: Icon(
                   Icons.settings,
                   size: 40,
-                  color: AppColors.white,
+                  color: AppColors.white.withOpacity(0.1),
                 ))
           ],
         ),
