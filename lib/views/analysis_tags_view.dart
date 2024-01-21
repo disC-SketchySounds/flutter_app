@@ -12,7 +12,7 @@ class AnalysisTagsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(12),
         child: Column(
           children: [
             Row(
@@ -32,7 +32,7 @@ class AnalysisTagsView extends StatelessWidget {
                     'Generierte Schlagwörter',
                     style: TextStyle(
                       fontFamily: 'TWKLausanne',
-                      fontSize: 24,
+                      fontSize: 22,
                     ),
                   ),
                 ),
