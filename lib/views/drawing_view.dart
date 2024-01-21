@@ -111,17 +111,19 @@ class _DrawingViewState extends State<DrawingView> {
             width: screenSize.width * 0.3,
             child: Column(
               children: [
-                const Padding(
-                  padding: EdgeInsets.all(35),
+                Padding(
+                  padding: const EdgeInsets.all(35),
                   child: Text(
                     'Zeichne etwas!',
                     style: TextStyle(
                       fontFamily: 'TWKLausanne',
-                      fontSize: 40,
+                      // Adjust for 11 inch iPad. Otherwise text wraps and fucks
+                      // up layout.
+                      fontSize: screenSize.width > 2380 ? 40 : 35,
                     ),
                   ),
                 ),
-                const Spacer(),
+                Spacer(),
                 Row(
                   children: [
                     const Spacer(),
