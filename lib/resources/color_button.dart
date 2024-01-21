@@ -1,15 +1,19 @@
 import 'package:flutter/material.dart';
 
+import 'app_colors.dart';
+
 class ColorButton extends StatelessWidget {
   final VoidCallback onPressed;
   final double size;
   final Color buttonColor;
+  final bool isSelected;
 
   const ColorButton({
     super.key,
     required this.onPressed,
-    this.size = 69 * 0.67,
-    this.buttonColor = Colors.blue,
+    required this.isSelected,
+    this.size = 67,
+    this.buttonColor = AppColors.blue,
   });
 
   @override
@@ -21,11 +25,16 @@ class ColorButton extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           shape: const CircleBorder(),
           backgroundColor: buttonColor,
-          padding: EdgeInsets.all(size * 0.2),
         ),
-        child: SizedBox(
+        child: Container(
           width: size,
           height: size,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: isSelected
+                ? Border.all(color: buttonColor != AppColors.white ? AppColors.white : AppColors.blue, width: 4.0)
+                : null,
+          ),
         ),
       ),
     );

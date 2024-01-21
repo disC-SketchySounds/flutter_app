@@ -31,12 +31,14 @@ class _DrawingViewState extends State<DrawingView> {
   Color selectedColor = AppColors.blue;
   int countdown = 180;
   double selectedWidth = 5.0;
+  String selectedButton = 'blue';
 
   // Helper to distinguish between pen and eraser.
   double penWidth = 5.0;
 
   void turnBlue() {
     setState(() {
+      selectedButton = 'blue';
       selectedColor = AppColors.blue;
       selectedWidth = penWidth;
     });
@@ -44,6 +46,7 @@ class _DrawingViewState extends State<DrawingView> {
 
   void turnPink() {
     setState(() {
+      selectedButton = 'pink';
       selectedColor = AppColors.pink;
       selectedWidth = penWidth;
     });
@@ -51,6 +54,7 @@ class _DrawingViewState extends State<DrawingView> {
 
   void turnYellow() {
     setState(() {
+      selectedButton = 'yellow';
       selectedColor = AppColors.yellow;
       selectedWidth = penWidth;
     });
@@ -58,6 +62,7 @@ class _DrawingViewState extends State<DrawingView> {
 
   void makeEraser() {
     setState(() {
+      selectedButton = 'eraser';
       selectedWidth = 25.0;
       selectedColor = AppColors.white;
     });
@@ -145,14 +150,17 @@ class _DrawingViewState extends State<DrawingView> {
                                 ),
                                 ColorButton(
                                   onPressed: turnBlue,
+                                  isSelected: selectedButton == 'blue',
                                   buttonColor: AppColors.blue,
                                 ),
                                 ColorButton(
                                   onPressed: turnPink,
+                                  isSelected: selectedButton == 'pink',
                                   buttonColor: AppColors.pink,
                                 ),
                                 ColorButton(
                                   onPressed: turnYellow,
+                                  isSelected: selectedButton == 'yellow',
                                   buttonColor: AppColors.yellow,
                                 ),
                               ],
@@ -171,6 +179,7 @@ class _DrawingViewState extends State<DrawingView> {
                                 ),
                                 ColorButton(
                                   onPressed: makeEraser,
+                                  isSelected: selectedButton == 'eraser',
                                   buttonColor: AppColors.white,
                                 ),
                               ],
