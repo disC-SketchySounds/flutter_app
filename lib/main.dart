@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/api/api_service.dart';
 import 'package:flutter_app/resources/app_colors.dart';
 import 'package:flutter_app/views/api_menu.dart';
 import 'package:flutter_app/views/compare_view.dart';
@@ -6,9 +7,23 @@ import 'package:flutter_app/views/end_view.dart';
 import 'package:flutter_app/views/explainer_view.dart';
 import 'package:flutter_app/views/fullscreen_view.dart';
 import 'package:flutter_app/views/home_view.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'views/intro_view.dart';
 
-void main() => runApp(const MyApp());
+Future<void> main() async {
+
+  // Run app
+  runApp(const MyApp());
+
+  // Load settings
+  final prefs = await SharedPreferences.getInstance();
+
+  String? apiLink = await prefs.getString('apiLink');
+  if (apiLink != null) {
+    // Force unwrapping should be safe here
+    APIService.apiUrl = apiLink!;
+  }
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

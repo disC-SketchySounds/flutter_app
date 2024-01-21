@@ -50,7 +50,7 @@ class _ApiMenuState extends State<ApiMenu> {
 
   Future<void> saveSettings() async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString('apiLink', APIService.apiUrl);
-    print('Saved settings');
+    String apiLink = _apiLinkController.text;
+    await prefs.setString('apiLink', apiLink);
   }
 }
