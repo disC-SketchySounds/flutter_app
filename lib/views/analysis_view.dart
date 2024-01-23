@@ -25,7 +25,7 @@ class AnalysisView extends StatelessWidget {
       body: Row(
         children: [
           SizedBox(
-            width: screenSize.width * 0.3,
+            width: screenSize.width * 0.325,
             child: Column(
               children: [
                 const Padding(
@@ -34,7 +34,7 @@ class AnalysisView extends StatelessWidget {
                     'Deine Partitur',
                     style: TextStyle(
                       fontFamily: 'TWKLausanne',
-                      fontSize: 40,
+                      fontSize: 38,
                     ),
                   ),
                 ),
@@ -70,7 +70,7 @@ class AnalysisView extends StatelessWidget {
             children: [
               Spacer(flex: 3),
               SizedBox.square(
-                  dimension: screenSize.width * 0.4,
+                  dimension: screenSize.width * 0.35,
                   child: Stack(children: [
                     const ImageView(imageType: "score"),
                     Positioned(
@@ -89,7 +89,7 @@ class AnalysisView extends StatelessWidget {
             ],
           ),
           SizedBox(
-            width: screenSize.width * 0.3,
+            width: screenSize.width * 0.325,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
