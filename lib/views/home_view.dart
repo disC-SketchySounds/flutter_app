@@ -77,7 +77,7 @@ class _HomeViewState extends State<HomeView> {
                 displayColor: Colors.white,
               )
               .titleLarge,
-          toolbarHeight: 112 * 0.67,
+          toolbarHeight: 88,
           // There's probably a better way to remove the back button TODO: Fix if spare time
           leading: IconButton(
             icon:
@@ -104,6 +104,15 @@ class _HomeViewState extends State<HomeView> {
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.only(top: 16),
           child: BottomNavigationBar(
+            iconSize: 0,
+            unselectedLabelStyle: const TextStyle(
+              fontFamily: 'Director',
+              fontSize: 16,
+            ),
+            selectedLabelStyle: const TextStyle(
+              fontFamily: 'Director',
+              fontSize: 16,
+            ),
             backgroundColor:
                 _selectedIndex == 1 ? AppColors.blue : AppColors.black,
             selectedItemColor: AppColors.white,
@@ -119,27 +128,27 @@ class _HomeViewState extends State<HomeView> {
                   Icons.star_border,
                   color: Colors.transparent,
                 ),
-                label: 'zeichnen',
+                label: '1 zeichnen',
               ),
               BottomNavigationBarItem(
                   icon: Icon(
                     Icons.star_border,
                     color: Colors.transparent,
                   ),
-                  label: 'generieren'),
+                  label: '2 generieren'),
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.star_border,
                   color: Colors.transparent,
                 ),
-                label: 'analysieren',
+                label: '3 analysieren',
               ),
               BottomNavigationBarItem(
                   icon: Icon(
                     Icons.star_border,
                     color: Colors.transparent,
                   ),
-                  label: 'vergleichen'),
+                  label: '4 vergleichen'),
             ],
           ),
         ));

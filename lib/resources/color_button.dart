@@ -19,7 +19,7 @@ class ColorButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(18 * 0.67),
+      padding: const EdgeInsets.all(8),
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(

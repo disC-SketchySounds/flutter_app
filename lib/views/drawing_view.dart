@@ -113,7 +113,7 @@ class _DrawingViewState extends State<DrawingView> {
       body: Row(
         children: [
           SizedBox(
-            width: screenSize.width * 0.3,
+            width: screenSize.width * 0.325,
             child: Column(
               children: [
                 Padding(
@@ -138,14 +138,14 @@ class _DrawingViewState extends State<DrawingView> {
                       child: Column(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(bottom: 40),
+                            padding: const EdgeInsets.only(bottom: 25),
                             child: Column(
                               children: [
                                 const Text(
                                   'Farben',
                                   style: TextStyle(
                                     fontFamily: 'TWKLausanne',
-                                    fontSize: 25,
+                                    fontSize: 24,
                                   ),
                                 ),
                                 ColorButton(
@@ -174,7 +174,7 @@ class _DrawingViewState extends State<DrawingView> {
                                   'Radierer',
                                   style: TextStyle(
                                     fontFamily: 'TWKLausanne',
-                                    fontSize: 25,
+                                    fontSize: 24,
                                   ),
                                 ),
                                 ColorButton(
@@ -199,7 +199,7 @@ class _DrawingViewState extends State<DrawingView> {
               RepaintBoundary(
                 key: _globalKey,
                 child: SizedBox.square(
-                  dimension: screenSize.width * 0.4,
+                  dimension: screenSize.width * 0.35,
                   child: ClipRect(
                     child: DrawingPage(
                         selectedColor: selectedColor,
@@ -210,7 +210,7 @@ class _DrawingViewState extends State<DrawingView> {
             ],
           ),
           SizedBox(
-            width: screenSize.width * 0.3,
+            width: screenSize.width * 0.325,
             child: Padding(
               padding: const EdgeInsets.only(top: 35, right: 42),
               child: Column(
@@ -218,12 +218,25 @@ class _DrawingViewState extends State<DrawingView> {
                 children: [
                   TimerView(countdown: countdown, action: _processImage),
                   const Spacer(),
+                  const Padding(
+                    padding: EdgeInsets.only(left: 40),
+                    child: Align(
+                      alignment: Alignment.bottomLeft,
+                      child: Text(
+                        'Strichstärke',
+                        style: TextStyle(
+                          fontFamily: 'TWKLausanne',
+                          fontSize: 24,
+                        ),
+                      ),
+                    ),
+                  ),
                   SizedBox(
-                      width: screenSize.width * 0.3,
-                      height: screenSize.width * 0.4,
+                      width: screenSize.width * 0.325,
+                      height: screenSize.width * 0.35,
                       child: Row(children: [
                         SizedBox(
-                            height: screenSize.width * 0.4,
+                            height: screenSize.width * 0.35,
                             child: Padding(
                                 padding: EdgeInsets.all(20),
                                 child: RotatedBox(
@@ -235,7 +248,7 @@ class _DrawingViewState extends State<DrawingView> {
                                         activeTrackColor: AppColors.blue,
                                         inactiveTrackColor: AppColors.blue,
                                         overlayColor:
-                                            AppColors.white.withOpacity(0.3),
+                                            AppColors.white.withOpacity(0.325),
                                         valueIndicatorColor: Colors.blue,
                                       ),
                                       child: Slider(
