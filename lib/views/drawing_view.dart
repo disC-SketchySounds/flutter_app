@@ -119,12 +119,12 @@ class _DrawingViewState extends State<DrawingView> {
                 Padding(
                   padding: const EdgeInsets.all(35),
                   child: Text(
-                    'Zeichne etwas!',
+                    'ZEICHNE ETWAS',
                     style: TextStyle(
-                      fontFamily: 'TWKLausanne',
+                      fontFamily: 'MozartNbp',
                       // Adjust for 11 inch iPad. Otherwise text wraps and fucks
                       // up layout.
-                      fontSize: screenSize.width > 2380 ? 40 : 35,
+                      fontSize: 46,
                     ),
                   ),
                 ),
@@ -144,8 +144,8 @@ class _DrawingViewState extends State<DrawingView> {
                                 const Text(
                                   'Farben',
                                   style: TextStyle(
-                                    fontFamily: 'TWKLausanne',
-                                    fontSize: 24,
+                                    fontFamily: 'MozartNbp',
+                                    fontSize: 32,
                                   ),
                                 ),
                                 ColorButton(
@@ -173,8 +173,8 @@ class _DrawingViewState extends State<DrawingView> {
                                 const Text(
                                   'Radierer',
                                   style: TextStyle(
-                                    fontFamily: 'TWKLausanne',
-                                    fontSize: 24,
+                                    fontFamily: 'MozartNbp',
+                                    fontSize: 32,
                                   ),
                                 ),
                                 ColorButton(
@@ -225,8 +225,9 @@ class _DrawingViewState extends State<DrawingView> {
                       child: Text(
                         'Strichstärke',
                         style: TextStyle(
-                          fontFamily: 'TWKLausanne',
-                          fontSize: 24,
+                          fontFamily: 'MozartNbp',
+                          fontSize: 32,
+                          height: 0.5,
                         ),
                       ),
                     ),
@@ -238,7 +239,7 @@ class _DrawingViewState extends State<DrawingView> {
                         SizedBox(
                             height: screenSize.width * 0.35,
                             child: Padding(
-                                padding: EdgeInsets.all(20),
+                                padding: EdgeInsets.only(left: 15, top: 20, bottom: 20, right: 10),
                                 child: RotatedBox(
                                     quarterTurns: 3,
                                     child: SliderTheme(
@@ -272,7 +273,7 @@ class _DrawingViewState extends State<DrawingView> {
                             onPressed: () {
                               _processImage();
                             },
-                            text: 'fertig',
+                            text: 'Partitur\ngenerieren',
                           ),
                         ]),
                       ])),

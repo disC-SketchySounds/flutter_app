@@ -56,6 +56,7 @@ class APIService {
       var dir = await getApplicationDocumentsDirectory();
       String filePath =
           '${dir.path}/score_${DateTime.now().millisecondsSinceEpoch}.png';
+      print("Saved to $filePath");
       File file = File(filePath);
       await file.writeAsBytes(response.bodyBytes);
       return filePath;
