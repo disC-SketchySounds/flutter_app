@@ -106,6 +106,9 @@ flutter:
     - family: TWKLausanne
       fonts:
         - asset: fonts/TWKLausanne-400.otf
+    - family: MozartNbp
+      fonts: 
+        - asset: fonts/MozartNbp-93Ey.ttf
 
 
 flutter_icons:

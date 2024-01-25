@@ -24,7 +24,7 @@ class IntroView extends StatelessWidget {
                       padding: EdgeInsets.only(left: 16),
                       child: Text(
                         'Verwandle mit Sketchy Sounds deine eigene Zeichung in eine grafische Partitur und tauche spielerisch in die Welt der Musik ein!',
-                        style: TextStyle(fontSize: 30),
+                          style: TextStyle(fontSize: 46, fontFamily: 'MozartNbp'),
                       ),
                     ),
                     Row(
@@ -33,7 +33,7 @@ class IntroView extends StatelessWidget {
                             onPressed: () {
                               Navigator.pushNamed(context, '/home');
                             },
-                            text: 'Los geht\'s!'),
+                            text: 'weiter'),
                       ],
                     ),
                   ],

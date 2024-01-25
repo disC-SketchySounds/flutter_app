@@ -87,6 +87,7 @@ class _DrawingViewState extends State<DrawingView> {
   Future<void> _saveImageToFile(
       Uint8List imageBytes, ImageType imageType) async {
     final documentsDir = await getApplicationDocumentsDirectory();
+    // TODO: Fix this
     AppData.current.sketchPath =
         '${documentsDir.path}/${imageType.name}_${DateTime.now().millisecondsSinceEpoch}.png';
 
@@ -119,12 +120,10 @@ class _DrawingViewState extends State<DrawingView> {
                 Padding(
                   padding: const EdgeInsets.all(35),
                   child: Text(
-                    'Zeichne etwas!',
+                    'ZEICHNE ETWAS',
                     style: TextStyle(
-                      fontFamily: 'TWKLausanne',
-                      // Adjust for 11 inch iPad. Otherwise text wraps and fucks
-                      // up layout.
-                      fontSize: screenSize.width > 2380 ? 40 : 35,
+                      fontFamily: 'MozartNbp',
+                      fontSize: 46,
                     ),
                   ),
                 ),
@@ -141,13 +140,6 @@ class _DrawingViewState extends State<DrawingView> {
                             padding: const EdgeInsets.only(bottom: 25),
                             child: Column(
                               children: [
-                                const Text(
-                                  'Farben',
-                                  style: TextStyle(
-                                    fontFamily: 'TWKLausanne',
-                                    fontSize: 24,
-                                  ),
-                                ),
                                 ColorButton(
                                   onPressed: turnBlue,
                                   isSelected: selectedButton == 'blue',
@@ -162,20 +154,6 @@ class _DrawingViewState extends State<DrawingView> {
                                   onPressed: turnYellow,
                                   isSelected: selectedButton == 'yellow',
                                   buttonColor: AppColors.yellow,
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 0),
-                            child: Column(
-                              children: [
-                                const Text(
-                                  'Radierer',
-                                  style: TextStyle(
-                                    fontFamily: 'TWKLausanne',
-                                    fontSize: 24,
-                                  ),
                                 ),
                                 ColorButton(
                                   onPressed: makeEraser,
@@ -225,8 +203,9 @@ class _DrawingViewState extends State<DrawingView> {
                       child: Text(
                         'Strichstärke',
                         style: TextStyle(
-                          fontFamily: 'TWKLausanne',
-                          fontSize: 24,
+                          fontFamily: 'MozartNbp',
+                          fontSize: 32,
+                          height: 0.5,
                         ),
                       ),
                     ),
@@ -238,7 +217,7 @@ class _DrawingViewState extends State<DrawingView> {
                         SizedBox(
                             height: screenSize.width * 0.35,
                             child: Padding(
-                                padding: EdgeInsets.all(20),
+                                padding: EdgeInsets.only(left: 15, top: 20, bottom: 20, right: 10),
                                 child: RotatedBox(
                                     quarterTurns: 3,
                                     child: SliderTheme(
@@ -272,7 +251,7 @@ class _DrawingViewState extends State<DrawingView> {
                             onPressed: () {
                               _processImage();
                             },
-                            text: 'fertig',
+                            text: 'Partitur\ngenerieren',
                           ),
                         ]),
                       ])),

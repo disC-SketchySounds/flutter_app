@@ -27,6 +27,7 @@ class APIService {
     var request =
         http.MultipartRequest('POST', Uri.parse('$apiEndpoint/upload-dall-e'));
 
+    print('Loading from $filePath');
     request.files.add(
       await http.MultipartFile.fromPath(
         'inputFile',
@@ -56,6 +57,7 @@ class APIService {
       var dir = await getApplicationDocumentsDirectory();
       String filePath =
           '${dir.path}/score_${DateTime.now().millisecondsSinceEpoch}.png';
+      print("Saved to $filePath");
       File file = File(filePath);
       await file.writeAsBytes(response.bodyBytes);
       return filePath;

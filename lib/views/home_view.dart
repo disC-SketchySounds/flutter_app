@@ -106,12 +106,14 @@ class _HomeViewState extends State<HomeView> {
           child: BottomNavigationBar(
             iconSize: 0,
             unselectedLabelStyle: const TextStyle(
-              fontFamily: 'Director',
-              fontSize: 16,
+              fontFamily: 'MozartNbp',
+              fontSize: 46,
+              height: 0.1,
             ),
             selectedLabelStyle: const TextStyle(
-              fontFamily: 'Director',
-              fontSize: 16,
+              fontFamily: 'MozartNbp',
+              fontSize: 46,
+              height: 0.1,
             ),
             backgroundColor:
                 _selectedIndex == 1 ? AppColors.blue : AppColors.black,
@@ -128,27 +130,27 @@ class _HomeViewState extends State<HomeView> {
                   Icons.star_border,
                   color: Colors.transparent,
                 ),
-                label: '1 zeichnen',
+                label: '- zeichnen -',
               ),
               BottomNavigationBarItem(
                   icon: Icon(
                     Icons.star_border,
                     color: Colors.transparent,
                   ),
-                  label: '2 generieren'),
+                  label: '- generieren -'),
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.star_border,
                   color: Colors.transparent,
                 ),
-                label: '3 analysieren',
+                label: '- Partitur -',
               ),
               BottomNavigationBarItem(
                   icon: Icon(
                     Icons.star_border,
                     color: Colors.transparent,
                   ),
-                  label: '4 vergleichen'),
+                  label: '- Vergleich -'),
             ],
           ),
         ));
