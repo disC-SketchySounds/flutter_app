@@ -123,7 +123,7 @@ class _DrawingViewState extends State<DrawingView> {
                     'ZEICHNE ETWAS',
                     style: TextStyle(
                       fontFamily: 'MozartNbp',
-                      fontSize: 46,
+                      fontSize: 41,
                     ),
                   ),
                 ),

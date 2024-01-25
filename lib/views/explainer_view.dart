@@ -10,7 +10,7 @@ class ExplainerView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.blue,
+      backgroundColor: AppColors.black,
       body: Stack(
         children: [
           Padding(
@@ -25,7 +25,7 @@ class ExplainerView extends StatelessWidget {
                     children: [
                       Text(
                         'Grafische Partituren sind eine Möglichkeit, die Ausführung von Musikstücken auf grafische Art und Weise zu beschreiben.',
-                        style: TextStyle(fontSize: 46, fontFamily: 'MozartNbp'),
+                        style: TextStyle(fontSize: 41, fontFamily: 'MozartNbp'),
                       ),
                       Row(
                         children: [

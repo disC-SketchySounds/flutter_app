@@ -59,10 +59,10 @@ class _AnalysisViewState extends State<AnalysisView> {
                 const Padding(
                   padding: EdgeInsets.only(left: 16, top: 32, right: 16, bottom: 32),
                   child: Text(
-                    'Deine Partitur',
+                    'DEINE PARTITUR',
                     style: TextStyle(
                       fontFamily: 'MozartNbp',
-                      fontSize: 46,
+                      fontSize: 41,
                     ),
                   ),
                 ),
@@ -111,15 +111,22 @@ class _AnalysisViewState extends State<AnalysisView> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
+                const Padding(
+                  padding: EdgeInsets.only(bottom: 0),
+                  child: Text('Generierter Sound', style: TextStyle(
+                    fontFamily: 'MozartNbp',
+                    fontSize: 41,
+                  )),
+                ),
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 100),
+                  padding: const EdgeInsets.only(bottom: 80),
                   child: IconButton(
                     icon: Icon(
                         isPlaying
                             ? Icons.pause
                             : Icons.play_arrow_rounded,
                         color: AppColors.white,
-                        size: 45),
+                        size: 90),
                     onPressed: () async {
                       if (isPlaying) {
                         setState(

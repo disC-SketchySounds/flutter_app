@@ -107,12 +107,12 @@ class _HomeViewState extends State<HomeView> {
             iconSize: 0,
             unselectedLabelStyle: const TextStyle(
               fontFamily: 'MozartNbp',
-              fontSize: 46,
+              fontSize: 41,
               height: 0.1,
             ),
             selectedLabelStyle: const TextStyle(
               fontFamily: 'MozartNbp',
-              fontSize: 46,
+              fontSize: 41,
               height: 0.1,
             ),
             backgroundColor:

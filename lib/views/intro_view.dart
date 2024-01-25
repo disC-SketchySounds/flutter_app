@@ -9,7 +9,7 @@ class IntroView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.blue,
+      backgroundColor: AppColors.black,
       body: Stack(
         children: [
           Padding(
@@ -24,7 +24,7 @@ class IntroView extends StatelessWidget {
                       padding: EdgeInsets.only(left: 16),
                       child: Text(
                         'Verwandle mit Sketchy Sounds deine eigene Zeichung in eine grafische Partitur und tauche spielerisch in die Welt der Musik ein!',
-                          style: TextStyle(fontSize: 46, fontFamily: 'MozartNbp'),
+                          style: TextStyle(fontSize: 41, fontFamily: 'MozartNbp'),
                       ),
                     ),
                     Row(
