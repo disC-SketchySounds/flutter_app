@@ -21,7 +21,7 @@ class ScoreView extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.all(35),
                 child: Text(
-                  'DEINE PARTITUR',
+                  'Deine Partitur',
                   style: TextStyle(
                     fontFamily: 'TWKLausanne',
                     fontSize: 40,

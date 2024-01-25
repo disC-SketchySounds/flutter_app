@@ -53,6 +53,13 @@ class _HomeViewState extends State<HomeView> {
         backgroundColor: AppColors.black,
         appBar: AppBar(
           backgroundColor: _selectedIndex == 1 ? AppColors.black : AppColors.blue,
+          bottom: PreferredSize(
+              preferredSize: const Size.fromHeight(2.0),
+              child: Container(
+                color: _selectedIndex == 1 ? AppColors.black : AppColors.white,
+                height: 2.0,
+              )
+          ),
           title: const Align(
             alignment: Alignment.centerLeft,
             child: Text(

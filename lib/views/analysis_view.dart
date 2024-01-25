@@ -57,7 +57,7 @@ class _AnalysisViewState extends State<AnalysisView> {
             child: Column(
               children: [
                 const Padding(
-                  padding: EdgeInsets.only(left: 16, top: 32, right: 16, bottom: 32),
+                  padding: EdgeInsets.only(left: 0, top: 32, right: 70, bottom: 32),
                   child: Text(
                     'DEINE PARTITUR',
                     style: TextStyle(

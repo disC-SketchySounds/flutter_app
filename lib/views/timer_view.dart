@@ -35,14 +35,14 @@ class _TimerViewState extends State<TimerView> {
                 'verbleibende Zeit',
                 style: TextStyle(
                   fontFamily: 'MozartNbp',
-                  fontSize: 32,
+                  fontSize: 41,
 
                 ),
               ),
               Text('${countdown}s',
                   style: const TextStyle(
                     fontFamily: 'MozartNbp',
-                    fontSize: 32,
+                    fontSize: 41,
                   )),
             ])));
   }

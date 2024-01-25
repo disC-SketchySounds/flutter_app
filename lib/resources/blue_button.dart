@@ -33,7 +33,7 @@ class BlueButton extends StatelessWidget {
           // Text color
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(0.0),
-            side: BorderSide(color: backgroundColor != AppColors.black ? backgroundColor : foregroundColor),
+            side: BorderSide(color: backgroundColor != AppColors.black ? backgroundColor : foregroundColor, width: 2.0),
           ),
         ),
         child: Text(
