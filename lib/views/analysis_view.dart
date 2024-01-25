@@ -53,32 +53,22 @@ class _AnalysisViewState extends State<AnalysisView> {
       body: Row(
         children: [
           SizedBox(
-            width: screenSize.width * 0.3,
+            width: screenSize.width * 0.325,
             child: Column(
               children: [
                 const Padding(
-                  padding: EdgeInsets.all(16),
+                  padding: EdgeInsets.only(left: 16, top: 32, right: 16, bottom: 32),
                   child: Text(
                     'Deine Partitur',
                     style: TextStyle(
-                      fontFamily: 'TWKLausanne',
-                      fontSize: 40,
+                      fontFamily: 'MozartNbp',
+                      fontSize: 46,
                     ),
                   ),
                 ),
                 Expanded(
                   child: AnalysisTagsView(
                     tags: AppData.current.analysis,
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.all(16),
-                  child: Text(
-                    'Du möchtest die Partitur nochmal mit deiner Skizze vergleichen?',
-                    style: TextStyle(
-                      fontFamily: 'TWKLausanne',
-                      fontSize: 18,
-                    ),
                   ),
                 ),
                 Padding(
@@ -98,7 +88,7 @@ class _AnalysisViewState extends State<AnalysisView> {
             children: [
               Spacer(flex: 3),
               SizedBox.square(
-                  dimension: screenSize.width * 0.4,
+                  dimension: screenSize.width * 0.35,
                   child: Stack(children: [
                     const ImageView(imageType: "score"),
                     Positioned(
@@ -117,7 +107,7 @@ class _AnalysisViewState extends State<AnalysisView> {
             ],
           ),
           SizedBox(
-            width: screenSize.width * 0.3,
+            width: screenSize.width * 0.325,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [

@@ -39,8 +39,9 @@ class BlueButton extends StatelessWidget {
         child: Text(
           text,
           style: const TextStyle(
-            fontSize: 32,
-            fontFamily: 'Compagnon',
+            fontSize: 46,
+            fontFamily: 'MozartNbp',
+            height: 0.8,
           ),
         ),
       ),

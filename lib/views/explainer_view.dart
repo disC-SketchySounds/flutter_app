@@ -25,7 +25,7 @@ class ExplainerView extends StatelessWidget {
                     children: [
                       Text(
                         'Grafische Partituren sind eine Möglichkeit, die Ausführung von Musikstücken auf grafische Art und Weise zu beschreiben.',
-                        style: TextStyle(fontSize: 30),
+                        style: TextStyle(fontSize: 46, fontFamily: 'MozartNbp'),
                       ),
                       Row(
                         children: [

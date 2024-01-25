@@ -39,7 +39,10 @@ class _HomeViewState extends State<HomeView> {
       GenerationView(
           onFinished: () => updateSelectedIndex(2),
           onError: () => updateSelectedIndex(0)),
-      AnalysisView(goToCompare: () => updateSelectedIndex(3), regenerate: () => updateSelectedIndex(1),),
+      AnalysisView(
+        goToCompare: () => updateSelectedIndex(3),
+        regenerate: () => updateSelectedIndex(1),
+      ),
       CompareView(goBackAction: () => updateSelectedIndex(2)),
     ];
   }
@@ -47,7 +50,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: _selectedIndex == 1 ? AppColors.blue : AppColors.black,
+        backgroundColor: _selectedIndex == 1 ? AppColors.blue : AppColors.black,
         appBar: AppBar(
           backgroundColor: AppColors.blue,
           title: const Align(
@@ -74,15 +77,26 @@ class _HomeViewState extends State<HomeView> {
                 displayColor: Colors.white,
               )
               .titleLarge,
-          toolbarHeight: 112 * 0.67,
+          toolbarHeight: 88,
           // There's probably a better way to remove the back button TODO: Fix if spare time
           leading: IconButton(
-            icon: const Icon(Icons.arrow_back_ios_new,
-                color: Colors.transparent),
+            icon:
+                const Icon(Icons.arrow_back_ios_new, color: Colors.transparent),
             onPressed: () {},
           ),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/api_menu');
+                },
+                icon: Icon(
+                  Icons.settings,
+                  size: 40,
+                  color: AppColors.white.withOpacity(0.1),
+                ))
+          ],
         ),
-        body: Stack (
+        body: Stack(
           children: [
             _views.elementAt(_selectedIndex),
           ],
@@ -90,7 +104,19 @@ class _HomeViewState extends State<HomeView> {
         bottomNavigationBar: Padding(
           padding: const EdgeInsets.only(top: 16),
           child: BottomNavigationBar(
-            backgroundColor: _selectedIndex == 1 ? AppColors.blue : AppColors.black,
+            iconSize: 0,
+            unselectedLabelStyle: const TextStyle(
+              fontFamily: 'MozartNbp',
+              fontSize: 46,
+              height: 0.1,
+            ),
+            selectedLabelStyle: const TextStyle(
+              fontFamily: 'MozartNbp',
+              fontSize: 46,
+              height: 0.1,
+            ),
+            backgroundColor:
+                _selectedIndex == 1 ? AppColors.blue : AppColors.black,
             selectedItemColor: AppColors.white,
             selectedFontSize: 24,
             unselectedItemColor: AppColors.transparentWhite,
@@ -104,27 +130,27 @@ class _HomeViewState extends State<HomeView> {
                   Icons.star_border,
                   color: Colors.transparent,
                 ),
-                label: 'zeichnen',
+                label: '- zeichnen -',
               ),
               BottomNavigationBarItem(
                   icon: Icon(
                     Icons.star_border,
                     color: Colors.transparent,
                   ),
-                  label: 'generieren'),
+                  label: '- generieren -'),
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.star_border,
                   color: Colors.transparent,
                 ),
-                label: 'analysieren',
+                label: '- Partitur -',
               ),
               BottomNavigationBarItem(
                   icon: Icon(
                     Icons.star_border,
                     color: Colors.transparent,
                   ),
-                  label: 'vergleichen'),
+                  label: '- Vergleich -'),
             ],
           ),
         ));

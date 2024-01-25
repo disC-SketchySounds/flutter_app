@@ -31,12 +31,14 @@ class _DrawingViewState extends State<DrawingView> {
   Color selectedColor = AppColors.blue;
   int countdown = 180;
   double selectedWidth = 5.0;
+  String selectedButton = 'blue';
 
   // Helper to distinguish between pen and eraser.
   double penWidth = 5.0;
 
   void turnBlue() {
     setState(() {
+      selectedButton = 'blue';
       selectedColor = AppColors.blue;
       selectedWidth = penWidth;
     });
@@ -44,6 +46,7 @@ class _DrawingViewState extends State<DrawingView> {
 
   void turnPink() {
     setState(() {
+      selectedButton = 'pink';
       selectedColor = AppColors.pink;
       selectedWidth = penWidth;
     });
@@ -51,6 +54,7 @@ class _DrawingViewState extends State<DrawingView> {
 
   void turnYellow() {
     setState(() {
+      selectedButton = 'yellow';
       selectedColor = AppColors.yellow;
       selectedWidth = penWidth;
     });
@@ -58,6 +62,7 @@ class _DrawingViewState extends State<DrawingView> {
 
   void makeEraser() {
     setState(() {
+      selectedButton = 'eraser';
       selectedWidth = 25.0;
       selectedColor = AppColors.white;
     });
@@ -82,6 +87,7 @@ class _DrawingViewState extends State<DrawingView> {
   Future<void> _saveImageToFile(
       Uint8List imageBytes, ImageType imageType) async {
     final documentsDir = await getApplicationDocumentsDirectory();
+    // TODO: Fix this
     AppData.current.sketchPath =
         '${documentsDir.path}/${imageType.name}_${DateTime.now().millisecondsSinceEpoch}.png';
 
@@ -108,20 +114,20 @@ class _DrawingViewState extends State<DrawingView> {
       body: Row(
         children: [
           SizedBox(
-            width: screenSize.width * 0.3,
+            width: screenSize.width * 0.325,
             child: Column(
               children: [
-                const Padding(
-                  padding: EdgeInsets.all(35),
+                Padding(
+                  padding: const EdgeInsets.all(35),
                   child: Text(
-                    'Zeichne etwas!',
+                    'ZEICHNE ETWAS',
                     style: TextStyle(
-                      fontFamily: 'TWKLausanne',
-                      fontSize: 40,
+                      fontFamily: 'MozartNbp',
+                      fontSize: 46,
                     ),
                   ),
                 ),
-                const Spacer(),
+                Spacer(),
                 Row(
                   children: [
                     const Spacer(),
@@ -131,44 +137,27 @@ class _DrawingViewState extends State<DrawingView> {
                       child: Column(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.only(bottom: 40),
+                            padding: const EdgeInsets.only(bottom: 25),
                             child: Column(
                               children: [
-                                const Text(
-                                  'Farben',
-                                  style: TextStyle(
-                                    fontFamily: 'TWKLausanne',
-                                    fontSize: 25,
-                                  ),
-                                ),
                                 ColorButton(
                                   onPressed: turnBlue,
+                                  isSelected: selectedButton == 'blue',
                                   buttonColor: AppColors.blue,
                                 ),
                                 ColorButton(
                                   onPressed: turnPink,
+                                  isSelected: selectedButton == 'pink',
                                   buttonColor: AppColors.pink,
                                 ),
                                 ColorButton(
                                   onPressed: turnYellow,
+                                  isSelected: selectedButton == 'yellow',
                                   buttonColor: AppColors.yellow,
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 0),
-                            child: Column(
-                              children: [
-                                const Text(
-                                  'Radierer',
-                                  style: TextStyle(
-                                    fontFamily: 'TWKLausanne',
-                                    fontSize: 25,
-                                  ),
                                 ),
                                 ColorButton(
                                   onPressed: makeEraser,
+                                  isSelected: selectedButton == 'eraser',
                                   buttonColor: AppColors.white,
                                 ),
                               ],
@@ -188,7 +177,7 @@ class _DrawingViewState extends State<DrawingView> {
               RepaintBoundary(
                 key: _globalKey,
                 child: SizedBox.square(
-                  dimension: screenSize.width * 0.4,
+                  dimension: screenSize.width * 0.35,
                   child: ClipRect(
                     child: DrawingPage(
                         selectedColor: selectedColor,
@@ -199,7 +188,7 @@ class _DrawingViewState extends State<DrawingView> {
             ],
           ),
           SizedBox(
-            width: screenSize.width * 0.3,
+            width: screenSize.width * 0.325,
             child: Padding(
               padding: const EdgeInsets.only(top: 35, right: 42),
               child: Column(
@@ -207,14 +196,28 @@ class _DrawingViewState extends State<DrawingView> {
                 children: [
                   TimerView(countdown: countdown, action: _processImage),
                   const Spacer(),
+                  const Padding(
+                    padding: EdgeInsets.only(left: 40),
+                    child: Align(
+                      alignment: Alignment.bottomLeft,
+                      child: Text(
+                        'Strichstärke',
+                        style: TextStyle(
+                          fontFamily: 'MozartNbp',
+                          fontSize: 32,
+                          height: 0.5,
+                        ),
+                      ),
+                    ),
+                  ),
                   SizedBox(
-                      width: screenSize.width * 0.3,
-                      height: screenSize.width * 0.4,
+                      width: screenSize.width * 0.325,
+                      height: screenSize.width * 0.35,
                       child: Row(children: [
                         SizedBox(
-                            height: screenSize.width * 0.4,
+                            height: screenSize.width * 0.35,
                             child: Padding(
-                                padding: EdgeInsets.all(20),
+                                padding: EdgeInsets.only(left: 15, top: 20, bottom: 20, right: 10),
                                 child: RotatedBox(
                                     quarterTurns: 3,
                                     child: SliderTheme(
@@ -224,7 +227,7 @@ class _DrawingViewState extends State<DrawingView> {
                                         activeTrackColor: AppColors.blue,
                                         inactiveTrackColor: AppColors.blue,
                                         overlayColor:
-                                            AppColors.white.withOpacity(0.3),
+                                            AppColors.white.withOpacity(0.325),
                                         valueIndicatorColor: Colors.blue,
                                       ),
                                       child: Slider(
@@ -248,7 +251,7 @@ class _DrawingViewState extends State<DrawingView> {
                             onPressed: () {
                               _processImage();
                             },
-                            text: 'fertig',
+                            text: 'Partitur\ngenerieren',
                           ),
                         ]),
                       ])),

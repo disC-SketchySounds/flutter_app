@@ -41,6 +41,7 @@ dependencies:
   path_provider: 
   http_parser: ^4.0.2
   audioplayers: ^0.18.3
+  shared_preferences: ^2.2.2
 
 dev_dependencies:
   flutter_test:
@@ -106,6 +107,9 @@ flutter:
     - family: TWKLausanne
       fonts:
         - asset: fonts/TWKLausanne-400.otf
+    - family: MozartNbp
+      fonts: 
+        - asset: fonts/MozartNbp-93Ey.ttf
 
 
 flutter_icons:

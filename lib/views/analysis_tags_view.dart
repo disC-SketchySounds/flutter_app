@@ -12,7 +12,7 @@ class AnalysisTagsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(36),
         child: Column(
           children: [
             Row(
@@ -22,17 +22,22 @@ class AnalysisTagsView extends StatelessWidget {
                   triggerMode: TooltipTriggerMode.manual,
                   showDuration: const Duration(seconds: 1),
                   message:
-                      'Diese Stichwörter hat die KI in deiner Skizze entdeckt.',
+                      'Diese Schlagworte hat\ndie KI in deiner\nSkizze entdeckt.',
                   textStyle: const TextStyle(
-                    fontFamily: 'TWKLausanne',
-                    fontSize: 18,
+                    fontFamily: 'MozartNbp',
+                    fontSize: 24,
                     color: AppColors.white,
+                    backgroundColor: AppColors.blue,
+                  ),
+                  decoration: BoxDecoration(
+                    color: AppColors.blue,
+                    border: Border.all(color: AppColors.white, width: 2.0),
                   ),
                   child: const Text(
-                    'Generierte Schlagwörter',
+                    'Schlagworte',
                     style: TextStyle(
-                      fontFamily: 'TWKLausanne',
-                      fontSize: 24,
+                      fontFamily: 'MozartNbp',
+                      fontSize: 46,
                     ),
                   ),
                 ),
@@ -52,18 +57,19 @@ class AnalysisTagsView extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(left: 10),
+                    padding: const EdgeInsets.only(left: 0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        for (int i = 0; i < tags.length; i += 2)
+                        for (int i = 0; i < (tags.length < 11 ? tags.length : 10); i += 2)
                           Padding(
                             padding: const EdgeInsets.only(right: 0, top: 15),
                             child: Text(
                               tags[i],
                               style: const TextStyle(
-                                fontFamily: 'TWKLausanne',
-                                fontSize: 18,
+                                fontFamily: 'MozartNbp',
+                                fontSize: 24,
+                                height: 0.5,
                               ),
                             ),
                           ),
@@ -75,14 +81,15 @@ class AnalysisTagsView extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        for (int i = 1; i < tags.length; i += 2)
+                        for (int i = 1; i < (tags.length < 11 ? tags.length : 10); i += 2)
                           Padding(
                             padding: const EdgeInsets.only(right: 0, top: 15),
                             child: Text(
                               tags[i],
                               style: const TextStyle(
-                                fontFamily: 'TWKLausanne',
-                                fontSize: 18,
+                                fontFamily: 'MozartNbp',
+                                fontSize: 24,
+                                height: 0.5,
                               ),
                             ),
                           ),
