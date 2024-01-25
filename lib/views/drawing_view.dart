@@ -87,6 +87,7 @@ class _DrawingViewState extends State<DrawingView> {
   Future<void> _saveImageToFile(
       Uint8List imageBytes, ImageType imageType) async {
     final documentsDir = await getApplicationDocumentsDirectory();
+    // TODO: Fix this
     AppData.current.sketchPath =
         '${documentsDir.path}/${imageType.name}_${DateTime.now().millisecondsSinceEpoch}.png';
 
@@ -122,8 +123,6 @@ class _DrawingViewState extends State<DrawingView> {
                     'ZEICHNE ETWAS',
                     style: TextStyle(
                       fontFamily: 'MozartNbp',
-                      // Adjust for 11 inch iPad. Otherwise text wraps and fucks
-                      // up layout.
                       fontSize: 46,
                     ),
                   ),
@@ -141,13 +140,6 @@ class _DrawingViewState extends State<DrawingView> {
                             padding: const EdgeInsets.only(bottom: 25),
                             child: Column(
                               children: [
-                                const Text(
-                                  'Farben',
-                                  style: TextStyle(
-                                    fontFamily: 'MozartNbp',
-                                    fontSize: 32,
-                                  ),
-                                ),
                                 ColorButton(
                                   onPressed: turnBlue,
                                   isSelected: selectedButton == 'blue',
@@ -162,20 +154,6 @@ class _DrawingViewState extends State<DrawingView> {
                                   onPressed: turnYellow,
                                   isSelected: selectedButton == 'yellow',
                                   buttonColor: AppColors.yellow,
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(bottom: 0),
-                            child: Column(
-                              children: [
-                                const Text(
-                                  'Radierer',
-                                  style: TextStyle(
-                                    fontFamily: 'MozartNbp',
-                                    fontSize: 32,
-                                  ),
                                 ),
                                 ColorButton(
                                   onPressed: makeEraser,
