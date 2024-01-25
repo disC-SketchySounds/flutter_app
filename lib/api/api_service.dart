@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter_app/exceptions/custom_get_analysis_exception.dart';
+import 'package:flutter_app/exceptions/custom_get_music_exception.dart';
 import 'package:flutter_app/exceptions/custom_get_score_exception.dart';
 import 'package:http/http.dart' as http;
 import 'package:http_parser/http_parser.dart';
@@ -13,7 +14,7 @@ import '../exceptions/custom_upload_sketch_exception.dart';
 class APIService {
   static final APIService instance = APIService._();
 
-  static String apiUrl = 'http://localhost:4242';
+  static String apiUrl = 'http://192.168.178.23:4242';
   static const apiVersion = 'v1';
   static String apiEndpoint = '$apiUrl/api/$apiVersion';
 
@@ -127,6 +128,30 @@ class APIService {
       var responseData = json.decode(response.body);
       String errorMessage = responseData['message'] ?? 'Unbekannter Fehler';
       throw Exception(errorMessage);
+    }
+  }
+
+  /// Save music to files, return path
+  Future<String?> getMusic(String transactionID) async {
+    final uri = Uri.parse('$apiEndpoint/music/$transactionID');
+    final response = await http.get(uri);
+
+    if (response.statusCode == 200) {
+      var dir = await getApplicationDocumentsDirectory();
+      String filePath =
+          '${dir.path}/music_${DateTime.now().millisecondsSinceEpoch}.wav';
+      File file = File(filePath);
+      await file.writeAsBytes(response.bodyBytes);
+      return filePath;
+    } else if (response.statusCode == 204) {
+      return null;
+    } else if (response.statusCode == 409) {
+      String errorText = "Beim Generieren der Musik ist ein Fehler aufgetreten.";
+      throw CustomGetMusicException(errorText);
+    } else {
+      var responseData = json.decode(response.body);
+      String errorMessage = responseData['message'] ?? 'Unbekannter Fehler';
+      throw CustomGetMusicException(errorMessage);
     }
   }
 }
