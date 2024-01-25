@@ -18,14 +18,15 @@ class ExplainerView extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(40),
-                  child: Column(
+                Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        'Grafische Partituren sind eine Möglichkeit, die Ausführung von Musikstücken auf grafische Art und Weise zu beschreiben.',
-                        style: TextStyle(fontSize: 41, fontFamily: 'MozartNbp'),
+                      const Padding(
+                        padding: EdgeInsets.only(left: 16),
+                        child: Text(
+                        'Grafische Partituren sind eine Möglichkeit, die Ausführung\nvon Musikstücken auf grafische Art und Weise zu\nbeschreiben.',
+                        style: TextStyle(fontSize: 41, fontFamily: 'MozartNbp', height: 1),
+                      ),
                       ),
                       Row(
                         children: [
@@ -33,13 +34,12 @@ class ExplainerView extends StatelessWidget {
                             onPressed: () {
                               Navigator.pushNamed(context, '/intro');
                             },
-                            text: 'Los geht\'s!',
+                            text: 'weiter',
                           ),
                         ],
                       ),
                     ],
                   ),
-                ),
               ],
             ),
           ),

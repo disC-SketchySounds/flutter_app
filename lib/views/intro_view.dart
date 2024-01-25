@@ -23,8 +23,8 @@ class IntroView extends StatelessWidget {
                     const Padding(
                       padding: EdgeInsets.only(left: 16),
                       child: Text(
-                        'Verwandle mit Sketchy Sounds deine eigene Zeichung in eine grafische Partitur und tauche spielerisch in die Welt der Musik ein!',
-                          style: TextStyle(fontSize: 41, fontFamily: 'MozartNbp'),
+                        'Verwandle mit Sketchy Sounds deine eigene Zeichung in eine\ngrafische Partitur und tauche spielerisch in die Welt der\nMusik ein!',
+                          style: TextStyle(fontSize: 41, fontFamily: 'MozartNbp', height: 1),
                       ),
                     ),
                     Row(

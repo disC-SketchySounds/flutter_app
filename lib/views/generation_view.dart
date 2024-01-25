@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_app/api/api_service.dart';
@@ -99,7 +100,7 @@ class _GenerationViewState extends State<GenerationView>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.blue,
+      backgroundColor: AppColors.black,
       body: AnimatedBuilder(
         animation: _animationController,
         builder: (context, child) {

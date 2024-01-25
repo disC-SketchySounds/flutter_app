@@ -123,10 +123,10 @@ class _AnalysisViewState extends State<AnalysisView> {
                   child: IconButton(
                     icon: Icon(
                         isPlaying
-                            ? Icons.pause
-                            : Icons.play_arrow_rounded,
+                            ? Icons.pause_sharp
+                            : Icons.play_arrow,
                         color: AppColors.white,
-                        size: 90),
+                        size: 85),
                     onPressed: () async {
                       if (isPlaying) {
                         setState(
