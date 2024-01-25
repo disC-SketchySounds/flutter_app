@@ -22,13 +22,6 @@ class CompareView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    const Text(
-                      'Skizze',
-                      style: TextStyle(
-                        fontFamily: 'TWKLausanne',
-                        fontSize: 50,
-                      ),
-                    ),
                     SizedBox.square(
                         dimension: screenSize.width * 0.4,
                         child: const ImageView(imageType: "sketch")),
@@ -39,13 +32,6 @@ class CompareView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'Partitur',
-                      style: TextStyle(
-                        fontFamily: 'TWKLausanne',
-                        fontSize: 50,
-                      ),
-                    ),
                     SizedBox.square(
                         dimension: screenSize.width * 0.4,
                         child: const ImageView(imageType: "score")),
