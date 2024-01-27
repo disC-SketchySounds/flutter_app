@@ -29,6 +29,7 @@ class APIService {
         http.MultipartRequest('POST', Uri.parse('$apiEndpoint/upload-dall-e'));
 
     print('Loading from $filePath');
+    print(apiUrl);
     request.files.add(
       await http.MultipartFile.fromPath(
         'inputFile',
