@@ -26,7 +26,8 @@ class DrawingPageState extends State<DrawingPage> {
   late bool disabled;
   final GlobalKey _globalKey = GlobalKey(); // What does this do?
 
-  @override void initState() {
+  @override
+  void initState() {
     super.initState();
   }
 

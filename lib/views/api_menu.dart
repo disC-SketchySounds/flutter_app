@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/api/api_service.dart';
 import 'package:flutter_app/resources/app_colors.dart';
@@ -37,7 +38,7 @@ class _ApiMenuState extends State<ApiMenu> {
               ),
               IconButton(
                 onPressed: saveSettings,
-                icon: Icon(Icons.save, color: AppColors.white),
+                icon: const Icon(Icons.save, color: AppColors.white),
               ),
               const Spacer(),
             ],
@@ -52,6 +53,8 @@ class _ApiMenuState extends State<ApiMenu> {
     final prefs = await SharedPreferences.getInstance();
     String apiLink = _apiLinkController.text;
     await prefs.setString('apiLink', apiLink);
-    print(apiLink);
+    if (kDebugMode) {
+      print(apiLink);
+    }
   }
 }

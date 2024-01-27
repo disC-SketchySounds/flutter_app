@@ -3,7 +3,7 @@ import 'package:flutter_app/resources/app_colors.dart';
 
 class BackButton extends StatelessWidget {
   final VoidCallback onPressed;
-  BackButton({super.key, required this.onPressed});
+  const BackButton({super.key, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {

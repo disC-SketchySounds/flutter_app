@@ -4,13 +4,13 @@ class TimerView extends StatefulWidget {
   final int countdown;
   final VoidCallback action;
 
-  TimerView({required this.countdown, required this.action});
+  const TimerView({super.key, required this.countdown, required this.action});
 
   @override
-  _TimerViewState createState() => _TimerViewState();
+  TimerViewState createState() => TimerViewState();
 }
 
-class _TimerViewState extends State<TimerView> {
+class TimerViewState extends State<TimerView> {
   late int countdown;
   late VoidCallback action;
   late bool pageDisabled;
@@ -28,15 +28,13 @@ class _TimerViewState extends State<TimerView> {
     return SizedBox(
         child: Padding(
             padding: const EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
               const Text(
                 'verbleibende Zeit',
                 style: TextStyle(
                   fontFamily: 'MozartNbp',
                   fontSize: 41,
-
                 ),
               ),
               Text('${countdown}s',

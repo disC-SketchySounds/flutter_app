@@ -117,8 +117,8 @@ class _DrawingViewState extends State<DrawingView> {
             width: screenSize.width * 0.325,
             child: Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(35),
+                const Padding(
+                  padding: EdgeInsets.all(35),
                   child: Text(
                     'ZEICHNE ETWAS',
                     style: TextStyle(
@@ -127,7 +127,7 @@ class _DrawingViewState extends State<DrawingView> {
                     ),
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 Row(
                   children: [
                     const Spacer(),
@@ -203,7 +203,7 @@ class _DrawingViewState extends State<DrawingView> {
                         SizedBox(
                             height: screenSize.width * 0.35,
                             child: Padding(
-                                padding: EdgeInsets.only(left: 15, top: 20, bottom: 20, right: 10),
+                                padding: const EdgeInsets.only(left: 15, top: 20, bottom: 20, right: 10),
                                 child: RotatedBox(
                                     quarterTurns: 3,
                                     child: SliderTheme(
@@ -229,9 +229,9 @@ class _DrawingViewState extends State<DrawingView> {
                                         divisions: null,
                                       ),
                                     )))),
-                        Spacer(),
+                        const Spacer(),
                         Column(children: [
-                          Spacer(),
+                          const Spacer(),
                           BlueButton(
                             width: 186,
                             onPressed: () {
