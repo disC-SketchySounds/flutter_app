@@ -123,7 +123,7 @@ class _DrawingViewState extends State<DrawingView> {
                     'ZEICHNE ETWAS',
                     style: TextStyle(
                       fontFamily: 'MozartNbp',
-                      fontSize: 46,
+                      fontSize: 41,
                     ),
                   ),
                 ),
@@ -196,20 +196,6 @@ class _DrawingViewState extends State<DrawingView> {
                 children: [
                   TimerView(countdown: countdown, action: _processImage),
                   const Spacer(),
-                  const Padding(
-                    padding: EdgeInsets.only(left: 40),
-                    child: Align(
-                      alignment: Alignment.bottomLeft,
-                      child: Text(
-                        'Strichstärke',
-                        style: TextStyle(
-                          fontFamily: 'MozartNbp',
-                          fontSize: 32,
-                          height: 0.5,
-                        ),
-                      ),
-                    ),
-                  ),
                   SizedBox(
                       width: screenSize.width * 0.325,
                       height: screenSize.width * 0.35,
@@ -251,7 +237,7 @@ class _DrawingViewState extends State<DrawingView> {
                             onPressed: () {
                               _processImage();
                             },
-                            text: 'Partitur\ngenerieren',
+                            text: 'generieren',
                           ),
                         ]),
                       ])),

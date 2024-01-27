@@ -37,7 +37,7 @@ class AnalysisTagsView extends StatelessWidget {
                     'Schlagworte',
                     style: TextStyle(
                       fontFamily: 'MozartNbp',
-                      fontSize: 46,
+                      fontSize: 41,
                     ),
                   ),
                 ),

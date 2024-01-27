@@ -52,5 +52,6 @@ class _ApiMenuState extends State<ApiMenu> {
     final prefs = await SharedPreferences.getInstance();
     String apiLink = _apiLinkController.text;
     await prefs.setString('apiLink', apiLink);
+    print(apiLink);
   }
 }

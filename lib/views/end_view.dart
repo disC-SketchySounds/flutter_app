@@ -24,8 +24,8 @@ class EndView extends StatelessWidget {
                     const Padding(
                       padding: EdgeInsets.only(left: 16),
                       child: Text(
-                        'Danke, dass du Sketchy Sounds benutzt!\nWas möchtest du nun machen?',
-                        style: TextStyle(fontSize: 30),
+                        'Danke, dass du Sketchy Sounds benutzt hast!',
+                        style: TextStyle(fontFamily: 'MozartNbp', fontSize: 41,),
                       ),
                     ),
                     Row(
@@ -35,7 +35,7 @@ class EndView extends StatelessWidget {
                             Navigator.popUntil(
                                 context, (route) => route.isFirst);
                           },
-                          text: 'neues Projekt',
+                          text: 'neue Skizze',
                           backgroundColor: AppColors.white,
                           foregroundColor: AppColors.blue,
                         ),

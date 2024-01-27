@@ -29,6 +29,7 @@ class APIService {
         http.MultipartRequest('POST', Uri.parse('$apiEndpoint/upload-dall-e'));
 
     print('Loading from $filePath');
+    print(apiUrl);
     request.files.add(
       await http.MultipartFile.fromPath(
         'inputFile',
@@ -86,7 +87,11 @@ class APIService {
         List<String> stringList = List<String>.from(
             responseData['analysis'].map((item) => item.toString()));
 
-        return stringList;
+        // Convert to set and back to remove duplicates
+        Set<String> stringSet = Set<String>.from(stringList);
+        List<String> uniqueList = List<String>.from(stringSet);
+
+        return uniqueList;
       } else {
         throw Exception("No list returned");
       }

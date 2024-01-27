@@ -50,9 +50,16 @@ class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: _selectedIndex == 1 ? AppColors.blue : AppColors.black,
+        backgroundColor: AppColors.black,
         appBar: AppBar(
-          backgroundColor: AppColors.blue,
+          backgroundColor: _selectedIndex == 1 ? AppColors.black : AppColors.blue,
+          bottom: PreferredSize(
+              preferredSize: const Size.fromHeight(2.0),
+              child: Container(
+                color: _selectedIndex == 1 ? AppColors.black : AppColors.white,
+                height: 2.0,
+              )
+          ),
           title: const Align(
             alignment: Alignment.centerLeft,
             child: Text(
@@ -66,15 +73,15 @@ class _HomeViewState extends State<HomeView> {
           toolbarTextStyle: Theme.of(context)
               .textTheme
               .apply(
-                bodyColor: Colors.white,
-                displayColor: Colors.white,
+                bodyColor: _selectedIndex == 1 ? AppColors.black : AppColors.white,
+                displayColor: _selectedIndex == 1 ? AppColors.black : AppColors.white,
               )
               .bodyMedium,
           titleTextStyle: Theme.of(context)
               .textTheme
               .apply(
-                bodyColor: Colors.white,
-                displayColor: Colors.white,
+                bodyColor: _selectedIndex == 1 ? AppColors.black : AppColors.white,
+                displayColor: _selectedIndex == 1 ? AppColors.black : AppColors.white,
               )
               .titleLarge,
           toolbarHeight: 88,
@@ -107,16 +114,15 @@ class _HomeViewState extends State<HomeView> {
             iconSize: 0,
             unselectedLabelStyle: const TextStyle(
               fontFamily: 'MozartNbp',
-              fontSize: 46,
+              fontSize: 41,
               height: 0.1,
             ),
             selectedLabelStyle: const TextStyle(
               fontFamily: 'MozartNbp',
-              fontSize: 46,
+              fontSize: 41,
               height: 0.1,
             ),
-            backgroundColor:
-                _selectedIndex == 1 ? AppColors.blue : AppColors.black,
+            backgroundColor: AppColors.black,
             selectedItemColor: AppColors.white,
             selectedFontSize: 24,
             unselectedItemColor: AppColors.transparentWhite,
