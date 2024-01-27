@@ -17,8 +17,7 @@ class IntroView extends StatelessWidget {
             child: Container(
               color: AppColors.white,
               height: 2.0,
-            )
-        ),
+            )),
         title: const Align(
           alignment: Alignment.centerLeft,
           child: Text(
@@ -32,22 +31,21 @@ class IntroView extends StatelessWidget {
         toolbarTextStyle: Theme.of(context)
             .textTheme
             .apply(
-          bodyColor: AppColors.white,
-          displayColor: AppColors.white,
-        )
+              bodyColor: AppColors.white,
+              displayColor: AppColors.white,
+            )
             .bodyMedium,
         titleTextStyle: Theme.of(context)
             .textTheme
             .apply(
-          bodyColor: AppColors.white,
-          displayColor: AppColors.white,
-        )
+              bodyColor: AppColors.white,
+              displayColor: AppColors.white,
+            )
             .titleLarge,
         toolbarHeight: 88,
         // There's probably a better way to remove the back button TODO: Fix if spare time
         leading: IconButton(
-          icon:
-          const Icon(Icons.arrow_back_ios_new, color: Colors.transparent),
+          icon: const Icon(Icons.arrow_back_ios_new, color: Colors.transparent),
           onPressed: () {},
         ),
         actions: [
@@ -76,7 +74,8 @@ class IntroView extends StatelessWidget {
                       padding: EdgeInsets.only(left: 16),
                       child: Text(
                         'Verwandle mit Sketchy Sounds deine eigene Zeichung in eine\ngrafische Partitur und tauche spielerisch in die Welt der\nMusik ein!',
-                          style: TextStyle(fontSize: 41, fontFamily: 'MozartNbp', height: 1),
+                        style: TextStyle(
+                            fontSize: 41, fontFamily: 'MozartNbp', height: 1),
                       ),
                     ),
                     Row(

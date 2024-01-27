@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_app/api/api_service.dart';
@@ -109,7 +108,7 @@ class _GenerationViewState extends State<GenerationView>
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Padding(
-                padding: EdgeInsets.all(55),
+                padding: const EdgeInsets.all(55),
                 child: Text(
                   'generiere$dots',
                   style: const TextStyle(

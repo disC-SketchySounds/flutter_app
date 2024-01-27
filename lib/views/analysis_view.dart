@@ -14,7 +14,7 @@ class AnalysisView extends StatefulWidget {
   final VoidCallback goToCompare;
   final VoidCallback regenerate;
 
-  AnalysisView(
+  const AnalysisView(
       {super.key, required this.goToCompare, required this.regenerate});
 
   @override
@@ -86,7 +86,7 @@ class _AnalysisViewState extends State<AnalysisView> {
           Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Spacer(flex: 3),
+              const Spacer(flex: 3),
               SizedBox.square(
                   dimension: screenSize.width * 0.35,
                   child: Stack(children: [
@@ -103,7 +103,7 @@ class _AnalysisViewState extends State<AnalysisView> {
                       ),
                     ),
                   ])),
-              Spacer(flex: 1),
+              const Spacer(flex: 1),
             ],
           ),
           SizedBox(

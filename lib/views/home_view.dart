@@ -3,7 +3,6 @@ import '../resources/app_colors.dart';
 import 'compare_view.dart';
 import 'drawing_view.dart';
 import 'generation_view.dart';
-import 'score_view.dart';
 import 'analysis_view.dart';
 
 class HomeView extends StatefulWidget {
@@ -52,14 +51,14 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
         backgroundColor: AppColors.black,
         appBar: AppBar(
-          backgroundColor: _selectedIndex == 1 ? AppColors.black : AppColors.blue,
+          backgroundColor:
+              _selectedIndex == 1 ? AppColors.black : AppColors.blue,
           bottom: PreferredSize(
               preferredSize: const Size.fromHeight(2.0),
               child: Container(
                 color: _selectedIndex == 1 ? AppColors.black : AppColors.white,
                 height: 2.0,
-              )
-          ),
+              )),
           title: const Align(
             alignment: Alignment.centerLeft,
             child: Text(
@@ -73,15 +72,19 @@ class _HomeViewState extends State<HomeView> {
           toolbarTextStyle: Theme.of(context)
               .textTheme
               .apply(
-                bodyColor: _selectedIndex == 1 ? AppColors.black : AppColors.white,
-                displayColor: _selectedIndex == 1 ? AppColors.black : AppColors.white,
+                bodyColor:
+                    _selectedIndex == 1 ? AppColors.black : AppColors.white,
+                displayColor:
+                    _selectedIndex == 1 ? AppColors.black : AppColors.white,
               )
               .bodyMedium,
           titleTextStyle: Theme.of(context)
               .textTheme
               .apply(
-                bodyColor: _selectedIndex == 1 ? AppColors.black : AppColors.white,
-                displayColor: _selectedIndex == 1 ? AppColors.black : AppColors.white,
+                bodyColor:
+                    _selectedIndex == 1 ? AppColors.black : AppColors.white,
+                displayColor:
+                    _selectedIndex == 1 ? AppColors.black : AppColors.white,
               )
               .titleLarge,
           toolbarHeight: 88,

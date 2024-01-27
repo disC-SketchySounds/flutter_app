@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter_app/exceptions/custom_get_analysis_exception.dart';
 import 'package:flutter_app/exceptions/custom_get_music_exception.dart';
 import 'package:flutter_app/exceptions/custom_get_score_exception.dart';
@@ -28,8 +29,12 @@ class APIService {
     var request =
         http.MultipartRequest('POST', Uri.parse('$apiEndpoint/upload-dall-e'));
 
-    print('Loading from $filePath');
-    print(apiUrl);
+    if (kDebugMode) {
+      print('Loading from $filePath');
+    }
+    if (kDebugMode) {
+      print(apiUrl);
+    }
     request.files.add(
       await http.MultipartFile.fromPath(
         'inputFile',
@@ -59,7 +64,9 @@ class APIService {
       var dir = await getApplicationDocumentsDirectory();
       String filePath =
           '${dir.path}/score_${DateTime.now().millisecondsSinceEpoch}.png';
-      print("Saved to $filePath");
+      if (kDebugMode) {
+        print("Saved to $filePath");
+      }
       File file = File(filePath);
       await file.writeAsBytes(response.bodyBytes);
       return filePath;
@@ -151,7 +158,8 @@ class APIService {
     } else if (response.statusCode == 204) {
       return null;
     } else if (response.statusCode == 409) {
-      String errorText = "Beim Generieren der Musik ist ein Fehler aufgetreten.";
+      String errorText =
+          "Beim Generieren der Musik ist ein Fehler aufgetreten.";
       throw CustomGetMusicException(errorText);
     } else {
       var responseData = json.decode(response.body);
